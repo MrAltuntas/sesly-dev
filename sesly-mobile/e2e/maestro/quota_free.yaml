@@ -1,0 +1,93 @@
+# The FREE plan with a used-up ready-made allowance (SPEC-startup 6): the
+# story page says so (the quota line or the quota dialog with "Planları
+# gör"), or the generation screen shows the limit state; it never offers
+# "Tekrar dene", which would fail again.
+#
+# Local stack only. Prepare the account first (README, "quota_free"): a FREE
+# e-mail user with no narration of the featured story, whose monthly preset
+# counter is raised past the allowance in the local database.
+#   maestro --device emulator-5556 test e2e/maestro/quota_free.yaml -e EMAIL=... -e PASSWORD=...
+appId: com.sesly
+name: Quota on the FREE plan
+tags:
+  - local-stack
+  - prepared-account
+---
+- evalScript: ${output.email = EMAIL}
+- runFlow: steps/ensure_signed_in.yaml
+- tapOn:
+    id: "tab-Stories"
+- tapOn:
+    id: "home-featured-open"
+- extendedWaitUntil:
+    visible:
+      id: "story-cta"
+    timeout: 20000
+# A user without a voice picks the first catalogue narrator.
+- runFlow:
+    when:
+      visible:
+        id: "narrator-catalogue-cards"
+    commands:
+      - tapOn:
+          id: "narrator-catalogue-card-(?!preview-|adding-).+"
+          index: 0
+      - extendedWaitUntil:
+          visible:
+            id: "narrator-cards"
+          timeout: 20000
+# The usage is known: the line under the button says nothing is left.
+- runFlow:
+    when:
+      visible:
+        id: "story-quota-left"
+    commands:
+      - assertVisible:
+          id: "story-quota-left"
+          text: "Bu ay 0 masal hakkın kaldı|0 stories left this month"
+- tapOn:
+    id: "story-cta"
+- runFlow: steps/dismiss_system_sheets.yaml
+# The app knows the usage: the quota dialog on the story page. It does not
+# (usage not loaded): the generation screen gets the 403 and shows the limit.
+- extendedWaitUntil:
+    visible:
+      id: "dialog|generation-limit"
+    timeout: 20000
+- assertNotVisible:
+    id: "generation-retry"
+- assertNotVisible:
+    text: "Tekrar dene|Try again"
+- assertNotVisible:
+    id: "player-screen"
+- runFlow:
+    when:
+      visible:
+        id: "dialog"
+    commands:
+      - assertVisible:
+          text: "Bu ayki masal hakkın doldu|You have used this month's stories"
+          childOf:
+            id: "dialog"
+      - assertVisible:
+          text: "Planları gör|See plans"
+          childOf:
+            id: "dialog"
+      - tapOn:
+          text: "Vazgeç|Cancel"
+          childOf:
+            id: "dialog"
+      - assertVisible:
+          id: "story-cta"
+- runFlow:
+    when:
+      visible:
+        id: "generation-limit"
+    commands:
+      - assertVisible:
+          id: "generation-plans"
+      - assertNotVisible:
+          id: "generation-bar"
+      - back
+- assertNotVisible:
+    id: "generation-retry"

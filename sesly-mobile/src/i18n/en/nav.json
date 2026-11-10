@@ -1,0 +1,16 @@
+{
+  "tabs": {
+    "stories": "Stories",
+    "discover": "Discover",
+    "library": "Library",
+    "voice": "My voice"
+  },
+  "miniPlayer": {
+    "narrator": "Told by {{name}}",
+    "remaining": "{{minutes}} min left",
+    "narratorRemaining": "Told by {{name}}, {{minutes}} min left",
+    "paused": "Paused",
+    "pausedRemaining": "Paused, {{minutes}} min left",
+    "open": "Open player: {{title}}"
+  }
+}

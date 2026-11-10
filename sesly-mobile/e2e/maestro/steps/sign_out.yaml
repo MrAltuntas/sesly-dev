@@ -1,0 +1,30 @@
+# From any tab: Profile, "Çıkış yap", confirm. Sign-out goes straight to
+# Login within 2 s, with no splash in between.
+appId: com.sesly
+---
+- runFlow: open_profile.yaml
+- scrollUntilVisible:
+    element:
+      id: "profile-sign-out"
+    direction: DOWN
+- tapOn:
+    id: "profile-sign-out"
+- extendedWaitUntil:
+    visible:
+      id: "dialog"
+    timeout: 3000
+# The dialog's title says the same as its button: the button is under the message.
+- tapOn:
+    text: "Çıkış yap|Sign out"
+    childOf:
+      id: "dialog"
+    below:
+      text: "Oturumunu kapatmak.*|Are you sure you want to sign out.*"
+- extendedWaitUntil:
+    visible:
+      id: "login-submit"
+    timeout: 2000
+- assertNotVisible:
+    id: "splash"
+- assertNotVisible:
+    id: "tab-Stories"

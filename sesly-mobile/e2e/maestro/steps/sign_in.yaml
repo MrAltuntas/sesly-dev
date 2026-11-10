@@ -1,0 +1,14 @@
+# From Login: e-mail and password, landing on the Stories tab.
+# Needs output.email and PASSWORD.
+appId: com.sesly
+---
+- tapOn:
+    id: "login-email"
+- inputText: ${output.email}
+- tapOn:
+    id: "login-password"
+- inputText: ${PASSWORD}
+- hideKeyboard
+- tapOn:
+    id: "login-submit"
+- runFlow: wait_for_home.yaml

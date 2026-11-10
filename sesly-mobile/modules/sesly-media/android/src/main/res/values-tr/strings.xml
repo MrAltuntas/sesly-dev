@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="sesly_media_channel_name">Masal oynatma</string>
+  <string name="sesly_media_skip_back">%1$d saniye geri</string>
+  <string name="sesly_media_skip_forward">%1$d saniye ileri</string>
+</resources>

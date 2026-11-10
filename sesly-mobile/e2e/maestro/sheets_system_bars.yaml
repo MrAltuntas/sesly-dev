@@ -1,0 +1,14 @@
+# The navigation bar under the speed, timer and narrator sheets (R3), then:
+#   node e2e/scripts/check-sheet-bars.js e2e/artifacts --palette gece-mavisi
+# Run once in gesture and once in 3-button navigation. An existing account
+# with a ready narration, on the default palette:
+#   maestro --device emulator-5556 test e2e/maestro/sheets_system_bars.yaml -e EMAIL=... -e PASSWORD=...
+appId: com.sesly
+name: Sheets and the navigation bar
+tags:
+  - owner-areas
+  - screenshots
+---
+- evalScript: ${output.email = EMAIL}
+- runFlow: steps/ensure_signed_in.yaml
+- runFlow: steps/sheets_system_bars.yaml

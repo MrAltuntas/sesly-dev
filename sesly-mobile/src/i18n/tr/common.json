@@ -1,0 +1,55 @@
+{
+  "ok": "Tamam",
+  "cancel": "Vazgeç",
+  "close": "Kapat",
+  "back": "Geri",
+  "retry": "Tekrar dene",
+  "undo": "Geri al",
+  "loading": "Yükleniyor...",
+  "seeAll": "Tümü",
+  "understood": "Anladım",
+  "a11y": {
+    "showPassword": "Şifreyi göster",
+    "hidePassword": "Şifreyi gizle",
+    "profile": "Profil",
+    "play": "Oynat",
+    "pause": "Duraklat",
+    "closeSheet": "Sayfayı kapat",
+    "notifications": "Bildirimler",
+    "notificationsUnread": "Bildirimler, {{n}} okunmamış"
+  },
+  "errorState": {
+    "title": "Yüklenemedi",
+    "message": "Sorun bizde. Biraz sonra tekrar dene."
+  },
+  "legal": {
+    "eyebrow": "Yasal",
+    "offline": "İnternet bağlantısı yok. Cihazında kayıtlı sürüm gösteriliyor.",
+    "updated": "Son güncelleme: {{date}}, sürüm {{version}}",
+    "notPublished": "Bu belge henüz yayımlanmadı.",
+    "noConnection": "İnternete bağlanılamadı ve cihazında kayıtlı bir sürüm yok. Biraz sonra tekrar dene.",
+    "loadFailed": "Belge yüklenemedi. Tekrar dene.",
+    "turkishOnly": "Bu belge şu an yalnızca Türkçe olarak sunuluyor.",
+    "titles": {
+      "tos": "Kullanım Şartları",
+      "privacy": "Gizlilik Politikası",
+      "dataDeletion": "Veri Silme Politikası"
+    }
+  },
+  "languageNames": {
+    "tr": "Türkçe",
+    "en": "İngilizce",
+    "de": "Almanca",
+    "fr": "Fransızca",
+    "es": "İspanyolca",
+    "it": "İtalyanca",
+    "nl": "Felemenkçe",
+    "pt": "Portekizce",
+    "ar": "Arapça",
+    "ru": "Rusça"
+  },
+  "voiceGender": {
+    "female": "kadın sesi",
+    "male": "erkek sesi"
+  }
+}

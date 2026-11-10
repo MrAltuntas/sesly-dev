@@ -1,0 +1,9 @@
+.env
+.env.*
+secrets/*
+!secrets/.gitkeep
+node_modules/
+dist/
+.next/
+coverage/
+*.log

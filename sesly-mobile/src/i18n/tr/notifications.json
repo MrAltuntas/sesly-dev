@@ -1,0 +1,38 @@
+{
+  "title": "Bildirimler",
+  "markAllRead": "Hepsi okundu",
+  "type": {
+    "story": "Masal",
+    "voice": "Ses",
+    "system": "Bilgi"
+  },
+  "a11y": {
+    "unread": "Okunmadı"
+  },
+  "toast": {
+    "listen": "Dinle",
+    "show": "Göster"
+  },
+  "empty": {
+    "title": "Bildirim yok",
+    "message": "Masalın ya da sesin hazır olunca burada görürsün.",
+    "action": "Bildirim tercihleri"
+  },
+  "error": {
+    "title": "Bildirimler yüklenemedi",
+    "message": "Sorun bizde. Biraz sonra tekrar dene."
+  },
+  "time": {
+    "now": "şimdi",
+    "minutes": "{{value}} dk önce",
+    "hours": "{{value}} sa önce",
+    "day": "1 gün önce",
+    "days": "{{value}} gün önce",
+    "week": "1 hafta önce",
+    "weeks": "{{value}} hafta önce",
+    "month": "1 ay önce",
+    "months": "{{value}} ay önce",
+    "year": "1 yıl önce",
+    "years": "{{value}} yıl önce"
+  }
+}

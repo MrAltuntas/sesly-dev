@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sesly-admin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sesly-admin-panel
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - sesly-network
+
+networks:
+  sesly-network:
+    driver: bridge

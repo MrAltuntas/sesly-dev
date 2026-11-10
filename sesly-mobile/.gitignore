@@ -1,0 +1,78 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Environment & Sensitive Configuration Files
+.env
+.env.local
+.env.*.local
+
+# Google Services (contains OAuth credentials)
+#android/app/google-services.json
+#ios/Runner/GoogleService-Info.plist
+
+# Keystore files (for app signing)
+*.jks
+*.keystore
+upload-keystore.jks
+key.properties
+android/key.properties
+node_modules/
+# Staging folder for a fresh install before it replaces node_modules
+.nm-staging/
+
+# Reference/Temporary folders
+reference-expo-app/
+_expo_template/
+
+# Expo
+.expo/
+dist/
+web-build/
+/android/app/google-services.json
+
+
+# Claude Code local settings
+.claude/settings.local.json

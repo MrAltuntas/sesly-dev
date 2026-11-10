@@ -1,0 +1,87 @@
+# The own-voice flow up to the recording: intro with a name, consent (the
+# button waits for the box), the recording screen. The emulator microphone
+# delivers silence, so the take must be rejected, never uploaded.
+appId: com.sesly
+---
+- tapOn:
+    id: "tab-Voices"
+- extendedWaitUntil:
+    visible:
+      id: "own-voice-add-slot"
+    timeout: 20000
+- tapOn:
+    id: "own-voice-add-slot"
+- extendedWaitUntil:
+    visible:
+      id: "voice-intro-continue"
+    timeout: 20000
+- tapOn:
+    id: "voice-name-field"
+- eraseText: 60
+- inputText: "Maestro"
+- hideKeyboard
+- tapOn:
+    id: "voice-intro-continue"
+- extendedWaitUntil:
+    visible:
+      id: "consent-accept"
+    timeout: 20000
+- assertVisible:
+    id: "consent-accept"
+    enabled: false
+- tapOn:
+    id: "consent-check"
+- assertVisible:
+    id: "consent-accept"
+    enabled: true
+- tapOn:
+    id: "consent-accept"
+- extendedWaitUntil:
+    visible:
+      id: "recording-script"
+    timeout: 20000
+- assertVisible:
+    id: "recording-tips"
+- tapOn:
+    id: "record-button"
+# The microphone permission.
+- runFlow: dismiss_system_sheets.yaml
+- runFlow:
+    when:
+      visible:
+        id: "recording-permission-action"
+    commands:
+      - tapOn:
+          id: "recording-permission-action"
+      - runFlow: dismiss_system_sheets.yaml
+      - tapOn:
+          id: "record-button"
+# Tips collapse while recording so the script gets the space.
+- extendedWaitUntil:
+    notVisible:
+      id: "recording-tips"
+    timeout: 10000
+- extendedWaitUntil:
+    visible:
+      text: "Sesini duyamadık.*|We could not hear you.*"
+    timeout: 90000
+- assertNotVisible:
+    id: "review-submit"
+# Out of the flow: the recording screen may ask first.
+- tapOn:
+    id: "appbar-back"
+- runFlow:
+    when:
+      visible:
+        id: "dialog"
+    commands:
+      - tapOn:
+          text: "Çık|Leave"
+          childOf:
+            id: "dialog"
+- back
+- back
+- extendedWaitUntil:
+    visible:
+      id: "tab-Voices"
+    timeout: 5000

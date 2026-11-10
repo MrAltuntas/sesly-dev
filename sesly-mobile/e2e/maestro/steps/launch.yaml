@@ -1,0 +1,34 @@
+# A clean start that ends on Login, signed out.
+# Release or preview build: clearState, so onboarding shows first. Dev build:
+# no clearState (it would bring back the dev menu intro and the floating Tools
+# button over top-right taps); a session left by an interrupted run is signed
+# out instead.
+appId: com.sesly
+---
+# A password-save sheet left over from a previous run covers the app.
+- runFlow: dismiss_system_sheets.yaml
+- stopApp
+- runFlow:
+    when:
+      true: ${typeof DEV_CLIENT_URL === 'undefined' || DEV_CLIENT_URL.length === 0}
+    commands:
+      - clearState
+- runFlow: open_app.yaml
+- runFlow:
+    when:
+      visible:
+        id: "onboarding"
+    commands:
+      - assertVisible:
+          id: "onboarding-next"
+      - tapOn:
+          id: "onboarding-skip"
+- runFlow:
+    when:
+      visible:
+        id: "tab-Stories"
+    file: sign_out.yaml
+- extendedWaitUntil:
+    visible:
+      id: "login-submit"
+    timeout: 10000

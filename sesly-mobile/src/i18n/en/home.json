@@ -1,0 +1,34 @@
+{
+  "greeting": {
+    "morning": "Good morning",
+    "day": "Good afternoon",
+    "evening": "Good evening",
+    "night": "Good night",
+    "morningName": "Good morning, {{name}}",
+    "dayName": "Good afternoon, {{name}}",
+    "eveningName": "Good evening, {{name}}",
+    "nightName": "Good night, {{name}}"
+  },
+  "featured": {
+    "listenTo": "Listen to {{title}}",
+    "tagNight": "Tonight's story",
+    "tagDay": "Today's story"
+  },
+  "shelves": {
+    "new": "New stories",
+    "saved": "Saved",
+    "collections": "Collections"
+  },
+  "error": {
+    "title": "Could not load the stories",
+    "message": "The problem is on our side. Try again in a moment."
+  },
+  "empty": {
+    "title": "No stories yet",
+    "message": "New stories will appear here when they are added."
+  },
+  "a11y": {
+    "openStory": "Open the story {{title}}",
+    "seeAll": "{{shelf}}, see all"
+  }
+}

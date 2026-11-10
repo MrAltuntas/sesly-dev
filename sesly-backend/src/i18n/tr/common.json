@@ -1,0 +1,12 @@
+{
+  "success": "Başarılı",
+  "error": "Hata",
+  "notFound": "Bulunamadı",
+  "unauthorized": "Yetkisiz erişim",
+  "forbidden": "Yasak",
+  "badRequest": "Geçersiz istek",
+  "internalServerError": "Sunucu hatası",
+  "created": "Başarıyla oluşturuldu",
+  "updated": "Başarıyla güncellendi",
+  "deleted": "Başarıyla silindi"
+}

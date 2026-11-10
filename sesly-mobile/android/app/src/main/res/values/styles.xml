@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!-- Dark-only app: a dark AppCompat parent (no DayNight lookup; night mode is also pinned in
+       MainApplication), light system bar icons, and the default palette's text3 and action as
+       the native control fallbacks (every input sets its own per-palette colours). -->
+  <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+    <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorControlNormal">#939EB4</item>
+    <item name="colorControlActivated">#F2917B</item>
+    <item name="colorAccent">#F2917B</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+    <item name="android:windowBackground">@color/window_background</item>
+  </style>
+  <!-- Launch theme of MainActivity (expo-splash-screen, hand-applied): the default palette bg
+       with the 120dp mark centred, held until JS hides it, then AppTheme. The animated icon
+       is the splashscreen_logo bitmap itself, as the plugin writes it: each density's PNG is
+       the whole 288dp icon box (no icon background) with the mark centred and transparent
+       around it (scripts/generate-splash-assets.js). No <inset> or other wrapper drawable:
+       the API 37 system splash drew none of the inset 120dp PNG (LA-1).
+       The system draws the launch window's bars from this theme, not from AppTheme, and
+       Theme.SplashScreen follows the phone's light or dark setting: on a light phone its
+       Android 13+ variant asks for dark navigation icons on a light contrast scrim, and every
+       Android 12+ variant enforces the scrim. The bar items below keep the launch window dark
+       like the app (light icons, no scrim in 3-button navigation). -->
+  <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+    <item name="windowSplashScreenBackground">@color/splashscreen_background</item>
+    <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen_logo</item>
+    <item name="postSplashScreenTheme">@style/AppTheme</item>
+    <item name="android:windowSplashScreenBehavior" tools:targetApi="33">icon_preferred</item>
+    <item name="android:windowLightStatusBar">false</item>
+    <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+    <item name="android:enforceNavigationBarContrast" tools:targetApi="29">false</item>
+  </style>
+</resources>

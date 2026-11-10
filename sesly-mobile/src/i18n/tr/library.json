@@ -1,0 +1,86 @@
+{
+  "title": "Kütüphane",
+  "segments": {
+    "label": "Kütüphane bölümü",
+    "mine": "Masallarım",
+    "saved": "Kaydedilenler"
+  },
+  "count": {
+    "tales": "{{total}} masal",
+    "talesOne": "1 masal",
+    "results": "{{total}} sonuç",
+    "resultsOne": "1 sonuç"
+  },
+  "playAll": "Hepsini çal",
+  "continue": {
+    "eyebrow": "Kaldığın yerden devam et",
+    "a11y": "Devam et: {{title}}"
+  },
+  "menu": {
+    "delete": "Sil"
+  },
+  "delete": {
+    "title": "Bu masal kütüphanenden silinsin mi?",
+    "message": "{{title}} masalının bu seslendirmesi silinir.",
+    "confirm": "Sil",
+    "done": "Masal silindi",
+    "failed": "Masal silinemedi. Tekrar dene."
+  },
+  "savedError": {
+    "title": "Kaydedilenler yüklenemedi"
+  },
+  "row": {
+    "fallbackTitle": "Masal",
+    "narrator": "{{name}} anlatıyor",
+    "accented": "aksanlı",
+    "remaining": "{{minutes}} dk kaldı",
+    "duration": "{{minutes}} dk",
+    "listened": "Dinlendi",
+    "listenedDuration": "Dinlendi, {{duration}}",
+    "unlistened": "Dinlenmedi",
+    "unlistenedDuration": "Dinlenmedi, {{duration}}",
+    "preparing": "Hazırlanıyor",
+    "preparingPercent": "Hazırlanıyor, %{{percent}}"
+  },
+  "credit": {
+    "author": "Yazan {{name}}",
+    "collector": "Derleyen {{name}}"
+  },
+  "search": {
+    "open": "Masallarımda ara",
+    "clear": "Aramayı temizle",
+    "placeholder": "Masal ya da anlatıcı ara"
+  },
+  "a11y": {
+    "openNarration": "{{title}} masalını dinle",
+    "preparing": "{{title}} hazırlanıyor",
+    "play": "{{title}} masalını oynat",
+    "pause": "{{title}} masalını duraklat",
+    "openStory": "{{title}} masalını aç",
+    "unsave": "{{title}} masalını kaydedilenlerden çıkar",
+    "options": "{{title}} için diğer seçenekler",
+    "queueAdd": "{{title}} masalını sıraya ekle",
+    "queueRemove": "{{title}} masalını sıradan çıkar"
+  },
+  "empty": {
+    "mine": {
+      "title": "Henüz masalın yok",
+      "message": "Dinlediğin masallar burada durur.",
+      "action": "Masallara göz at"
+    },
+    "saved": {
+      "title": "Kaydettiğin masal yok",
+      "message": "Kaydettiğin masallar burada durur.",
+      "action": "Masallara göz at"
+    },
+    "search": {
+      "title": "Sonuç yok",
+      "message": "Başka bir kelimeyle tekrar dene."
+    }
+  },
+  "error": {
+    "title": "Kütüphane yüklenemedi",
+    "message": "Sorun bizde. Biraz sonra tekrar dene.",
+    "refreshFailed": "Liste yenilenemedi"
+  }
+}

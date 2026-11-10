@@ -1,0 +1,4 @@
+# Screenshots the Maestro flows take (palette_*, sheet_*, cold_start_*).
+artifacts/
+# Firebase emulator logs.
+*-debug.log

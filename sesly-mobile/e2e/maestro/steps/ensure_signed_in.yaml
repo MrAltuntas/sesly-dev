@@ -1,0 +1,23 @@
+# Opens the app (state kept) and makes sure output.email is signed in: from
+# onboarding or Login it signs in with output.email and PASSWORD.
+appId: com.sesly
+---
+- runFlow: dismiss_system_sheets.yaml
+- runFlow: open_app.yaml
+- runFlow:
+    when:
+      visible:
+        id: "onboarding"
+    commands:
+      - tapOn:
+          id: "onboarding-skip"
+      - extendedWaitUntil:
+          visible:
+            id: "login-submit"
+          timeout: 5000
+- runFlow:
+    when:
+      visible:
+        id: "login-submit"
+    file: sign_in.yaml
+- runFlow: wait_for_home.yaml

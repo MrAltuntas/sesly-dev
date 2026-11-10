@@ -1,0 +1,99 @@
+# The sleep timer on the player: a one-minute duration starts once the wheel
+# rests, the countdown runs, and the story stops on time. Starts on the
+# player (steps/open_player.yaml) and leaves it paused, the timer off.
+appId: com.sesly
+---
+- assertVisible:
+    id: "player-screen"
+# Play first: the timer stops a story that plays.
+- runFlow:
+    when:
+      visible:
+        id: "player-play"
+        text: "Oynat|Play"
+    commands:
+      - tapOn:
+          id: "player-play"
+- extendedWaitUntil:
+    visible:
+      id: "player-play"
+      text: "Duraklat|Pause"
+    timeout: 20000
+- tapOn:
+    id: "player-timer-entry"
+- extendedWaitUntil:
+    visible:
+      id: "timer-sheet"
+    timeout: 5000
+- tapOn:
+    id: "timer-mode-duration"
+# Both bodies stay mounted and cross-fade (LR-3): the wheel shows and the
+# stories body under it is hidden from the hierarchy.
+- assertVisible:
+    id: "minute-wheel"
+- assertNotVisible:
+    id: "timer-stop-line-stories"
+# Down to one minute: holding the minus button repeats until the wheel's minimum.
+- repeat:
+    times: 8
+    while:
+      visible:
+        id: "minute-wheel-minus"
+        enabled: true
+    commands:
+      - longPressOn:
+          id: "minute-wheel-minus"
+- assertVisible:
+    id: "minute-wheel-minus"
+    enabled: false
+# The timer starts once the wheel has rested for a second; the sheet keeps
+# its height and the countdown takes the quick picks' place.
+- extendedWaitUntil:
+    visible:
+      id: "timer-countdown"
+    timeout: 5000
+- assertVisible:
+    id: "timer-switch"
+    checked: true
+- assertVisible:
+    id: "timer-add-five"
+- copyTextFrom:
+    id: "timer-countdown"
+- evalScript: ${output.firstCountdown = maestro.copiedText}
+- runFlow:
+    file: wait.yaml
+    env:
+      WAIT_MS: "3000"
+- assertNotVisible:
+    id: "timer-countdown"
+    text: ${output.firstCountdown}
+- assertVisible:
+    id: "timer-countdown"
+    text: "0:[0-5][0-9]"
+# Closed sheet: the player's timer tile counts on; the story stops when the
+# minute is up (with the fade over the last minute).
+- back
+- assertNotVisible:
+    id: "timer-sheet"
+- assertVisible:
+    id: "player-timer-state"
+    text: "0:[0-5][0-9]"
+- extendedWaitUntil:
+    visible:
+      id: "player-play"
+      text: "Oynat|Play"
+    timeout: 90000
+# The tile says the timer is off again.
+- assertVisible:
+    id: "player-timer-state"
+    text: "Kapalı|Off"
+- tapOn:
+    id: "player-timer-entry"
+- extendedWaitUntil:
+    visible:
+      id: "timer-sheet"
+    timeout: 5000
+- assertVisible:
+    id: "timer-switch"
+    checked: false
+- back

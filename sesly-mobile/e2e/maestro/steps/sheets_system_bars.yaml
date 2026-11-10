@@ -1,0 +1,177 @@
+# The navigation bar under a sheet (R3): the speed, timer and narrator sheets
+# (also after a trip to the background) and the nested legal sheet in
+# Profile are opened and photographed; e2e/scripts/check-sheet-bars.js then
+# checks that the bottom rows show the sheet's surface, not a white or grey
+# bar. Run it on an emulator in 3-button navigation too. Palette:
+# gece-mavisi. Screenshots: e2e/artifacts/sheet_*.png.
+# Then the scrim hand-off (SPEC-design 2.2 Handoff): a scrim-tap close of the
+# Library options sheet and its "Sil" question are recorded
+# (e2e/artifacts/handoff_*.mp4). Frame by frame, a pixel of the Library
+# behind the sheet may only get lighter during the close (never dark,
+# bright, dark), and between the sheet and the dialog it never reaches the
+# undimmed colour. "Vazgeç" leaves the row as it was.
+appId: com.sesly
+---
+- runFlow: open_player.yaml
+- tapOn:
+    id: "player-speed-entry"
+- extendedWaitUntil:
+    visible:
+      id: "speed-sheet"
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 2000
+- takeScreenshot: e2e/artifacts/sheet_speed
+- back
+- extendedWaitUntil:
+    notVisible:
+      id: "speed-sheet"
+    timeout: 3000
+- tapOn:
+    id: "player-timer-entry"
+- extendedWaitUntil:
+    visible:
+      id: "timer-sheet"
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 2000
+- takeScreenshot: e2e/artifacts/sheet_timer
+- back
+- extendedWaitUntil:
+    notVisible:
+      id: "timer-sheet"
+    timeout: 3000
+- tapOn:
+    id: "player-back"
+- tapOn:
+    id: "tab-Stories"
+- tapOn:
+    id: "home-featured-open"
+- extendedWaitUntil:
+    visible:
+      id: "narrator-heading-link"
+    timeout: 20000
+- tapOn:
+    id: "narrator-heading-link"
+- extendedWaitUntil:
+    visible:
+      id: "narrator-sheet"
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 2000
+- takeScreenshot: e2e/artifacts/sheet_narrator
+# To the background and back with the sheet open: it is still there and the
+# bar under it did not change (SPEC-design 8).
+- pressKey: Home
+- launchApp:
+    stopApp: false
+- extendedWaitUntil:
+    visible:
+      id: "narrator-sheet"
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 2000
+- takeScreenshot: e2e/artifacts/sheet_narrator_resumed
+- back
+- extendedWaitUntil:
+    notVisible:
+      id: "narrator-sheet"
+    timeout: 3000
+- back
+- assertVisible:
+    id: "tab-Stories"
+# The nested legal sheet in Profile: the documents list, then a document at
+# full height over it.
+- runFlow: open_profile.yaml
+- scrollUntilVisible:
+    element:
+      id: "profile-legal"
+    direction: DOWN
+- tapOn:
+    id: "profile-legal"
+- extendedWaitUntil:
+    visible:
+      id: "profile-legal-sheet"
+    timeout: 5000
+- takeScreenshot: e2e/artifacts/sheet_legal_list
+- tapOn:
+    id: "profile-legal-tos"
+- extendedWaitUntil:
+    visible:
+      id: "legal-scroll"
+    timeout: 15000
+- waitForAnimationToEnd:
+    timeout: 2000
+- takeScreenshot: e2e/artifacts/sheet_legal_document
+- tapOn:
+    id: "legal-close"
+- extendedWaitUntil:
+    notVisible:
+      id: "legal-scroll"
+    timeout: 3000
+- back
+- back
+- assertVisible:
+    id: "tab-Stories"
+# The scrim hand-off (NEW-1, LR-2): a scrim-tap close of the Library options
+# sheet, recorded. Every frame may only be lighter than the one before.
+- tapOn:
+    id: "tab-Library"
+- extendedWaitUntil:
+    visible:
+      id: "library-narration-.+"
+    timeout: 20000
+- tapOn:
+    id: "library-more-.+"
+    index: 0
+- extendedWaitUntil:
+    visible:
+      id: "library-options"
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 2000
+- startRecording: e2e/artifacts/handoff_scrim_close
+# The scrim above the sheet.
+- tapOn:
+    point: "50%,8%"
+    retryTapIfNoChange: false
+- extendedWaitUntil:
+    notVisible:
+      id: "library-options"
+    timeout: 3000
+- waitForAnimationToEnd:
+    timeout: 2000
+- stopRecording
+# The sheet to its dialog (NL-08, V3-07): "Sil" opens the delete question
+# from the sheet's onClosed, over the last of its scrim, never undimmed in
+# between. "Vazgeç" deletes nothing.
+- tapOn:
+    id: "library-more-.+"
+    index: 0
+- extendedWaitUntil:
+    visible:
+      id: "library-options"
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 2000
+- startRecording: e2e/artifacts/handoff_delete_dialog
+- tapOn:
+    id: "story-option-delete"
+- extendedWaitUntil:
+    visible:
+      id: "dialog"
+    timeout: 5000
+- waitForAnimationToEnd:
+    timeout: 2000
+- stopRecording
+- takeScreenshot: e2e/artifacts/handoff_delete_dialog
+- tapOn:
+    text: "Vazgeç|Cancel"
+    childOf:
+      id: "dialog"
+- extendedWaitUntil:
+    notVisible:
+      id: "dialog"
+    timeout: 3000
+- assertVisible:
+    id: "library-narration-.+"

@@ -1,0 +1,48 @@
+# Profile, "Renk paleti": every palette is picked once (the ring shows on
+# the tapped swatch at once, the screen recolours) with a screenshot each,
+# ending on the default, gece-mavisi. Screenshots: e2e/artifacts/palette_*.png.
+appId: com.sesly
+---
+- runFlow: open_profile.yaml
+- scrollUntilVisible:
+    element:
+      id: "palette-option-orijinal"
+    direction: DOWN
+- tapOn:
+    id: "palette-option-kitaplik"
+- assertVisible:
+    id: "palette-check-kitaplik"
+- assertNotVisible:
+    id: "palette-check-gece-mavisi"
+- takeScreenshot: e2e/artifacts/palette_kitaplik
+- tapOn:
+    id: "palette-option-orman"
+- assertVisible:
+    id: "palette-check-orman"
+- takeScreenshot: e2e/artifacts/palette_orman
+- tapOn:
+    id: "palette-option-murekkep"
+- assertVisible:
+    id: "palette-check-murekkep"
+- takeScreenshot: e2e/artifacts/palette_murekkep
+- tapOn:
+    id: "palette-option-erik"
+- assertVisible:
+    id: "palette-check-erik"
+- takeScreenshot: e2e/artifacts/palette_erik
+- tapOn:
+    id: "palette-option-orijinal"
+- assertVisible:
+    id: "palette-check-orijinal"
+- takeScreenshot: e2e/artifacts/palette_orijinal
+- tapOn:
+    id: "palette-option-gece-mavisi"
+- assertVisible:
+    id: "palette-check-gece-mavisi"
+- assertNotVisible:
+    id: "palette-check-orijinal"
+- takeScreenshot: e2e/artifacts/palette_gece-mavisi
+# The pick is kept: the tabs come back in it.
+- back
+- assertVisible:
+    id: "tab-Stories"

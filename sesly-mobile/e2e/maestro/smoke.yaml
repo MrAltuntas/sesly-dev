@@ -1,0 +1,36 @@
+# Sesly end-to-end smoke flow (Android, local stack: see ../README.md).
+# Registers a fresh emulator user, checks Login, Registration and Profile,
+# prepares a ready-made narration (real Google TTS) and plays it, walks the
+# owner's areas (sleep timer, mini player, queue, palettes), searches the
+# Library, walks the clone flow up to the rejected silent take, signs out
+# and in, and deletes the account.
+#
+#   maestro --device emulator-5556 test e2e/maestro/smoke.yaml
+#   (dev build: add -e DEV_CLIENT_URL="exp+sesly://expo-development-client/?url=http%3A%2F%2Flocalhost%3A8081&disableOnboarding=1")
+#
+# Selectors are testIDs (id:); the few texts (dialog buttons, toasts, the
+# play / pause label) are matched in Turkish or English.
+appId: com.sesly
+name: Sesly smoke
+tags:
+  - smoke
+env:
+  PASSWORD: "Test-123456"
+---
+- evalScript: ${output.email = 'maestro-' + Date.now() + '@test.local'}
+- runFlow: steps/launch.yaml
+- runFlow: steps/login_screen_checks.yaml
+- runFlow: steps/register.yaml
+- runFlow: steps/profile_checks.yaml
+- runFlow: steps/ready_made_narration.yaml
+- runFlow: steps/open_player.yaml
+- runFlow: steps/sleep_timer.yaml
+- tapOn:
+    id: "player-back"
+- runFlow: steps/mini_player.yaml
+- runFlow: steps/queue_from_library.yaml
+- runFlow: steps/palette_switch.yaml
+- runFlow: steps/library_search.yaml
+- runFlow: steps/clone_flow_ui.yaml
+- runFlow: steps/logout_login.yaml
+- runFlow: steps/delete_account.yaml

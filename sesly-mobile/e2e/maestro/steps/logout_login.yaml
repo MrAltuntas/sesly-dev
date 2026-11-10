@@ -1,0 +1,14 @@
+# Sign out, then back in with the same account (output.email, PASSWORD).
+appId: com.sesly
+---
+- runFlow: sign_out.yaml
+- runFlow: sign_in.yaml
+# The account's data is back: its narration is in the Library.
+- tapOn:
+    id: "tab-Library"
+- extendedWaitUntil:
+    visible:
+      id: "library-narration-.+"
+    timeout: 20000
+- tapOn:
+    id: "tab-Stories"

@@ -1,0 +1,119 @@
+{
+  "title": "My voice",
+  "subtitle": "Choose here who tells the stories.",
+  "sections": {
+    "narrators": "Ready-made narrators"
+  },
+  "own": {
+    "loading": "Loading voices...",
+    "ready": "Ready",
+    "preparing": "Getting ready",
+    "failed": "Could not be prepared",
+    "waiting": "Waiting",
+    "waitingNote": "The recording was not sent. Delete it and record again; this does not use up a new voice.",
+    "recorded": "recorded {{month}} {{day}}",
+    "retry": "Try again",
+    "startOver": "Start over",
+    "default": "Default"
+  },
+  "months": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "add": {
+    "full": "You cannot record a new own voice right now."
+  },
+  "narrators": {
+    "hint": "Tap a narrator to add it to your list.",
+    "pickHint": "Add a narrator to listen to the story. You return to the story once it is added.",
+    "slots": "Your list has {{used}}/{{limit}} narrators.",
+    "slotsFull": "Your list is full ({{used}}/{{limit}}). Remove one to add a new narrator.",
+    "loading": "Loading narrators...",
+    "empty": "The narrators could not be loaded right now. Pull down to refresh.",
+    "emptyLanguage": "There are no {{language}} ready-made narrators yet.",
+    "languageFilter": "Narrator language",
+    "added": "Added",
+    "allA11y": "Ready-made narrators, see all"
+  },
+  "a11y": {
+    "delete": "Delete the voice {{name}}",
+    "remove": "Remove the narrator {{name}}",
+    "playSample": "Play the sample of {{name}}",
+    "stopSample": "Stop the sample of {{name}}",
+    "add": "Add the narrator {{name}}"
+  },
+  "dialogs": {
+    "seePlans": "See plans",
+    "delete": {
+      "title": "Delete the voice {{name}}?",
+      "messagePlain": "Your recording and the voice made from it are deleted for good. This cannot be undone.",
+      "messageLeft": "Your recording and the voice made from it are deleted for good. This cannot be undone. Deleting does not give back the new voice you used. You have {{left}} new voices left this month.",
+      "messageLeftLifetime": "Your recording and the voice made from it are deleted for good. This cannot be undone. Deleting does not give back the new voice you used. You have {{left}} new voices left, and they do not renew.",
+      "messageFinal": "Your recording and the voice made from it are deleted for good. This cannot be undone. Deleting does not give back the new voice you used. You have no new voices left, so after a delete you cannot record again.",
+      "messageFinalMonth": "Your recording and the voice made from it are deleted for good. This cannot be undone. Deleting does not give back the new voice you used. This month's are used up, so after a delete you cannot record again before the new month.",
+      "confirm": "Delete voice",
+      "messageNoRefund": "Your recording and the voice made from it are deleted for good. This cannot be undone. Deleting does not give back the new voice you used."
+    },
+    "remove": {
+      "title": "Remove {{name}}?",
+      "message": "The narrator leaves your list. You can add it again whenever you like.",
+      "confirm": "Remove"
+    },
+    "retry": {
+      "title": "Start over",
+      "message": "The voice {{name}} could not be prepared. You can delete this recording and read again.",
+      "confirm": "Delete and start over"
+    },
+    "retryPending": {
+      "message": "The recording of {{name}} was not sent. Delete it and read again."
+    }
+  },
+  "toasts": {
+    "added": "Narrator added",
+    "addFailed": "The narrator could not be added",
+    "sampleMissing": "No voice sample found",
+    "previewFailed": "The sample could not be played",
+    "deleted": "Voice deleted",
+    "removed": "Narrator removed"
+  },
+  "catalogue": {
+    "emptyTitle": "No narrators",
+    "errorTitle": "The narrators could not be loaded",
+    "errorMessage": "Check your connection and try again.",
+    "genderFilter": "Voice type",
+    "gender": {
+      "all": "All",
+      "female": "Female voices",
+      "male": "Male voices"
+    }
+  },
+  "slots": {
+    "title": "Your own voices",
+    "slotsLabel": "Voice slots",
+    "creationsMonth": "New voices this month",
+    "creationsLifetime": "New voices in total",
+    "unlimited": "Unlimited",
+    "slotsA11y": "Voice slots, {{used}} of {{limit}} in use",
+    "creationsMonthA11y": "New voices this month, {{used}} of {{limit}} used",
+    "creationsLifetimeA11y": "New voices in total, {{used}} of {{limit}} used",
+    "creationsLimitOnly": "{{limit}} in all",
+    "monthNote": "Deleting a voice does not give a new voice back.",
+    "lifetimeNote": "These do not renew. Deleting a voice does not give a new voice back.",
+    "add": "Add a voice",
+    "addHint": "A recording of about {{seconds}} seconds is enough.",
+    "full": "Your voice slots are full.",
+    "fullDelete": "Your voice slots are full. Delete one to make room for a new voice.",
+    "creationsUsedMonth": "You have used this month's new voices.",
+    "creationsUsedLifetime": "You have used your new voice, and it does not renew."
+  }
+}

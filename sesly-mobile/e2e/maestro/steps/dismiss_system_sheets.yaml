@@ -1,0 +1,10 @@
+# Android sheets over the app: the password manager after a form, the
+# notification and microphone permission dialogs.
+appId: com.sesly
+---
+- tapOn:
+    text: "Never|Not now"
+    optional: true
+- tapOn:
+    text: "Allow|While using the app"
+    optional: true

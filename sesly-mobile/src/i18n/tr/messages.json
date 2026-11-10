@@ -1,0 +1,207 @@
+{
+  "story": {
+    "savedFailed": "Favori masallar yüklenemedi",
+    "listFailed": "Masallar yüklenemedi"
+  },
+  "common": {
+    "actionFailed": "İşlem başarısız",
+    "genericError": "Bir hata oluştu",
+    "successTitle": "Başarılı",
+    "errorTitle": "Hata",
+    "network": "İnternet bağlantısı kurulamadı",
+    "unknown": "Bilinmeyen bir hata oluştu",
+    "sessionExpired": "Oturumunun süresi doldu. Lütfen tekrar giriş yap.",
+    "server": "Sunucu hatası oluştu",
+    "fileTooLarge": "Dosya boyutu çok büyük"
+  },
+  "auth": {
+    "resetSent": "Bu adresle bir hesap varsa şifre sıfırlama bağlantısını gönderdik. Gelen kutunu kontrol et.",
+    "googleFailed": "Google ile giriş başarısız",
+    "appleFailed": "Apple ile giriş başarısız",
+    "accountCreated": "Hesap oluşturuldu",
+    "signOutFailed": "Çıkış yapılamadı",
+    "sessionEndedTitle": "Oturum sona erdi",
+    "tooManyAttempts": "Çok fazla deneme yapıldı. Lütfen biraz sonra tekrar dene.",
+    "appleIosOnly": "Apple ile giriş yalnızca iOS cihazlarda kullanılabilir",
+    "credentialRejected": "Kimlik bilgisi doğrulanamadı. Lütfen tekrar dene.",
+    "backendFailed": "Sunucuyla oturum açılamadı. Lütfen tekrar dene.",
+    "genericFailure": "Kimlik doğrulama hatası. Lütfen tekrar dene.",
+    "emailInUse": "Bu e-posta adresi zaten kullanılıyor",
+    "weakPassword": "Şifre çok zayıf (minimum 6 karakter)",
+    "noCredential": "Firebase kimlik bilgisi alınamadı",
+    "noPlayServices": "Google Play Services mevcut değil",
+    "appleNoCredential": "Apple kimlik bilgisi alınamadı",
+    "accountDisabled": "Bu hesap devre dışı bırakılmış",
+    "googleCancelled": "Google ile giriş iptal edildi",
+    "googleInProgress": "Google ile giriş devam ediyor",
+    "appleCancelled": "Apple ile giriş iptal edildi",
+    "wrongCredentials": "E-posta veya şifre hatalı",
+    "invalidEmail": "Geçersiz e-posta adresi",
+    "userNotFound": "Kullanıcı bulunamadı",
+    "wrongPassword": "Hatalı şifre",
+    "emailInUseTitle": "Bu e-posta başka bir yöntemle kayıtlı",
+    "emailInUseMessage": "Bu e-posta adresiyle daha önce farklı bir giriş yöntemiyle hesap oluşturulmuş. İlk kaydolduğun yöntemle (Google, Apple ya da e-posta ve şifre) giriş yap."
+  },
+  "notifications": {
+    "loadFailed": "Bildirimler yüklenemedi",
+    "updateFailed": "Bildirim güncellenemedi"
+  },
+  "subscription": {
+    "cancelScheduled": "Aboneliğin dönem sonunda iptal edilecek",
+    "reactivated": "Aboneliğin yeniden aktif edildi",
+    "loadFailed": "Abonelik bilgisi yüklenemedi",
+    "cancelledTitle": "İptal Edildi",
+    "cancelFailed": "Abonelik iptal edilemedi",
+    "reactivateFailed": "Abonelik aktif edilemedi"
+  },
+  "quota": {
+    "presetMonthly": {
+      "title": "Bu ayki masal hakkın doldu",
+      "message": "Ücretsiz planda hazır anlatıcılarla ayda {{limit}} masal dinleyebilirsin.",
+      "messageOne": "Ücretsiz planda hazır anlatıcılarla ayda 1 masal dinleyebilirsin.",
+      "upsell": "Mini ve Premium planlarda sınırsız."
+    },
+    "cloneLifetime": {
+      "title": "Kendi sesinle masal hakkın doldu",
+      "message": "Ücretsiz planda kendi sesinle {{limit}} masal dinleyebilirsin. Bu hak yenilenmez.",
+      "messageOne": "Ücretsiz planda kendi sesinle 1 masal dinleyebilirsin. Bu hak yenilenmez.",
+      "upsell": "Kendi sesinle daha fazla masal için Mini ya da Premium plana geçebilirsin."
+    },
+    "cloneMonthly": {
+      "title": "Bu ay kendi sesinle masal hakkın doldu",
+      "message": "Planında kendi sesinle ayda {{limit}} masal var.",
+      "messageOne": "Planında kendi sesinle ayda 1 masal var.",
+      "upsell": "Premium planda daha fazlası var."
+    },
+    "creationLifetime": {
+      "title": "Kendi ses hakkını kullandın",
+      "message": "Ücretsiz planda kendi sesini bir kez kaydedebilirsin. Bu hak yenilenmez, sesi silmek de yeni hak vermez.",
+      "upsell": "Yeni bir ses için Mini ya da Premium plana geçebilirsin."
+    },
+    "creationMonthly": {
+      "title": "Bu ayki yeni ses hakkın doldu",
+      "message": "Planında ayda {{limit}} yeni ses kaydı var.",
+      "messageOne": "Planında ayda 1 yeni ses kaydı var.",
+      "upsell": "Premium planda daha fazlası var."
+    },
+    "premiumStory": {
+      "title": "Bu masal ücretli planlarda",
+      "message": "Mini ya da Premium planla dinleyebilirsin."
+    },
+    "seePlans": "Planları gör",
+    "readyMade": "Hazır anlatıcıyla dinle"
+  },
+  "recording": {
+    "stopFailed": "Kayıt durdurulamadı. Lütfen yeniden kaydet.",
+    "saveFailed": "Kayıt kaydedilemedi. Lütfen yeniden kaydet.",
+    "startFailedLong": "Kayıt başlatılamadı. Lütfen tekrar dene.",
+    "missingMessage": "Önce metni okuyarak sesini kaydet.",
+    "uploadingMessage": "Kaydın zaten yükleniyor.",
+    "startFailed": "Kayıt başlatılamadı",
+    "missingTitle": "Kayıt bulunamadı",
+    "uploadingTitle": "Yükleniyor",
+    "permissionCheckFailed": "Mikrofon izni kontrol edilemedi"
+  },
+  "voice": {
+    "cloneLimitMessagePro": "Kendi ses hakkının tamamını kullandın{{usage}}. Yeni bir kayıt için mevcut seslerinden birini silebilirsin.",
+    "cloneLimitMessageFree": "Kendi ses hakkının tamamını kullandın{{usage}}. Premium planla daha fazla kendi ses ekleyebilirsin.",
+    "presetLimitMessagePro": "Ekleyebileceğin hazır ses sayısına ulaştın{{usage}}. Yeni bir ses için mevcut hazır seslerinden birini kaldırabilirsin.",
+    "presetLimitMessageFree": "Ekleyebileceğin hazır ses sayısına ulaştın{{usage}}. Birini kaldırabilir ya da Mini veya Premium planla daha fazla anlatıcı ekleyebilirsin.",
+    "trainingFailed": "Sesin hazırlanırken bir sorun oluştu. Lütfen yeniden kaydetmeyi dene.",
+    "consentFailed": "Onay metni şu an yüklenemedi. Lütfen biraz sonra tekrar dene.",
+    "notFound": "Ses profili bulunamadı. Lütfen yeniden kaydetmeyi dene.",
+    "configFailed": "Kayıt bilgileri yüklenemedi. Lütfen tekrar dene.",
+    "readyMessage": "Artık masalları kendi sesinle dinleyebilirsin.",
+    "nameTooLong": "Profil adı çok uzun (en fazla 50 karakter)",
+    "nameTooShort": "Profil adı en az 2 karakter olmalı",
+    "listFailed": "Ses profilleri yüklenemedi",
+    "createFailed": "Ses profili oluşturulamadı",
+    "cloneLimitTitle": "Kendi ses hakkın doldu",
+    "presetLimitTitle": "Hazır ses hakkın doldu",
+    "sampleFailed": "Ses örneği alınamadı",
+    "catalogueFailed": "Sesler yüklenemedi",
+    "failedTitle": "Ses hazırlanamadı",
+    "readyTitle": "Sesin hazır",
+    "cloneLimitMessageMini": "Kendi ses hakkının tamamını kullandın{{usage}}. Yeni bir kayıt için mevcut sesini silebilir ya da Premium planla daha fazla kendi ses ekleyebilirsin.",
+    "deleteFailed": "Ses profili silinemedi"
+  },
+  "narration": {
+    "alreadyExists": "Bu masal bu sesle zaten seslendirilmiş.",
+    "createFailed": "Sesli masal oluşturulamadı",
+    "missingId": "Seslendirme bulunamadı"
+  },
+  "api": {
+    "badRequest": "Gönderilen bilgiler geçersiz. Lütfen kontrol et.",
+    "tooMany": "Çok fazla istek gönderildi. Lütfen biraz bekle.",
+    "notFound": "İstenen içerik bulunamadı.",
+    "forbidden": "Bu işlem için yetkin yok.",
+    "conflict": "Bu işlem zaten yapılmış.",
+    "statusError": "Bir hata oluştu ({{status}})",
+    "tooManyYou": "Çok fazla istek gönderdin. Lütfen biraz bekle.",
+    "badData": "Gönderilen veri hatalı. Lütfen kontrol et.",
+    "conflictDone": "Bu işlem zaten gerçekleştirilmiş.",
+    "validation": "Gönderilen veriler doğrulanamadı.",
+    "timeout": "Bağlantı zaman aşımına uğradı",
+    "resourceNotFound": "İstenen kaynak bulunamadı.",
+    "title": {
+      "validation": "Doğrulama Hatası",
+      "session": "Oturum Sonlandı",
+      "tooMany": "Çok Fazla İstek",
+      "badRequest": "Geçersiz İstek",
+      "server": "Sunucu Hatası",
+      "notFound": "Bulunamadı",
+      "conflict": "Çakışma"
+    },
+    "maintenance": "Sesly şu anda bakımda. Lütfen biraz sonra tekrar dene."
+  },
+  "push": {
+    "voiceFailedMessage": "Lütfen yeniden kayıt yapmayı dene.",
+    "narrationReadyMessage": "Sesli masalın dinlemeye hazır.",
+    "narrationFailedTitle": "Masal hazırlanamadı",
+    "narrationFailedMessage": "Lütfen tekrar dene.",
+    "narrationReadyTitle": "Masalın hazır"
+  },
+  "clone": {
+    "consentTitle": "Açık rıza metni",
+    "tooShort": "Kayıt çok kısa. En az {{seconds}} saniye okuman gerekiyor, lütfen yeniden kaydet.",
+    "languageNotSupportedTitle": "Bu dilde kayıt yapılamıyor",
+    "languageNotSupported": "Bu dilde ses kaydı şu an yapılamıyor. Başka bir dil seç.",
+    "slotLimitMini": "Kendi ses hakkının tamamını kullandın. Yeni bir kayıt için mevcut sesini silebilir ya da Premium planla daha fazla kendi ses ekleyebilirsin.",
+    "slotLimitFree": "Kendi ses hakkının tamamını kullandın. Premium planla daha fazla kendi ses ekleyebilirsin.",
+    "presetLimitFree": "Ekleyebileceğin hazır ses sayısına ulaştın. Birini kaldırabilir ya da Mini veya Premium planla daha fazla anlatıcı ekleyebilirsin.",
+    "presetLimitPro": "Ekleyebileceğin hazır ses sayısına ulaştın. Yeni bir ses için mevcut hazır seslerinden birini kaldırabilirsin.",
+    "slotLimitPro": "Kendi ses hakkının tamamını kullandın. Yeni bir kayıt için mevcut seslerinden birini silebilirsin.",
+    "alreadyUploaded": "Bu ses için kayıt daha önce gönderildi. Sesin hazırlanıyor, hazır olunca haber vereceğiz.",
+    "consentRequired": "Sesini kaydedebilmemiz için açık rıza metnini yeniden onaylaman gerekiyor.",
+    "noSpeech": "Sesini duyamadık. Mikrofonun açık olduğundan emin ol ve metni sesli oku.",
+    "uploadFailed": "Ses kaydın yüklenemedi. Lütfen tekrar dene.",
+    "alreadyUploadedTitle": "Kayıt zaten gönderildi",
+    "uploadFailedTitle": "Yükleme başarısız",
+    "consentRequiredTitle": "Onay gerekli"
+  },
+  "player": {
+    "playFailed": "Oynatma başarısız oldu. Lütfen tekrar dene.",
+    "audioFailed": "Ses oynatılamadı. Lütfen tekrar dene.",
+    "notFound": "Masal bulunamadı.",
+    "audioRemoved": "Bu masalın sesi yenileniyor. Masal sayfasından yeniden oluşturabilirsin.",
+    "loadFailed": "Masal yüklenemedi",
+    "previewFailed": "Örnek oynatılamadı. Tekrar dene.",
+    "pausedOnLockTitle": "Masal durdu",
+    "pausedOnLock": "Ücretsiz planda ekran kapanınca masal durur.",
+    "resume": "Devam et"
+  },
+  "purchases": {
+    "unavailable": "Bu plan şu an satın alınamıyor. Biraz sonra yeniden dene.",
+    "storeNetwork": "Mağazaya bağlanılamadı. İnternet bağlantını kontrol edip yeniden dene.",
+    "failed": "Satın alma tamamlanamadı. Ücret alınmadı, yeniden deneyebilirsin.",
+    "alreadyOwned": "Bu aboneliğe zaten sahipsin. Satın alımların geri yükleniyor.",
+    "receiptInUse": "Bu abonelik başka bir Sesly hesabına bağlı. O hesapla giriş yapabilir ya da aboneliği mağazadan yönetebilirsin.",
+    "receiptInvalid": "Bu satın alım doğrulanamadı. Ücret alındıysa mağaza birkaç gün içinde iade eder.",
+    "completedLater": "Satın alımın doğrulandı, planın açıldı.",
+    "restored": "Aboneliğin geri yüklendi.",
+    "restoreLater": "Satın alımın bulundu. Doğrulama şu an yapılamıyor, bağlantı düzelince kendiliğinden tamamlanacak.",
+    "nothingToRestore": "Bu mağaza hesabında geri yüklenecek bir abonelik bulunamadı.",
+    "restoreFailed": "Satın alımlar şu an geri yüklenemedi. Biraz sonra yeniden dene.",
+    "manageFailed": "Abonelik sayfası açılamadı."
+  }
+}

@@ -1,0 +1,19 @@
+node_modules
+dist
+.env
+.git
+.gitignore
+README.md
+docker-compose.yml
+Dockerfile
+.dockerignore
+*.log
+coverage
+.vscode
+.idea
+*.md
+test
+prisma.config.ts
+# The legal texts (Turkish and English) the seeder reads at boot (only
+# root-level *.md is excluded above; this keeps them in even if that pattern widens)
+!src/modules/legal-documents/content/*.md

@@ -1,0 +1,132 @@
+{
+  "title": "Profil",
+  "fallbackName": "Sesly dostu",
+  "plan": {
+    "free": "Ücretsiz plan",
+    "paid": "{{name}} planı",
+    "seePlans": "Planları gör"
+  },
+  "usage": {
+    "presetMonth": "Hazır anlatıcılarla, bu ay",
+    "cloned": "Kendi sesinle",
+    "clonedMonth": "Kendi sesinle, bu ay",
+    "value": "{{used}} / {{limit}} masal",
+    "valueOne": "{{used}} / 1 masal",
+    "valueUnlimited": "{{used}} masal",
+    "valueUnlimitedOne": "1 masal",
+    "unlimited": "Sınırsız.",
+    "lifetimeFree": "Ücretsiz planda toplam {{limit}} masal. Yenilenmez.",
+    "lifetimeFreeOne": "Ücretsiz planda toplam 1 masal. Yenilenmez.",
+    "lifetime": "Toplam {{limit}} masal. Yenilenmez.",
+    "lifetimeOne": "Toplam 1 masal. Yenilenmez.",
+    "renewsOn": {
+      "0": "{{day}} Ocak'ta yenilenir.",
+      "1": "{{day}} Şubat'ta yenilenir.",
+      "2": "{{day}} Mart'ta yenilenir.",
+      "3": "{{day}} Nisan'da yenilenir.",
+      "4": "{{day}} Mayıs'ta yenilenir.",
+      "5": "{{day}} Haziran'da yenilenir.",
+      "6": "{{day}} Temmuz'da yenilenir.",
+      "7": "{{day}} Ağustos'ta yenilenir.",
+      "8": "{{day}} Eylül'de yenilenir.",
+      "9": "{{day}} Ekim'de yenilenir.",
+      "10": "{{day}} Kasım'da yenilenir.",
+      "11": "{{day}} Aralık'ta yenilenir."
+    }
+  },
+  "contentLanguage": {
+    "label": "Masal dili",
+    "saveFailed": "Masal dili kaydedilemedi"
+  },
+  "palette": {
+    "label": "Renk paleti",
+    "hint": "Seçimin bu cihazda saklanır.",
+    "names": {
+      "kitaplik": "Kitaplık",
+      "orman": "Orman",
+      "gece-mavisi": "Gece mavisi",
+      "murekkep": "Mürekkep",
+      "erik": "Erik",
+      "orijinal": "Orijinal"
+    }
+  },
+  "uiLanguage": {
+    "label": "Uygulama dili"
+  },
+  "notifications": {
+    "label": "Bildirimler",
+    "unread": "{{unread}} yeni",
+    "narrationReady": "Masal hazır olunca bildir",
+    "voiceReady": "Ses hazır olunca bildir",
+    "saveFailed": "Tercih kaydedilemedi",
+    "prefsFailed": "Bildirim ayarları yüklenemedi",
+    "permission": {
+      "deniedTitle": "Bildirim izni kapalı",
+      "deniedMessage": "Telefon ayarlarında Sesly bildirimleri kapalı. İzin verene kadar bildirim gelmez.",
+      "openSettings": "Ayarları aç",
+      "neededTitle": "Masalın hazır olunca haber verelim mi?",
+      "neededMessage": "Masalın ya da sesin hazır olunca haber verebilmemiz için izin gerekiyor.",
+      "allow": "İzin ver"
+    }
+  },
+  "legal": {
+    "label": "Yasal belgeler",
+    "tos": "Kullanım Şartları",
+    "privacy": "Gizlilik Politikası",
+    "dataDeletion": "Veri silme politikası"
+  },
+  "signOut": {
+    "label": "Çıkış yap",
+    "message": "Oturumunu kapatmak istediğine emin misin?",
+    "progress": "Çıkış yapılıyor..."
+  },
+  "deleteAccount": {
+    "label": "Hesabı sil"
+  },
+  "contact": {
+    "label": "Bize ulaşın",
+    "subject": "Sesly Destek",
+    "failedTitle": "E-posta açılamadı",
+    "failedMessage": "Cihazında bir e-posta uygulaması bulunamadı. Bize {{email}} adresinden ulaşabilirsin."
+  },
+  "cache": {
+    "label": "Önbelleği temizle",
+    "message": "Önbellekteki ses dosyaları silinir.",
+    "confirm": "Temizle",
+    "cleared": "Önbellek temizlendi",
+    "failed": "Önbellek temizlenemedi",
+    "empty": "Önbellek zaten boş"
+  },
+  "name": {
+    "title": "Adını değiştir",
+    "label": "Adın",
+    "save": "Kaydet",
+    "saved": "Adın güncellendi",
+    "saveFailed": "Adın kaydedilemedi"
+  },
+  "version": "Sürüm {{version}}",
+  "deletion": {
+    "title": "Hesabı sil",
+    "heading": "Bu işlem geri alınamaz",
+    "intro": "Hesabını silersen şunlar kalıcı olarak kaldırılır ve bir daha erişilemez:",
+    "items": {
+      "profile": "Profil bilgilerin (ad, e-posta, tercihler)",
+      "narrations": "Oluşturduğun bütün masallar ve seslendirmeler",
+      "voices": "Kendi sesin (ses sağlayıcımızdaki kopyası dahil)"
+    },
+    "subscriptionNote": "Hesabını silmek aboneliğini iptal etmez. Abonelik, Google Play'den ya da App Store'dan iptal edene kadar yenilenmeye devam eder. Hesabını silmeden önce oradan iptal et.",
+    "confirmCheck": "Bütün verilerimin silinmesini onaylıyorum.",
+    "submit": "Hesabımı sil",
+    "submitting": "Siliniyor...",
+    "dialogMessage": "Hesabın ve bütün verilerin kalıcı olarak silinir. Geri alınamaz.",
+    "failed": "Hesabın ve verilerin yerinde duruyor. Biraz sonra tekrar dene.",
+    "failedTitle": "Hesap silinemedi",
+    "done": "Hesabın silindi",
+    "alt": {
+      "section": "Başka yol",
+      "title": "E-postayla talep",
+      "message": "Uygulamaya giremiyorsan silme talebini bu adrese gönder. Doğrulama için kayıtlı e-posta adresinden yazman gerekir."
+    },
+    "mailFailedMessage": "Cihazında bir e-posta uygulaması bulunamadı."
+  }
+}

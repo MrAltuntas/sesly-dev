@@ -1,0 +1,11 @@
+# The up-next queue on its own: add from the Library and play the queue.
+# An existing account with a ready narration:
+#   maestro --device emulator-5556 test e2e/maestro/queue_library.yaml -e EMAIL=... -e PASSWORD=...
+appId: com.sesly
+name: Queue from the Library
+tags:
+  - owner-areas
+---
+- evalScript: ${output.email = EMAIL}
+- runFlow: steps/ensure_signed_in.yaml
+- runFlow: steps/queue_from_library.yaml

@@ -1,0 +1,49 @@
+# Profile, "Hesabı sil": the button waits for the confirmation box, the
+# dialog confirms, the success message shows, then Login.
+appId: com.sesly
+---
+- runFlow: open_profile.yaml
+- scrollUntilVisible:
+    element:
+      id: "profile-delete-account"
+    direction: DOWN
+- tapOn:
+    id: "profile-delete-account"
+- extendedWaitUntil:
+    visible:
+      id: "deletion-warning"
+    timeout: 5000
+- scrollUntilVisible:
+    element:
+      id: "deletion-submit"
+    direction: DOWN
+- assertVisible:
+    id: "deletion-submit"
+    enabled: false
+- tapOn:
+    id: "deletion-confirm"
+- assertVisible:
+    id: "deletion-submit"
+    enabled: true
+- tapOn:
+    id: "deletion-submit"
+- extendedWaitUntil:
+    visible:
+      id: "dialog"
+    timeout: 3000
+- tapOn:
+    text: "Hesabı sil|Delete account"
+    childOf:
+      id: "dialog"
+    below:
+      text: "Hesabın ve bütün verilerin.*|Your account and all your data.*"
+- extendedWaitUntil:
+    visible:
+      text: "Hesabın silindi|Your account was deleted"
+    timeout: 30000
+- extendedWaitUntil:
+    visible:
+      id: "login-submit"
+    timeout: 10000
+- assertNotVisible:
+    id: "tab-Stories"

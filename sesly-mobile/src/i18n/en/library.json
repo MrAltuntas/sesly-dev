@@ -1,0 +1,86 @@
+{
+  "title": "Library",
+  "segments": {
+    "label": "Library section",
+    "mine": "My stories",
+    "saved": "Saved"
+  },
+  "count": {
+    "tales": "{{total}} stories",
+    "talesOne": "1 story",
+    "results": "{{total}} results",
+    "resultsOne": "1 result"
+  },
+  "playAll": "Play all",
+  "continue": {
+    "eyebrow": "Pick up where you left off",
+    "a11y": "Resume {{title}}"
+  },
+  "menu": {
+    "delete": "Delete"
+  },
+  "delete": {
+    "title": "Remove this story from your library?",
+    "message": "This narration of {{title}} will be deleted.",
+    "confirm": "Delete",
+    "done": "Story deleted",
+    "failed": "The story could not be deleted. Try again."
+  },
+  "savedError": {
+    "title": "Could not load your saved stories"
+  },
+  "row": {
+    "fallbackTitle": "Story",
+    "narrator": "Told by {{name}}",
+    "accented": "accented",
+    "remaining": "{{minutes}} min left",
+    "duration": "{{minutes}} min",
+    "listened": "Listened",
+    "listenedDuration": "Listened, {{duration}}",
+    "unlistened": "Not played yet",
+    "unlistenedDuration": "Not played yet, {{duration}}",
+    "preparing": "Getting ready",
+    "preparingPercent": "Getting ready, {{percent}}%"
+  },
+  "credit": {
+    "author": "By {{name}}",
+    "collector": "Collected by {{name}}"
+  },
+  "search": {
+    "open": "Search my stories",
+    "clear": "Clear search",
+    "placeholder": "Search a story or narrator"
+  },
+  "a11y": {
+    "openNarration": "Listen to {{title}}",
+    "preparing": "{{title}} is getting ready",
+    "play": "Play {{title}}",
+    "pause": "Pause {{title}}",
+    "openStory": "Open {{title}}",
+    "unsave": "Remove {{title}} from saved",
+    "options": "More options for {{title}}",
+    "queueAdd": "Add {{title}} to the queue",
+    "queueRemove": "Remove {{title}} from the queue"
+  },
+  "empty": {
+    "mine": {
+      "title": "No stories yet",
+      "message": "Stories you listen to are kept here.",
+      "action": "Browse stories"
+    },
+    "saved": {
+      "title": "Nothing saved yet",
+      "message": "Stories you save are kept here.",
+      "action": "Browse stories"
+    },
+    "search": {
+      "title": "No results",
+      "message": "Try a different word."
+    }
+  },
+  "error": {
+    "title": "Could not load your library",
+    "message": "The problem is on our side. Try again in a moment.",
+    "refreshFailed": "The list could not be refreshed"
+  }
+}

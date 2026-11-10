@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">Sesly</string>
+  <string name="notification_channel_default_name">Masal ve ses bildirimleri</string>
+  <string name="notification_channel_default_description">Masalın ya da klonlanan sesin hazır olduğunu haber verir.</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
+</resources>

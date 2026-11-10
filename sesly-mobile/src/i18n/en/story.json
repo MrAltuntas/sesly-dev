@@ -1,0 +1,52 @@
+{
+  "age": {
+    "range": "Ages {{range}}",
+    "all": "All ages"
+  },
+  "duration": "{{minutes}} min",
+  "category": {
+    "item": {
+      "BEDTIME": "Bedtime story",
+      "TURKISH_CLASSICS": "Turkish tale",
+      "WORLD_CLASSICS": "World classic",
+      "EDUCATIONAL": "Educational story"
+    },
+    "shelf": {
+      "BEDTIME": "Bedtime stories",
+      "TURKISH_CLASSICS": "Turkish tales",
+      "WORLD_CLASSICS": "World classics",
+      "EDUCATIONAL": "Educational stories"
+    }
+  },
+  "translation": {
+    "human": "Translation",
+    "machine": "Translated with AI"
+  },
+  "languages": "Languages: {{list}}",
+  "coverOf": "Cover of {{title}}",
+  "contentWarning": {
+    "label": {
+      "SCARY": "Scary scene",
+      "VIOLENCE": "Violence",
+      "DEATH": "Death",
+      "SAD_ENDING": "Sad ending",
+      "BAD_EXAMPLE": "Example of bad behaviour",
+      "OLD_LANGUAGE": "Old or heavy language",
+      "LONELINESS": "Loneliness or separation"
+    },
+    "sentence": {
+      "SCARY": "It has a scary scene.",
+      "VIOLENCE": "It contains violence.",
+      "DEATH": "It talks about death.",
+      "SAD_ENDING": "It has a sad ending.",
+      "BAD_EXAMPLE": "It shows an example of bad behaviour.",
+      "OLD_LANGUAGE": "It is told in old, heavy language.",
+      "LONELINESS": "It is about loneliness and separation."
+    },
+    "a11y": "Content note: {{list}}"
+  },
+  "contentNote": {
+    "forAge": "For ages {{range}}.",
+    "allAges": "For all ages."
+  }
+}

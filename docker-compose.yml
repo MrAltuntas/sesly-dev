@@ -1,0 +1,178 @@
+# Sesly yerel geliştirme yığını: postgres, redis, backend, yönetim paneli, site.
+# Aç:     docker compose up -d --build --wait
+# Kapat:  docker compose down          Sıfırla: docker compose down -v
+#
+# Kökte .env olmadan açılır. Buradaki ${AD:-deger} varsayılanları yalnız yerel
+# kullanım içindir; gerçek anahtarlar kökteki .env dosyasından gelir (env.example).
+# Mobil uygulama bu yığının parçası değildir (README).
+name: sesly-dev
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER:-sesly_local}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-sesly_local_dev_password}"
+      POSTGRES_DB: "${POSTGRES_DB:-sesly_local}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      # -h 127.0.0.1: ilk kurulumdaki geçici sunucu yalnız soketten dinler,
+      # böylece "hazır" yalnız asıl sunucu açıldığında döner.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep -q PONG"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  backend:
+    build:
+      context: ./sesly-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./secrets:/app/secrets:ro
+    environment:
+      # --- compose'un sabitlediği değerler ---
+      # development: Swagger /api/docs açık; JWT ve yönetici değerleri aşağıda verilir.
+      NODE_ENV: "development"
+      PORT: "3000"
+      DATABASE_URL: "postgresql://${POSTGRES_USER:-sesly_local}:${POSTGRES_PASSWORD:-sesly_local_dev_password}@postgres:5432/${POSTGRES_DB:-sesly_local}?schema=public"
+      REDIS_HOST: "redis"
+      REDIS_PORT: "6379"
+      REDIS_PASSWORD: ""
+      # --- yalnız yerel varsayılanlar ---
+      JWT_SECRET: "${JWT_SECRET:-local-dev-only-jwt-secret}"
+      JWT_REFRESH_SECRET: "${JWT_REFRESH_SECRET:-local-dev-only-jwt-refresh-secret}"
+      JWT_ADMIN_SECRET: "${JWT_ADMIN_SECRET:-local-dev-only-jwt-admin-secret}"
+      JWT_ADMIN_REFRESH_SECRET: "${JWT_ADMIN_REFRESH_SECRET:-local-dev-only-jwt-admin-refresh-secret}"
+      JWT_EXPIRES_IN: "${JWT_EXPIRES_IN:-1h}"
+      JWT_REFRESH_EXPIRES_IN: "${JWT_REFRESH_EXPIRES_IN:-7d}"
+      ADMIN_EMAIL: "${ADMIN_EMAIL:-admin@sesly.local}"
+      ADMIN_PASSWORD: "${ADMIN_PASSWORD:-sesly-local-admin}"
+      CORS_ORIGINS: "${CORS_ORIGINS:-http://localhost:3001,http://localhost:3002,http://127.0.0.1:3001,http://127.0.0.1:3002}"
+      FRONTEND_URL: "${FRONTEND_URL:-http://localhost:3002}"
+      API_URL: "${API_URL:-http://localhost:3000}"
+      MOBILE_DEEP_LINK: "${MOBILE_DEEP_LINK:-sesly://}"
+      LOG_LEVEL: "${LOG_LEVEL:-log}"
+      # --- Firebase (dosya: secrets/firebase-service-account.json) ---
+      FIREBASE_SERVICE_ACCOUNT_PATH: "${FIREBASE_SERVICE_ACCOUNT_PATH:-/app/secrets/firebase-service-account.json}"
+      # --- Google Cloud (dosya: secrets/google-cloud-service-account.json) ---
+      # Proje kimliği boş olamaz: backend onsuz açılmıyor. Yer tutucu yalnız açılış içindir.
+      GOOGLE_CLOUD_PROJECT_ID: "${GOOGLE_CLOUD_PROJECT_ID:-sesly-local}"
+      GOOGLE_APPLICATION_CREDENTIALS: "${GOOGLE_APPLICATION_CREDENTIALS:-/app/secrets/google-cloud-service-account.json}"
+      GOOGLE_STORAGE_BUCKET: "${GOOGLE_STORAGE_BUCKET:-sesly-storage}"
+      # --- web OAuth ---
+      GOOGLE_CLIENT_ID: "${GOOGLE_CLIENT_ID:-}"
+      GOOGLE_CLIENT_SECRET: "${GOOGLE_CLIENT_SECRET:-}"
+      GOOGLE_CALLBACK_URL: "${GOOGLE_CALLBACK_URL:-http://localhost:3000/auth/google/callback}"
+      APPLE_CLIENT_ID: "${APPLE_CLIENT_ID:-}"
+      # --- Cartesia, Gemini, Resend ---
+      CARTESIA_API_KEY: "${CARTESIA_API_KEY:-}"
+      CARTESIA_API_URL: "${CARTESIA_API_URL:-https://api.cartesia.ai}"
+      CARTESIA_VERSION: "${CARTESIA_VERSION:-2026-08-14}"
+      GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
+      GEMINI_API_URL: "${GEMINI_API_URL:-https://generativelanguage.googleapis.com}"
+      RESEND_API_KEY: "${RESEND_API_KEY:-}"
+      EMAIL_FROM: "${EMAIL_FROM:-}"
+      # --- Google Play (dosya: secrets/google-play-service-account.json) ---
+      GOOGLE_PACKAGE_NAME: "${GOOGLE_PACKAGE_NAME:-com.sesly}"
+      GOOGLE_PLAY_SERVICE_ACCOUNT_PATH: "${GOOGLE_PLAY_SERVICE_ACCOUNT_PATH:-/app/secrets/google-play-service-account.json}"
+      GOOGLE_PLAY_PUBSUB_AUDIENCE: "${GOOGLE_PLAY_PUBSUB_AUDIENCE:-}"
+      GOOGLE_PLAY_PUBSUB_SERVICE_ACCOUNT: "${GOOGLE_PLAY_PUBSUB_SERVICE_ACCOUNT:-}"
+      # --- App Store (dosya: secrets/apple-iap-key.p8) ---
+      APPLE_BUNDLE_ID: "${APPLE_BUNDLE_ID:-com.sesly}"
+      APPLE_APP_APPLE_ID: "${APPLE_APP_APPLE_ID:-}"
+      APPLE_ENVIRONMENT: "${APPLE_ENVIRONMENT:-Production}"
+      APPLE_ALLOW_SANDBOX: "${APPLE_ALLOW_SANDBOX:-true}"
+      APPLE_ROOT_CERTS_DIR: "${APPLE_ROOT_CERTS_DIR:-./assets/apple-root-certs}"
+      APPLE_IAP_KEY_ID: "${APPLE_IAP_KEY_ID:-}"
+      APPLE_IAP_ISSUER_ID: "${APPLE_IAP_ISSUER_ID:-}"
+      APPLE_IAP_PRIVATE_KEY_PATH: "${APPLE_IAP_PRIVATE_KEY_PATH:-/app/secrets/apple-iap-key.p8}"
+      # --- çalışma zamanı ayarlarının ortam yedeği (boş: kod varsayılanı) ---
+      RATE_LIMIT_TTL_SECONDS: "${RATE_LIMIT_TTL_SECONDS:-}"
+      RATE_LIMIT_MAX_REQUESTS: "${RATE_LIMIT_MAX_REQUESTS:-}"
+      DEFAULT_LOCALE: "${DEFAULT_LOCALE:-}"
+      FALLBACK_LOCALE: "${FALLBACK_LOCALE:-}"
+      CONTENT_ENABLED_LANGUAGES: "${CONTENT_ENABLED_LANGUAGES:-}"
+      CONTENT_DEFAULT_LANGUAGE: "${CONTENT_DEFAULT_LANGUAGE:-}"
+      GEMINI_MODEL: "${GEMINI_MODEL:-}"
+      GEMINI_TEMPERATURE: "${GEMINI_TEMPERATURE:-}"
+      GEMINI_THINKING_BUDGET: "${GEMINI_THINKING_BUDGET:-}"
+      GEMINI_TIMEOUT_MS: "${GEMINI_TIMEOUT_MS:-}"
+      LLM_AUTO_ASSESS_LEVEL: "${LLM_AUTO_ASSESS_LEVEL:-}"
+      LLM_AUTO_ASSESS_AGE_GROUP: "${LLM_AUTO_ASSESS_AGE_GROUP:-}"
+      TTS_PROVIDER: "${TTS_PROVIDER:-}"
+      TTS_GOOGLE_SPEAKING_RATE: "${TTS_GOOGLE_SPEAKING_RATE:-}"
+      TTS_GOOGLE_PITCH: "${TTS_GOOGLE_PITCH:-}"
+      VOICE_CLONE_LANGUAGES: "${VOICE_CLONE_LANGUAGES:-}"
+      CARTESIA_MODEL: "${CARTESIA_MODEL:-}"
+      CARTESIA_DEFAULT_SPEED: "${CARTESIA_DEFAULT_SPEED:-}"
+      CARTESIA_DEFAULT_VOLUME: "${CARTESIA_DEFAULT_VOLUME:-}"
+      CARTESIA_DEFAULT_EMOTION: "${CARTESIA_DEFAULT_EMOTION:-}"
+      TTS_GROUP_SEGMENTS: "${TTS_GROUP_SEGMENTS:-}"
+      TTS_SHARE_PRESET_AUDIO: "${TTS_SHARE_PRESET_AUDIO:-}"
+    healthcheck:
+      # busybox wget: 2xx dışındaki yanıtta sıfırdan farklı çıkar.
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:3000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      # Açılışta önce veritabanı göçleri koşar.
+      start_period: 120s
+
+  admin:
+    build:
+      context: ./sesly-admin-frontend
+      args:
+        NEXT_PUBLIC_API_URL: "${NEXT_PUBLIC_API_URL:-http://localhost:3000}"
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3001:3000"
+    healthcheck:
+      # Kök sayfa /dashboard'a yönlendirir; 200 dönen /login denetlenir.
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:3000/login"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  site:
+    build:
+      context: ./sesly-frontend
+      args:
+        VITE_API_BASE_URL: "${VITE_API_BASE_URL:-http://localhost:3000}"
+        VITE_FIREBASE_API_KEY: "${VITE_FIREBASE_API_KEY:-}"
+        VITE_FIREBASE_AUTH_DOMAIN: "${VITE_FIREBASE_AUTH_DOMAIN:-}"
+        VITE_FIREBASE_PROJECT_ID: "${VITE_FIREBASE_PROJECT_ID:-}"
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3002:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:80/"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+volumes:
+  postgres_data:
+  redis_data:

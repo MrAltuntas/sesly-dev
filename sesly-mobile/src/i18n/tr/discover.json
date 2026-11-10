@@ -1,0 +1,83 @@
+{
+  "title": "Keşfet",
+  "search": {
+    "placeholder": "Masal ara",
+    "label": "Masal, yazar ya da derleyen ara",
+    "clear": "Aramayı temizle",
+    "open": "Aramayı aç",
+    "close": "Aramayı kapat",
+    "ignoresFilters": "Aramada tür ve yaş seçimi kullanılmaz.",
+    "allLanguages": "Tüm dillerde ara"
+  },
+  "filters": {
+    "language": "Dil",
+    "level": "Seviye",
+    "age": "Yaş",
+    "allAges": "Hepsi",
+    "clear": "Filtreleri temizle",
+    "clearAll": "Hepsini temizle",
+    "category": "Tür",
+    "show": "Filtreleri göster",
+    "hide": "Filtreleri gizle",
+    "activeOne": "1 filtre seçili",
+    "active": "{{n}} filtre seçili",
+    "remove": "{{name}} filtresini kaldır",
+    "clearShort": "Temizle"
+  },
+  "count": {
+    "tales": "{{total}} masal bulundu",
+    "results": "{{total}} sonuç bulundu"
+  },
+  "sort": {
+    "title": "Sırala",
+    "label": "Sırala: {{value}}",
+    "recommended": "Önerilen",
+    "newest": "En yeni",
+    "oldest": "En eski",
+    "byTitle": "Ada göre",
+    "duration": "En kısa",
+    "level": "En kolay"
+  },
+  "save": {
+    "saved": "{{title}} kaydedildi",
+    "removed": "{{title}} kaydedilenlerden çıkarıldı",
+    "show": "Göster",
+    "failed": "Kaydedilemedi. Tekrar dene.",
+    "removeFailed": "Kayıt kaldırılamadı. Tekrar dene."
+  },
+  "a11y": {
+    "openStory": "{{title}} masalını aç",
+    "save": "{{title}} masalını kaydet",
+    "unsave": "{{title}} masalını kaydedilenlerden çıkar",
+    "locked": "{{title}}, Premium, kilitli"
+  },
+  "empty": {
+    "title": "Sonuç yok",
+    "message": "Aramayı ya da filtreleri değiştirip tekrar dene.",
+    "languageMessage": "{{language}} masallarda bulunamadı. Diğer dillerde de arayabilirsin.",
+    "catalogueTitle": "Henüz masal yok",
+    "catalogueMessage": "Yeni masallar eklenince burada görünür."
+  },
+  "error": {
+    "title": "Masallar yüklenemedi",
+    "message": "Sorun bizde. Biraz sonra tekrar dene."
+  },
+  "allStories": {
+    "title": "Yeni eklenenler"
+  },
+  "collections": {
+    "title": "Koleksiyonlar",
+    "storyCount": "{{total}} masal",
+    "emptyTitle": "Henüz koleksiyon yok",
+    "emptyMessage": "Yeni koleksiyonlar eklenince burada görünür.",
+    "errorTitle": "Koleksiyonlar yüklenemedi"
+  },
+  "collection": {
+    "empty": "Bu koleksiyonda henüz masal yok.",
+    "errorTitle": "Koleksiyon yüklenemedi",
+    "notFound": "Koleksiyon bulunamadı."
+  },
+  "premium": {
+    "badge": "Premium"
+  }
+}

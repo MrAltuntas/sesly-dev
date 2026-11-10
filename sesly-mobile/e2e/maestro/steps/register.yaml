@@ -1,0 +1,36 @@
+# From Login: a new account with e-mail and password (name, e-mail and
+# password only, then the consent box), landing on the Stories tab.
+# Needs output.email and PASSWORD.
+appId: com.sesly
+---
+- tapOn:
+    id: "login-register"
+- extendedWaitUntil:
+    visible:
+      id: "register-submit"
+    timeout: 10000
+- tapOn:
+    id: "register-name"
+- inputText: "Maestro Test"
+- tapOn:
+    id: "register-email"
+- inputText: ${output.email}
+- tapOn:
+    id: "register-password"
+- inputText: ${PASSWORD}
+- hideKeyboard
+# "Hesap oluştur" is always tappable and says what is missing: the consent.
+- tapOn:
+    id: "register-submit"
+- assertVisible:
+    id: "register-consent-error"
+- assertNotVisible:
+    id: "tab-Stories"
+# Only the box toggles; the links in the sentence open the documents.
+- tapOn:
+    id: "register-consent"
+- assertNotVisible:
+    id: "register-consent-error"
+- tapOn:
+    id: "register-submit"
+- runFlow: wait_for_home.yaml

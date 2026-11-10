@@ -1,0 +1,132 @@
+{
+  "title": "Profile",
+  "fallbackName": "Sesly friend",
+  "plan": {
+    "free": "Free plan",
+    "paid": "{{name}} plan",
+    "seePlans": "See plans"
+  },
+  "usage": {
+    "presetMonth": "Ready-made narrators, this month",
+    "cloned": "Your own voice",
+    "clonedMonth": "Your own voice, this month",
+    "value": "{{used}} / {{limit}} stories",
+    "valueOne": "{{used}} / 1 story",
+    "valueUnlimited": "{{used}} stories",
+    "valueUnlimitedOne": "1 story",
+    "unlimited": "Unlimited.",
+    "lifetimeFree": "The free plan includes {{limit}} stories in total. They do not renew.",
+    "lifetimeFreeOne": "The free plan includes 1 story in total. It does not renew.",
+    "lifetime": "{{limit}} stories in total. They do not renew.",
+    "lifetimeOne": "1 story in total. It does not renew.",
+    "renewsOn": {
+      "0": "Renews on {{day}} January.",
+      "1": "Renews on {{day}} February.",
+      "2": "Renews on {{day}} March.",
+      "3": "Renews on {{day}} April.",
+      "4": "Renews on {{day}} May.",
+      "5": "Renews on {{day}} June.",
+      "6": "Renews on {{day}} July.",
+      "7": "Renews on {{day}} August.",
+      "8": "Renews on {{day}} September.",
+      "9": "Renews on {{day}} October.",
+      "10": "Renews on {{day}} November.",
+      "11": "Renews on {{day}} December."
+    }
+  },
+  "contentLanguage": {
+    "label": "Story language",
+    "saveFailed": "Could not save the story language"
+  },
+  "palette": {
+    "label": "Colour palette",
+    "hint": "Your choice is kept on this device.",
+    "names": {
+      "kitaplik": "Library",
+      "orman": "Forest",
+      "gece-mavisi": "Night blue",
+      "murekkep": "Ink",
+      "erik": "Plum",
+      "orijinal": "Original"
+    }
+  },
+  "uiLanguage": {
+    "label": "App language"
+  },
+  "notifications": {
+    "label": "Notifications",
+    "unread": "{{unread}} new",
+    "narrationReady": "Tell me when a story is ready",
+    "voiceReady": "Tell me when my voice is ready",
+    "saveFailed": "Could not save the preference",
+    "prefsFailed": "Notification settings could not be loaded",
+    "permission": {
+      "deniedTitle": "Notifications are turned off",
+      "deniedMessage": "Sesly notifications are off in your phone settings. Nothing arrives until you allow them.",
+      "openSettings": "Open settings",
+      "neededTitle": "Shall we tell you when your story is ready?",
+      "neededMessage": "We need permission to tell you when your story or your voice is ready.",
+      "allow": "Allow"
+    }
+  },
+  "legal": {
+    "label": "Legal documents",
+    "tos": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "dataDeletion": "Data deletion policy"
+  },
+  "signOut": {
+    "label": "Sign out",
+    "message": "Are you sure you want to sign out?",
+    "progress": "Signing out..."
+  },
+  "deleteAccount": {
+    "label": "Delete account"
+  },
+  "contact": {
+    "label": "Contact us",
+    "subject": "Sesly Support",
+    "failedTitle": "Could not open e-mail",
+    "failedMessage": "No e-mail app was found on your device. You can reach us at {{email}}."
+  },
+  "cache": {
+    "label": "Clear cache",
+    "message": "The audio files in the cache will be deleted.",
+    "confirm": "Clear",
+    "cleared": "Cache cleared",
+    "failed": "Could not clear the cache",
+    "empty": "The cache is already empty"
+  },
+  "name": {
+    "title": "Change your name",
+    "label": "Your name",
+    "save": "Save",
+    "saved": "Your name was updated",
+    "saveFailed": "Could not save your name"
+  },
+  "version": "Version {{version}}",
+  "deletion": {
+    "title": "Delete account",
+    "heading": "This cannot be undone",
+    "intro": "If you delete your account, the following is removed for good and cannot be reached again:",
+    "items": {
+      "profile": "Your profile details (name, e-mail, preferences)",
+      "narrations": "Every story and narration you created",
+      "voices": "Your own voice (including the copy at our voice provider)"
+    },
+    "subscriptionNote": "Deleting your account does not cancel your subscription. It keeps renewing until you cancel it in Google Play or the App Store. Cancel it there before you delete your account.",
+    "confirmCheck": "I confirm that all my data will be deleted.",
+    "submit": "Delete my account",
+    "submitting": "Deleting...",
+    "dialogMessage": "Your account and all your data will be deleted for good. This cannot be undone.",
+    "failed": "Your account and your data are still there. Try again in a moment.",
+    "failedTitle": "Account not deleted",
+    "done": "Your account was deleted",
+    "alt": {
+      "section": "Another way",
+      "title": "Request by e-mail",
+      "message": "If you cannot get into the app, send your deletion request to this address. For verification you need to write from your registered e-mail address."
+    },
+    "mailFailedMessage": "No e-mail app was found on your device."
+  }
+}

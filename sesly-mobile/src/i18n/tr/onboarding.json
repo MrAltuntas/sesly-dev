@@ -1,0 +1,24 @@
+{
+  "skip": "Atla",
+  "language": "Uygulama dili",
+  "next": "Devam",
+  "start": "Başla",
+  "recordVoice": "Sesimi kaydet",
+  "recordPill": "30 saniyelik kayıt",
+  "privacy": "Kaydın yalnızca senin sesini oluşturmak için kullanılır.",
+  "pageOf": "Sayfa {{current}}, toplam {{total}}",
+  "pages": {
+    "house": {
+      "title": "Uyku vakti masalı,\ntanıdık bir sesle.",
+      "body": "Hazır bir anlatıcı seç ya da 30 saniyelik bir kayıtla kendi sesini ekle."
+    },
+    "voice": {
+      "title": "Masalları senin sesinle anlatalım.",
+      "body": "Yaklaşık 30 saniye kitap okuman yeter. Sen yanında olamadığın gecelerde de çocuğun masalı senin sesinden dinler."
+    },
+    "sleep": {
+      "title": "Her gece bir masal.",
+      "body": "Sevdiğin masalları sakla. Uyku zamanlayıcısını kur, masal bitince kendiliğinden dursun."
+    }
+  }
+}

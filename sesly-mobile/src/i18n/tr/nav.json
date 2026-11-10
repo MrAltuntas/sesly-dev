@@ -1,0 +1,16 @@
+{
+  "tabs": {
+    "stories": "Masallar",
+    "discover": "Keşfet",
+    "library": "Kütüphane",
+    "voice": "Sesim"
+  },
+  "miniPlayer": {
+    "narrator": "{{name}} anlatıyor",
+    "remaining": "{{minutes}} dk kaldı",
+    "narratorRemaining": "{{name}} anlatıyor, {{minutes}} dk kaldı",
+    "paused": "Duraklatıldı",
+    "pausedRemaining": "Duraklatıldı, {{minutes}} dk kaldı",
+    "open": "Oynatıcıyı aç: {{title}}"
+  }
+}

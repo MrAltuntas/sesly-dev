@@ -1,0 +1,81 @@
+/** @type {import('tailwindcss').Config} */
+// Design v4 "playful", palette "murekkep" only (sesly-mobile/src/theme/palettes.ts,
+// type scale, radii and lips from sesly-mobile/src/theme/theme.ts). Dark only:
+// the site has no light theme and no palette picker.
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './*.{tsx,ts,jsx,js}',
+    '!./node_modules/**',
+  ],
+  theme: {
+    screens: {
+      sm: '600px',
+      md: '820px',
+      lg: '1080px',
+      xl: '1280px',
+    },
+    extend: {
+      colors: {
+        page: '#08090A',
+        bg: '#121314',
+        bar: '#0D0E0F',
+        'bar-line': '#1F2123',
+        surface: '#1F2022',
+        surface2: '#2B2D2F',
+        line: '#393B3E',
+        'line-lip': '#0C0D0E',
+        lip: '#060707',
+        text: '#F0F0EC',
+        text2: '#BDBDB7',
+        text3: '#959691',
+        action: '#7ACFBE',
+        'action-lip': '#33978A',
+        'on-action': '#0A1D19',
+        uyku: '#C3B9E6',
+        'uyku-lip': '#8F84B2',
+        turk: '#EBC3A3',
+        'turk-lip': '#B68D6B',
+        dunya: '#AACAE3',
+        'dunya-lip': '#7395AF',
+        egitici: '#BBD8AA',
+        'egitici-lip': '#85A372',
+        'on-cat': '#141516',
+        own: '#C3B9E6',
+        'own-lip': '#8F84B2',
+        success: '#BBD8AA',
+        warning: '#EBC3A3',
+        error: '#F2958C',
+        'cover-ring': '#2C2E31',
+      },
+      fontFamily: {
+        display: ['"Baloo 2"', 'system-ui', 'sans-serif'],
+        body: ['Nunito', 'system-ui', 'sans-serif'],
+        sans: ['Nunito', 'system-ui', 'sans-serif'],
+      },
+      borderRadius: {
+        xs: '6px',
+        sm: '12px',
+        md: '16px',
+        lg: '20px',
+        xl: '24px',
+        xxl: '28px',
+        sheet: '32px',
+        pill: '9999px',
+      },
+      boxShadow: {
+        // The lip: the darker under-edge every tappable face sits on.
+        'lip-sm': '0 2px 0 #060707',
+        'lip-md': '0 3px 0 #060707',
+        'lip-lg': '0 4px 0 #060707',
+      },
+      maxWidth: {
+        site: '1160px',
+      },
+    },
+  },
+  plugins: [],
+};

@@ -1,0 +1,37 @@
+# Login as a signed-out user sees it.
+appId: com.sesly
+---
+- assertVisible:
+    id: "login-email"
+- assertVisible:
+    id: "login-password"
+- assertVisible:
+    id: "login-forgot"
+- assertVisible:
+    id: "login-google"
+# Sign in with Apple is iOS only.
+- assertNotVisible:
+    id: "login-apple"
+# The terms line sits under the social buttons.
+- assertVisible:
+    id: "login-legal"
+    below:
+      id: "login-google"
+- assertVisible:
+    id: "login-register"
+# Submitting the empty form explains what is missing under each field, once,
+# never as a snackbar.
+- tapOn:
+    id: "login-submit"
+- assertVisible:
+    text: "E-posta adresini gir|Enter your email address"
+    below:
+      id: "login-email"
+- assertVisible:
+    text: "Şifreni gir|Enter your password"
+    below:
+      id: "login-password"
+- assertNotVisible:
+    id: "snackbar"
+- assertNotVisible:
+    id: "tab-Stories"

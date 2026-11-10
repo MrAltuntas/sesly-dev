@@ -1,0 +1,45 @@
+# Starts the app without clearing it and waits for its first screen:
+# onboarding, Login (its submit button) or the Stories tab.
+# Release or preview build: launchApp. Dev build (DEV_CLIENT_URL set): the dev
+# client opens the Metro URL; its own launcher screens are walked through.
+appId: com.sesly
+---
+- runFlow:
+    when:
+      true: ${typeof DEV_CLIENT_URL === 'undefined' || DEV_CLIENT_URL.length === 0}
+    commands:
+      - launchApp
+- runFlow:
+    when:
+      true: ${typeof DEV_CLIENT_URL !== 'undefined' && DEV_CLIENT_URL.length > 0}
+    commands:
+      - openLink: ${DEV_CLIENT_URL}
+      # The dev launcher and the dev menu intro (dev builds only).
+      - repeat:
+          times: 20
+          while:
+            notVisible:
+              id: "onboarding|login-submit|tab-Stories"
+          commands:
+            - runFlow:
+                when:
+                  visible: "DEVELOPMENT SERVERS"
+                commands:
+                  - tapOn: "http://.*:8081"
+            - runFlow:
+                when:
+                  visible: "Runtime version.*"
+                commands:
+                  - tapOn: "Close"
+            - runFlow:
+                file: wait.yaml
+                env:
+                  WAIT_MS: "3000"
+- extendedWaitUntil:
+    visible:
+      id: "onboarding|login-submit|tab-Stories"
+    timeout: 120000
+# The animated JS splash is gone: the native launch screen hands over to
+# the first screen directly.
+- assertNotVisible:
+    id: "splash"

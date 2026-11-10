@@ -1,0 +1,83 @@
+# A new user prepares the featured story with a ready-made narrator (real
+# Google TTS on the local stack) and the player opens on it, playing.
+appId: com.sesly
+---
+- tapOn:
+    id: "tab-Stories"
+- tapOn:
+    id: "home-featured-open"
+- extendedWaitUntil:
+    visible:
+      id: "story-cta"
+    timeout: 20000
+# No voice yet: the first catalogue narrators are offered as cards; a tap adds
+# and selects one.
+- extendedWaitUntil:
+    visible:
+      id: "narrator-catalogue-cards"
+    timeout: 20000
+- tapOn:
+    id: "narrator-catalogue-card-(?!preview-|adding-).+"
+    index: 0
+- extendedWaitUntil:
+    visible:
+      id: "narrator-cards"
+    timeout: 20000
+- tapOn:
+    id: "story-cta"
+# The first generation asks for the notification permission.
+- runFlow: dismiss_system_sheets.yaml
+- extendedWaitUntil:
+    visible:
+      id: "generation-bar|generation-exists|player-screen"
+    timeout: 20000
+# While it generates, the background action names its whole label on one line
+# (NL-03). Maestro matches the accessibility text, not the drawn glyphs, so the
+# screenshot is checked by hand: the face must draw "Arka planda devam et" in
+# full ("Continue in the background" in English), no clipped last word.
+- runFlow:
+    when:
+      visible:
+        id: "generation-background"
+    commands:
+      - assertVisible:
+          id: "generation-background"
+          text: "Arka planda devam et|Continue in the background"
+      - takeScreenshot: e2e/artifacts/generation_background_label
+# Run again on an account that already has it: listen to that one.
+- runFlow:
+    when:
+      visible:
+        id: "generation-listen-existing"
+    commands:
+      - tapOn:
+          id: "generation-listen-existing"
+# READY: the generation screen replaces itself with the player, which plays.
+- extendedWaitUntil:
+    visible:
+      id: "player-screen"
+    timeout: 240000
+- assertNotVisible:
+    id: "generation-retry"
+- assertVisible:
+    id: "player-time-remaining"
+- extendedWaitUntil:
+    visible:
+      id: "player-play"
+      text: "Duraklat|Pause"
+    timeout: 20000
+# Pause, so the next steps start from a quiet player.
+- tapOn:
+    id: "player-play"
+- assertVisible:
+    id: "player-play"
+    text: "Oynat|Play"
+- tapOn:
+    id: "player-back"
+- extendedWaitUntil:
+    visible:
+      id: "story-cta"
+    timeout: 10000
+- back
+- assertVisible:
+    id: "tab-Stories"

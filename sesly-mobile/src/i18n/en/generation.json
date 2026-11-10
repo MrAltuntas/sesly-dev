@@ -1,0 +1,35 @@
+{
+  "title": "Your story is being prepared",
+  "subtitle": "{{story}}, told by {{narrator}}",
+  "stage": {
+    "starting": "Starting",
+    "text": "Preparing the text",
+    "voicing": "Narrating",
+    "merging": "Joining the parts",
+    "finishing": "Almost ready",
+    "done": "Ready"
+  },
+  "percent": "{{value}}%",
+  "progressA11y": "Your story is being prepared",
+  "note": "This may take a few minutes. No need to wait, we will let you know when it is ready.",
+  "noteNoPush": "This may take a few minutes. No need to wait, you will find it in the Library when it is ready.",
+  "slow": "This is taking longer than usual. We will let you know when it is ready.",
+  "slowNoPush": "This is taking longer than usual. You will find it in the Library when it is ready.",
+  "alreadyRunning": "This story was already being prepared with this narrator. We are waiting for it.",
+  "background": "Continue in the background",
+  "listen": "Listen",
+  "goBack": "Go back",
+  "error": {
+    "title": "The story could not be prepared",
+    "message": "The problem is on our side. Try again a little later.",
+    "offlineMessage": "Preparing a story needs an internet connection.",
+    "startFailed": "The story could not be started",
+    "regenerateFailed": "The story could not be prepared again"
+  },
+  "exists": {
+    "title": "This story is already ready",
+    "message": "This narrator has told this story before. You can listen to it or have it prepared again.",
+    "listen": "Listen",
+    "regenerate": "Prepare again"
+  }
+}

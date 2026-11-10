@@ -1,0 +1,32 @@
+# Library search: no match shows its own state, closing the search brings
+# the rows back.
+appId: com.sesly
+---
+- tapOn:
+    id: "tab-Library"
+- extendedWaitUntil:
+    visible:
+      id: "library-narration-.+"
+    timeout: 20000
+- tapOn:
+    id: "library-search-toggle"
+- extendedWaitUntil:
+    visible:
+      id: "library-search-input"
+    timeout: 3000
+- inputText: "zzzz"
+- hideKeyboard
+- extendedWaitUntil:
+    visible:
+      id: "library-no-results"
+    timeout: 5000
+- tapOn:
+    id: "library-search-toggle"
+- assertNotVisible:
+    id: "library-search-input"
+- extendedWaitUntil:
+    visible:
+      id: "library-narration-.+"
+    timeout: 5000
+- tapOn:
+    id: "tab-Stories"

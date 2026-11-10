@@ -1,0 +1,22 @@
+# After a sign-in or sign-up: the Stories tab, past the password-save sheet
+# that shows up a moment after the form closes.
+appId: com.sesly
+---
+- repeat:
+    times: 30
+    while:
+      notVisible:
+        id: "tab-Stories"
+    commands:
+      - runFlow: dismiss_system_sheets.yaml
+      - runFlow:
+          file: wait.yaml
+          env:
+            WAIT_MS: "2000"
+- runFlow: dismiss_system_sheets.yaml
+- assertVisible:
+    id: "tab-Stories"
+- assertVisible:
+    id: "home-scroll"
+- assertNotVisible:
+    id: "splash"

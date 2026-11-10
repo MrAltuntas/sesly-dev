@@ -1,0 +1,24 @@
+{
+  "offline": {
+    "title": "İnternete bağlı değilsin",
+    "message": "Masalları açmak için bağlantı gerekiyor.",
+    "stillOfflineMessage": "İnternet bağlantını kontrol et ve tekrar dene."
+  },
+  "server": {
+    "title": "Sesly'ye şu an ulaşılamıyor",
+    "message": "Sorun bizde. Biraz sonra tekrar dene."
+  },
+  "maintenance": {
+    "title": "Sesly bakımda"
+  },
+  "banner": {
+    "offline": "Çevrimdışısın"
+  },
+  "forceUpdate": {
+    "title": "Güncelleme gerekli",
+    "message": "Sesly'nin yeni bir sürümü var. Devam etmek için uygulamayı güncelle.",
+    "action": "Uygulamayı güncelle",
+    "storeFailed": "Mağaza açılamadı. Lütfen uygulamayı mağazadan güncelle.",
+    "appStoreHint": "Sesly'yi App Store'dan güncelleyebilirsin."
+  }
+}

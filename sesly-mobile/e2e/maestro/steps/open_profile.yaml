@@ -1,0 +1,11 @@
+# From any tab: Profile through the avatar of the Stories tab.
+appId: com.sesly
+---
+- tapOn:
+    id: "tab-Stories"
+- tapOn:
+    id: "home-avatar"
+- extendedWaitUntil:
+    visible:
+      id: "profile-screen"
+    timeout: 10000

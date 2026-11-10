@@ -1,0 +1,36 @@
+# Cold start colours (SPEC-startup 1): the launch is dark from the first
+# frame, with no cream window. Screenshots at once, after 300 ms and on the
+# first screen, then:
+#   node e2e/scripts/check-launch-colours.js e2e/artifacts
+# which fails when the centre-top pixel is lighter than L* 30.
+# Release or preview build only (a dev build shows the dev client's own
+# launcher first). Signed in: run as is. Signed out: -e SIGNED_OUT=true
+# (clears the app first).
+#   maestro --device emulator-5556 test e2e/maestro/cold_start.yaml
+appId: com.sesly
+name: Cold start colours
+tags:
+  - startup
+  - screenshots
+  - release-only
+---
+- stopApp
+- runFlow:
+    when:
+      true: ${typeof SIGNED_OUT !== 'undefined' && SIGNED_OUT === 'true'}
+    commands:
+      - clearState
+- launchApp
+- takeScreenshot: e2e/artifacts/cold_start_0ms
+- runFlow:
+    file: steps/wait.yaml
+    env:
+      WAIT_MS: "300"
+- takeScreenshot: e2e/artifacts/cold_start_300ms
+- extendedWaitUntil:
+    visible:
+      id: "onboarding|login-submit|tab-Stories"
+    timeout: 10000
+- assertNotVisible:
+    id: "splash"
+- takeScreenshot: e2e/artifacts/cold_start_first_screen
