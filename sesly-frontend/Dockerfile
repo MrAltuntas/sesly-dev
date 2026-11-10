@@ -19,6 +19,10 @@ ARG VITE_FIREBASE_API_KEY=
 ARG VITE_FIREBASE_AUTH_DOMAIN=
 ARG VITE_FIREBASE_PROJECT_ID=
 
+# sesly-dev: API the legal pages fetch from. Default is the value the code
+# falls back to, so an image built without the argument is unchanged.
+ARG VITE_API_BASE_URL=https://api.sesly.io
+
 # Build the application
 RUN npm run build
 
