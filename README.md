@@ -89,6 +89,8 @@ Yığın bunlar olmadan açılır; ilgili istek hata döner ya da adım atlanır
 - Play ve App Store anahtarları yok: abonelik doğrulaması ve mağaza webhook'ları çalışmaz.
 - Google web OAuth kimliği yok: `/auth/google` web akışı çalışmaz.
 
+Günlükteki `[I18nService] No resolvers provided!` hata satırı anahtarlarla ilgili değildir: kaynak koddan gelir, her açılışta görünür ve yığını durdurmaz.
+
 Anahtarsız çalıştığı denenenler: yönetici girişi (`POST /admin/auth/login`), hukuk metinleri (`GET /legal/privacy`), API belgesi. Dış servise gitmeyen diğer uçlar (masal ve koleksiyon kayıtları gibi) için ayrı deneme yapılmadı.
 
 ### Mobil derleme kontrolü
