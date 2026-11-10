@@ -1,0 +1,52 @@
+{
+  "age": {
+    "range": "{{range}} yaş",
+    "all": "Her yaş"
+  },
+  "duration": "{{minutes}} dk",
+  "category": {
+    "item": {
+      "BEDTIME": "Uyku masalı",
+      "TURKISH_CLASSICS": "Türk masalı",
+      "WORLD_CLASSICS": "Dünya klasiği",
+      "EDUCATIONAL": "Öğretici masal"
+    },
+    "shelf": {
+      "BEDTIME": "Uyku masalları",
+      "TURKISH_CLASSICS": "Türk masalları",
+      "WORLD_CLASSICS": "Dünya klasikleri",
+      "EDUCATIONAL": "Öğretici masallar"
+    }
+  },
+  "translation": {
+    "human": "Çeviri",
+    "machine": "Yapay zekâ ile çevrildi"
+  },
+  "languages": "Diller: {{list}}",
+  "coverOf": "{{title}} kapağı",
+  "contentWarning": {
+    "label": {
+      "SCARY": "Korkutucu sahne",
+      "VIOLENCE": "Şiddet",
+      "DEATH": "Ölüm",
+      "SAD_ENDING": "Üzücü son",
+      "BAD_EXAMPLE": "Kötü davranış örneği",
+      "OLD_LANGUAGE": "Eski dil / ağır anlatım",
+      "LONELINESS": "Yalnızlık / ayrılık"
+    },
+    "sentence": {
+      "SCARY": "Korkutucu bir sahne içeriyor.",
+      "VIOLENCE": "Şiddet içeriyor.",
+      "DEATH": "Ölümden söz ediyor.",
+      "SAD_ENDING": "Üzücü bir sonu var.",
+      "BAD_EXAMPLE": "Kötü bir davranış örneği içeriyor.",
+      "OLD_LANGUAGE": "Eski bir dille, ağır anlatılıyor.",
+      "LONELINESS": "Yalnızlık ve ayrılık anlatıyor."
+    },
+    "a11y": "İçerik notu: {{list}}"
+  },
+  "contentNote": {
+    "forAge": "{{range}} yaş için.",
+    "allAges": "Her yaş için."
+  }
+}

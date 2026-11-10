@@ -1,0 +1,75 @@
+# The up-next queue from the Library: the queue button beside a row's play
+# button ("Sıraya ekle") adds it, the snackbar opens the queue sheet, and
+# "Sırayı çal" opens the player on the queue, playing. Leaves the player
+# paused; the entry stays queued (the next run takes it out first).
+appId: com.sesly
+---
+- tapOn:
+    id: "tab-Library"
+- extendedWaitUntil:
+    visible:
+      id: "library-queue-.+"
+    timeout: 20000
+- tapOn:
+    id: "library-queue-.+"
+    index: 0
+# Already queued by an earlier run: that tap took it out; add it again.
+- runFlow:
+    when:
+      visible:
+        text: "Sıradan çıkarıldı|Removed from the queue"
+    commands:
+      - tapOn:
+          id: "library-queue-.+"
+          index: 0
+- extendedWaitUntil:
+    visible:
+      id: "snackbar"
+    timeout: 5000
+- assertVisible:
+    text: "Sıraya eklendi|Added to the queue"
+    childOf:
+      id: "snackbar"
+- tapOn:
+    id: "snackbar-action"
+- extendedWaitUntil:
+    visible:
+      id: "queue-sheet"
+    timeout: 5000
+- assertVisible:
+    id: "queue-row-.+"
+- assertVisible:
+    id: "queue-summary"
+- tapOn:
+    id: "queue-play-all"
+# From the Library the sheet closes and the player opens, already starting.
+- extendedWaitUntil:
+    visible:
+      id: "player-screen"
+    timeout: 10000
+- assertNotVisible:
+    id: "queue-sheet"
+- assertVisible:
+    id: "player-caption"
+    text: "Sıra [0-9]+/[0-9]+|Queue [0-9]+ of [0-9]+"
+- extendedWaitUntil:
+    visible:
+      id: "player-play"
+      text: "Duraklat|Pause"
+    timeout: 20000
+# Paused, the player's queue button opens the same sheet with the entry.
+- tapOn:
+    id: "player-play"
+- tapOn:
+    id: "player-queue"
+- extendedWaitUntil:
+    visible:
+      id: "queue-sheet"
+    timeout: 5000
+- assertVisible:
+    id: "queue-row-.+"
+- back
+- tapOn:
+    id: "player-back"
+- assertVisible:
+    id: "tab-Library"

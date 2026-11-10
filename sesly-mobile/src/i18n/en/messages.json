@@ -1,0 +1,207 @@
+{
+  "story": {
+    "savedFailed": "Could not load your saved stories",
+    "listFailed": "Could not load the stories"
+  },
+  "common": {
+    "actionFailed": "That did not work",
+    "genericError": "Something went wrong",
+    "successTitle": "Done",
+    "errorTitle": "Error",
+    "network": "No internet connection",
+    "unknown": "An unknown error occurred",
+    "sessionExpired": "Your session expired. Sign in again.",
+    "server": "A server error occurred",
+    "fileTooLarge": "The file is too large"
+  },
+  "auth": {
+    "resetSent": "If there is an account with this e-mail, we sent a password reset link. Check your inbox.",
+    "googleFailed": "Google sign in failed",
+    "appleFailed": "Apple sign in failed",
+    "accountCreated": "Account created",
+    "signOutFailed": "Could not sign out",
+    "sessionEndedTitle": "Session ended",
+    "tooManyAttempts": "Too many attempts. Try again in a while.",
+    "appleIosOnly": "Apple sign in is available on iOS devices only",
+    "credentialRejected": "The credential could not be verified. Try again.",
+    "backendFailed": "Could not sign in to the server. Try again.",
+    "genericFailure": "Sign in failed. Try again.",
+    "emailInUse": "This e-mail address is already in use",
+    "weakPassword": "The password is too weak (6 characters at least)",
+    "noCredential": "Could not get the sign in credential",
+    "noPlayServices": "Google Play Services is not available",
+    "appleNoCredential": "Could not get the Apple credential",
+    "accountDisabled": "This account is disabled",
+    "googleCancelled": "Google sign in was cancelled",
+    "googleInProgress": "Google sign in is still in progress",
+    "appleCancelled": "Apple sign in was cancelled",
+    "wrongCredentials": "Wrong e-mail or password",
+    "invalidEmail": "Invalid e-mail address",
+    "userNotFound": "No account with this e-mail",
+    "wrongPassword": "Wrong password",
+    "emailInUseTitle": "This e-mail is registered another way",
+    "emailInUseMessage": "An account with this e-mail address was created with another sign in method. Sign in the way you first registered (Google, Apple, or e-mail and password)."
+  },
+  "notifications": {
+    "loadFailed": "Could not load notifications",
+    "updateFailed": "Could not update the notification"
+  },
+  "subscription": {
+    "cancelScheduled": "Your plan ends at the end of the period",
+    "reactivated": "Your plan is active again",
+    "loadFailed": "Could not load your plan",
+    "cancelledTitle": "Cancelled",
+    "cancelFailed": "Could not cancel your plan",
+    "reactivateFailed": "Could not reactivate your plan"
+  },
+  "quota": {
+    "presetMonthly": {
+      "title": "You have used this month's stories",
+      "message": "The free plan includes {{limit}} stories a month with ready-made narrators.",
+      "messageOne": "The free plan includes 1 story a month with ready-made narrators.",
+      "upsell": "Unlimited on Mini and Premium."
+    },
+    "cloneLifetime": {
+      "title": "You have used your own-voice story",
+      "message": "The free plan includes {{limit}} stories in your own voice. They do not renew.",
+      "messageOne": "The free plan includes 1 story in your own voice. It does not renew.",
+      "upsell": "Switch to Mini or Premium for more stories in your own voice."
+    },
+    "cloneMonthly": {
+      "title": "You have used this month's own-voice stories",
+      "message": "Your plan includes {{limit}} stories a month in your own voice.",
+      "messageOne": "Your plan includes 1 story a month in your own voice.",
+      "upsell": "Premium includes more."
+    },
+    "creationLifetime": {
+      "title": "You have used your own voice",
+      "message": "On the free plan you can record your own voice once. It does not renew, and deleting the voice does not give it back.",
+      "upsell": "Switch to Mini or Premium to record a new voice."
+    },
+    "creationMonthly": {
+      "title": "You have used this month's new voices",
+      "message": "Your plan includes {{limit}} new voices a month.",
+      "messageOne": "Your plan includes 1 new voice a month.",
+      "upsell": "Premium includes more."
+    },
+    "premiumStory": {
+      "title": "This story is in the paid plans",
+      "message": "Listen to it with Mini or Premium."
+    },
+    "seePlans": "See plans",
+    "readyMade": "Listen with a ready-made narrator"
+  },
+  "recording": {
+    "stopFailed": "Could not stop the recording. Start again.",
+    "saveFailed": "Could not keep the recording. Start again.",
+    "startFailedLong": "Could not start recording. Try again.",
+    "missingMessage": "Read the text aloud first.",
+    "uploadingMessage": "Your recording is already uploading.",
+    "startFailed": "Could not start recording",
+    "missingTitle": "No recording",
+    "uploadingTitle": "Uploading",
+    "permissionCheckFailed": "Could not check the microphone permission"
+  },
+  "voice": {
+    "cloneLimitMessagePro": "You have used all your own voices{{usage}}. Delete one of them to record a new one.",
+    "cloneLimitMessageFree": "You have used all your own voices{{usage}}. Add more own voices with the Premium plan.",
+    "presetLimitMessagePro": "You reached the number of narrators you can add{{usage}}. Remove one of them to add another.",
+    "presetLimitMessageFree": "You reached the number of narrators you can add{{usage}}. Remove one or add more narrators with the Mini or Premium plan.",
+    "trainingFailed": "Something went wrong while preparing your voice. Try recording again.",
+    "consentFailed": "The consent text could not be loaded. Try again in a moment.",
+    "notFound": "The voice was not found. Try recording again.",
+    "configFailed": "Could not load the recording details. Try again.",
+    "readyMessage": "You can now listen to stories in your own voice.",
+    "nameTooLong": "The name is too long (50 characters at most)",
+    "nameTooShort": "The name needs at least 2 characters",
+    "listFailed": "Could not load your voices",
+    "createFailed": "Could not create the voice",
+    "cloneLimitTitle": "You have used your own voices",
+    "presetLimitTitle": "You have used your narrator slots",
+    "sampleFailed": "Could not get the sample",
+    "catalogueFailed": "Could not load the narrators",
+    "failedTitle": "Your voice could not be prepared",
+    "readyTitle": "Your voice is ready",
+    "cloneLimitMessageMini": "You have used all your own voices{{usage}}. Delete your voice to record a new one, or add more own voices with the Premium plan.",
+    "deleteFailed": "The voice could not be deleted"
+  },
+  "narration": {
+    "alreadyExists": "This story is already narrated with this voice.",
+    "createFailed": "The narration could not be created",
+    "missingId": "The narration could not be found"
+  },
+  "api": {
+    "badRequest": "The details you sent are not valid. Check them.",
+    "tooMany": "Too many requests. Wait a little.",
+    "notFound": "That could not be found.",
+    "forbidden": "You are not allowed to do this.",
+    "conflict": "This was already done.",
+    "statusError": "Something went wrong ({{status}})",
+    "tooManyYou": "You sent too many requests. Wait a little.",
+    "badData": "The data you sent is wrong. Check it.",
+    "conflictDone": "This was already done.",
+    "validation": "The data could not be validated.",
+    "timeout": "The connection timed out",
+    "resourceNotFound": "That could not be found.",
+    "title": {
+      "validation": "Validation error",
+      "session": "Session ended",
+      "tooMany": "Too many requests",
+      "badRequest": "Invalid request",
+      "server": "Server error",
+      "notFound": "Not found",
+      "conflict": "Conflict"
+    },
+    "maintenance": "Sesly is under maintenance. Try again in a while."
+  },
+  "push": {
+    "voiceFailedMessage": "Try recording again.",
+    "narrationReadyMessage": "Your narrated story is ready to play.",
+    "narrationFailedTitle": "The story could not be prepared",
+    "narrationFailedMessage": "Try again.",
+    "narrationReadyTitle": "Your story is ready"
+  },
+  "clone": {
+    "consentTitle": "Consent text",
+    "tooShort": "The recording is too short. Read for at least {{seconds}} seconds, then record again.",
+    "languageNotSupportedTitle": "Recording is not available in this language",
+    "languageNotSupported": "Voice recording is not available in this language right now. Pick another language.",
+    "slotLimitMini": "You have used all your own voices. Delete your voice to record a new one, or add more own voices with the Premium plan.",
+    "slotLimitFree": "You have used all your own voices. Add more own voices with the Premium plan.",
+    "presetLimitFree": "You reached the number of narrators you can add. Remove one or add more narrators with the Mini or Premium plan.",
+    "presetLimitPro": "You reached the number of narrators you can add. Remove one of them to add another.",
+    "slotLimitPro": "You have used all your own voices. Delete one of them to record a new one.",
+    "alreadyUploaded": "A recording was already sent for this voice. It is being prepared and we will tell you when it is ready.",
+    "consentRequired": "To record your voice you need to accept the consent text again.",
+    "noSpeech": "We could not hear you. Make sure the microphone is on and read the text aloud.",
+    "uploadFailed": "Your recording could not be uploaded. Try again.",
+    "alreadyUploadedTitle": "Recording already sent",
+    "uploadFailedTitle": "Upload failed",
+    "consentRequiredTitle": "Consent needed"
+  },
+  "player": {
+    "playFailed": "Playback failed. Try again.",
+    "audioFailed": "The audio could not be played. Try again.",
+    "notFound": "The story could not be found.",
+    "audioRemoved": "The audio of this story is being renewed. You can create it again from the story page.",
+    "loadFailed": "The story could not be loaded",
+    "previewFailed": "The sample could not be played. Try again.",
+    "pausedOnLockTitle": "The story paused",
+    "pausedOnLock": "On the free plan the story pauses when the screen turns off.",
+    "resume": "Resume"
+  },
+  "purchases": {
+    "unavailable": "This plan cannot be bought right now. Try again in a little while.",
+    "storeNetwork": "Could not reach the store. Check your connection and try again.",
+    "failed": "The purchase did not go through. You were not charged, you can try again.",
+    "alreadyOwned": "You already have this subscription. Restoring your purchases.",
+    "receiptInUse": "This subscription belongs to another Sesly account. Sign in with that account, or manage the subscription in the store.",
+    "receiptInvalid": "This purchase could not be verified. If you were charged, the store refunds it within a few days.",
+    "completedLater": "Your purchase is verified and your plan is on.",
+    "restored": "Your subscription is restored.",
+    "restoreLater": "Your purchase was found. It cannot be verified right now and will finish by itself once the connection is back.",
+    "nothingToRestore": "No subscription to restore in this store account.",
+    "restoreFailed": "Purchases could not be restored right now. Try again in a little while.",
+    "manageFailed": "Could not open the subscription page."
+  }
+}

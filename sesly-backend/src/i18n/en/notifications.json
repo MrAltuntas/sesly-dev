@@ -1,0 +1,22 @@
+{
+  "voiceReady": {
+    "title": "Your voice is ready",
+    "body": "\"{voiceName}\" is ready to use."
+  },
+  "voiceFailed": {
+    "title": "Your voice could not be prepared",
+    "body": "Something went wrong while preparing \"{voiceName}\". Please try again."
+  },
+  "narrationReady": {
+    "title": "Your story is ready",
+    "body": "You can listen to \"{storyTitle}\" now."
+  },
+  "narrationFailed": {
+    "title": "Your story could not be prepared",
+    "body": "Something went wrong while preparing \"{storyTitle}\". Please try again."
+  },
+  "translationReady": {
+    "title": "Translation ready",
+    "body": "{storyTitle} is now available in {language}."
+  }
+}

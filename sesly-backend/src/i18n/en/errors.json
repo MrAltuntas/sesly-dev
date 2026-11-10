@@ -1,0 +1,106 @@
+{
+  "auth": {
+    "invalidToken": "Invalid or expired token",
+    "invalidCredentials": "Invalid email or password",
+    "emailAlreadyExists": "This email address is already in use.",
+    "emailInUse": "This email is already registered with another sign-in method. Please sign in that way.",
+    "userNotFound": "User not found.",
+    "passwordMismatch": "Passwords do not match",
+    "sessionExpired": "Your session has expired, please sign in again"
+  },
+  "stories": {
+    "notFound": "Story not found.",
+    "accessDenied": "You don't have access to this story",
+    "premiumRequired": "This story needs a Premium subscription.",
+    "notFavorite": "This story is not in your favorites."
+  },
+  "voiceProfiles": {
+    "notFound": "Voice profile not found.",
+    "limitReached": "Voice profile limit reached for your subscription plan",
+    "accessDenied": "You don't have access to this voice profile",
+    "notReady": "This voice is not ready yet.",
+    "notOwned": "This voice profile does not belong to you.",
+    "providerCloneOnly": "This provider can only be used to record your own voice.",
+    "presetNotFound": "The selected ready-made voice was not found.",
+    "uploadNotAllowed": "A recording cannot be uploaded for this voice profile.",
+    "consentRequired": "To continue, please accept the current consent text.",
+    "uploadFailed": "Your recording could not be uploaded right now. Please try again in a little while.",
+    "processingUnavailable": "Your voice cannot be processed right now. Please try again in a little while.",
+    "alreadyUploaded": "A recording has already been uploaded for this voice. To record again, create a new voice.",
+    "previewNotAllowed": "This voice cannot be previewed.",
+    "previewFailed": "The voice preview could not be created. Please try again.",
+    "cloneLanguageNotSupported": "Voice recording is not available in this language yet."
+  },
+  "narrations": {
+    "notFound": "Narration not found.",
+    "accessDenied": "You don't have access to this narration",
+    "generationFailed": "Failed to generate narration audio",
+    "notOwned": "This narration does not belong to you.",
+    "alreadyExists": "This story has already been narrated with this voice."
+  },
+  "audio": {
+    "notFound": "Audio not found.",
+    "accessDenied": "You do not have access to this audio.",
+    "notReady": "The audio is not ready yet.",
+    "deleteDenied": "You are not allowed to delete this audio."
+  },
+  "upload": {
+    "noFile": "No file was uploaded.",
+    "avatarTooLarge": "The file is too large. You can upload up to 5 MB.",
+    "avatarType": "Unsupported file type. You can upload JPG, PNG or WebP only."
+  },
+  "cloneUpload": {
+    "audioRequired": "A voice recording file is required.",
+    "invalidType": "This audio format is not supported. Please upload an m4a or wav recording.",
+    "tooLarge": "A voice recording can be at most 20 MB."
+  },
+  "voiceSlots": {
+    "totalLimit": "Your plan allows up to {totalSlots} voice profiles. To add more, delete a voice or upgrade your plan.",
+    "presetLimit": "Your plan allows up to {limit} ready-made narrator voices. To add a new one, delete a ready-made voice or upgrade your plan.",
+    "cloneLimit": "Your plan allows up to {limit} recordings of your own voice. To record a new one, delete one of your voices or upgrade your plan.",
+    "cloneCreationLifetime": "You have used the voice recordings included in the Free plan ({limit}). They do not renew, and deleting your voice does not give you a new one. Switch to Mini or Premium to record a new voice.",
+    "cloneCreationMonthly": "You have used this month's new voice recordings ({limit}). Deleting a voice does not give you a new one.{renewal}",
+    "cloneCreationRenews": " Your new recordings renew on {renewDate}."
+  },
+  "quota": {
+    "cloneLifetime": "You have used the stories in your own voice included in the Free plan ({limit}). They do not renew. Switch to Mini or Premium for more stories in your own voice.",
+    "cloneMonthly": "You have used this month's {limit} stories in your own voice.{renewal}{upsell}",
+    "presetMonthly": "You have used this month's {limit} stories with ready-made narrator voices.{renewal} Switch to Mini or Premium for unlimited stories.",
+    "renews": " Your allowance renews on {renewDate}.",
+    "upsellPremium": " Switch to Premium for more."
+  },
+  "store": {
+    "receiptInUse": "This purchase is linked to another Sesly account. Please sign in with the account you made the purchase with.",
+    "receiptInvalid": "The purchase could not be verified. Please try again.",
+    "productUnknown": "This product was not recognized. Please update the app and try again.",
+    "unavailable": "The store cannot be reached right now. Your purchase is safe and will be retried automatically in a little while.",
+    "notConfigured": "The purchase cannot be verified right now. Your purchase is safe, please try again in a little while."
+  },
+  "subscriptions": {
+    "notFound": "Subscription not found",
+    "alreadyActive": "You already have an active subscription",
+    "paymentFailed": "Payment processing failed"
+  },
+  "preferences": {
+    "contentLanguageNotEnabled": "{language} cannot be chosen as the story language right now."
+  },
+  "translationRequests": {
+    "alreadyAvailable": "This story is already available in {language}."
+  },
+  "maintenance": "Sesly is under maintenance. Please try again shortly.",
+  "rateLimited": "You have sent too many requests. Please wait a moment and try again.",
+  "validation": {
+    "required": "This field is required",
+    "invalidFormat": "Invalid format",
+    "email": "Enter a valid email address.",
+    "tooShort": "Value is too short",
+    "tooLong": "Value is too long",
+    "uiLanguage": "Invalid UI language. Valid languages: tr, en.",
+    "groupedBoolean": "grouped must be true or false.",
+    "contentLanguage": "Invalid content language. Valid languages: tr, en, de, fr, es, it, nl, pt, ar, ru.",
+    "languageLevel": "Invalid language level. Valid values: A1, A2, B1, B2, C1, C2.",
+    "storySort": "Invalid sort order. Valid values: newest, oldest, title, duration, level.",
+    "voiceLanguage": "Invalid voice language. Valid languages: tr, en.",
+    "presetVoiceLanguage": "Invalid voice language. Valid languages: tr, en, de, fr, es, it, nl, pt, ar."
+  }
+}

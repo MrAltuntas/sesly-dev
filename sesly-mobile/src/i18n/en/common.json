@@ -1,0 +1,55 @@
+{
+  "ok": "OK",
+  "cancel": "Cancel",
+  "close": "Close",
+  "back": "Back",
+  "retry": "Try again",
+  "undo": "Undo",
+  "loading": "Loading...",
+  "seeAll": "See all",
+  "understood": "Got it",
+  "a11y": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "profile": "Profile",
+    "play": "Play",
+    "pause": "Pause",
+    "closeSheet": "Close sheet",
+    "notifications": "Notifications",
+    "notificationsUnread": "Notifications, {{n}} unread"
+  },
+  "errorState": {
+    "title": "Could not load",
+    "message": "The problem is on our side. Try again in a moment."
+  },
+  "legal": {
+    "eyebrow": "Legal",
+    "offline": "You are offline. Showing the version saved on your device.",
+    "updated": "Last updated: {{date}}, version {{version}}",
+    "notPublished": "This document has not been published yet.",
+    "noConnection": "Could not connect and there is no saved version on your device. Try again in a moment.",
+    "loadFailed": "Could not load the document. Try again.",
+    "turkishOnly": "This document is currently available in Turkish only.",
+    "titles": {
+      "tos": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "dataDeletion": "Data Deletion Policy"
+    }
+  },
+  "languageNames": {
+    "tr": "Turkish",
+    "en": "English",
+    "de": "German",
+    "fr": "French",
+    "es": "Spanish",
+    "it": "Italian",
+    "nl": "Dutch",
+    "pt": "Portuguese",
+    "ar": "Arabic",
+    "ru": "Russian"
+  },
+  "voiceGender": {
+    "female": "female voice",
+    "male": "male voice"
+  }
+}

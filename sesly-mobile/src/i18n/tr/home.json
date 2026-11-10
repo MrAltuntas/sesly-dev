@@ -1,0 +1,34 @@
+{
+  "greeting": {
+    "morning": "Günaydın",
+    "day": "İyi günler",
+    "evening": "İyi akşamlar",
+    "night": "İyi geceler",
+    "morningName": "Günaydın, {{name}}",
+    "dayName": "İyi günler, {{name}}",
+    "eveningName": "İyi akşamlar, {{name}}",
+    "nightName": "İyi geceler, {{name}}"
+  },
+  "featured": {
+    "listenTo": "{{title}} masalını dinle",
+    "tagNight": "Bu gecenin masalı",
+    "tagDay": "Bugünün masalı"
+  },
+  "shelves": {
+    "new": "Yeni eklenenler",
+    "saved": "Kaydedilenler",
+    "collections": "Koleksiyonlar"
+  },
+  "error": {
+    "title": "Masallar yüklenemedi",
+    "message": "Sorun bizde. Biraz sonra tekrar dene."
+  },
+  "empty": {
+    "title": "Henüz masal yok",
+    "message": "Yeni masallar eklenince burada görünür."
+  },
+  "a11y": {
+    "openStory": "{{title}} masalını aç",
+    "seeAll": "{{shelf}}, tümünü gör"
+  }
+}

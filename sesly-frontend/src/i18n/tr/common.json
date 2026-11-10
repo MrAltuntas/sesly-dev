@@ -1,0 +1,253 @@
+{
+  "nav": {
+    "home": "Ana sayfa",
+    "howItWorks": "Nasıl çalışır",
+    "features": "Özellikler",
+    "plans": "Planlar",
+    "faq": "Sorular",
+    "download": "İndir",
+    "privacyPolicy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları",
+    "dataDeletion": "Veri Silme",
+    "openMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "main": "Ana menü",
+    "skip": "İçeriğe geç",
+    "logoAlt": "Sesly ana sayfa"
+  },
+  "language": {
+    "tr": "TR",
+    "en": "EN",
+    "trName": "Türkçe",
+    "enName": "English",
+    "switcherLabel": "Site dili"
+  },
+  "store": {
+    "googlePlay": "Google Play'den indir",
+    "iosSoon": "iOS yakında",
+    "iosSoonLong": "iPhone sürümü yakında App Store'da."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Yatmadan önce masal vakti",
+      "titleA": "Her gece,",
+      "titleB": "senin sesinle.",
+      "lead": "Çocuğuna her gece gerçek masallar dinlet. İster hazır bir anlatıcı okusun, ister masalları kendi sesinle sen anlat.",
+      "note": "Ücretsiz planla başla. Uygulama ve masallar Türkçe ve İngilizce.",
+      "phoneHome": "Sesly uygulamasının Masallar ekranı: bu gecenin masalı, kategori kutuları ve uyku masalları rafı.",
+      "phoneStory": "Bir masalın sayfası: kapak, yaş ve süre etiketleri, altında Kimin sesiyle dinlesin? sorusu ve anlatıcı kartları."
+    },
+    "how": {
+      "title": "Üç adımda masal vakti",
+      "lead": "Masalı seç, anlatıcıyı seç, ışıkları kapat. Gerisini Sesly halleder.",
+      "step": "Adım {{n}}",
+      "steps": {
+        "pick": {
+          "title": "Bir masal seç",
+          "text": "Uyku masalları, Türk masalları, dünya klasikleri ve öğretici masallar arasından yaşa ve süreye göre seç."
+        },
+        "voice": {
+          "title": "Anlatıcıyı seç",
+          "text": "Hazır anlatıcılardan biri okusun ya da bir kez sesini kaydet, masalı senin sesinle dinlesin."
+        },
+        "listen": {
+          "title": "Dinle, uyusun",
+          "text": "Uyku zamanlayıcısını kur. Son dakikada ses yavaşça kısılır ve masal kendiliğinden biter."
+        }
+      }
+    },
+    "features": {
+      "title": "Uyku vakti için düşünüldü",
+      "lead": "Sesly'de her şey akşam rutinine göre: az dokunuş, sakin ekranlar, gerçek masallar.",
+      "phonePlayer": "Oynatıcı ekranı: masalın kapağı, Annem anlatıyor satırı, ilerleme çubuğu ve kalan süreyi gösteren uyku zamanlayıcısı.",
+      "items": {
+        "ownVoice": {
+          "title": "Kendi sesin",
+          "text": "Ekrandaki kısa metni bir kez oku, masalları Sesly senin sesinle anlatsın.",
+          "privacy": "Kayıt yalnızca açık rızanla alınır ve yalnızca senin sesini oluşturmak için kullanılır; sesi ya da hesabı sildiğinde kayıt da silinir."
+        },
+        "narrators": {
+          "title": "Hazır anlatıcılar",
+          "text": "Kayıt yapmadan hemen başla. Google'ın doğal Chirp 3 HD sesleri her planda, plan sınırları içinde ücretsiz."
+        },
+        "tales": {
+          "title": "Gerçek masallar",
+          "text": "Kamu malı halk masalları ve klasikler ile açık lisanslı (CC BY) çocuk kitapları. Yapay zekâyla yazılmış masal yok; İngilizceden yapay zekâ ile çevrilen masallar açıkça işaretli."
+        },
+        "timer": {
+          "title": "Uyku zamanlayıcısı",
+          "text": "Bir süre ya da masal sayısı seç. Son dakikada ses yavaşça kısılır, masal kendiliğinden biter."
+        },
+        "queue": {
+          "title": "Sıradakiler",
+          "text": "Hazır masalları sıraya ekle; biri bitince sıradaki başlar, sen telefonu bırakırsın."
+        },
+        "parents": {
+          "title": "Ebeveynler için notlar",
+          "text": "Her masalda yaş grubu var. Korkutucu sahne, ölüm ya da üzücü son gibi içerikler masal başlamadan önce belirtilir."
+        },
+        "languages": {
+          "title": "Türkçe ve İngilizce",
+          "text": "Uygulama ve masallar iki dilde. Masal dilini sen seçersin; hazır anlatıcılar da iki dilde okur."
+        }
+      }
+    },
+    "shelf": {
+      "title": "Raftan birkaç masal",
+      "lead": "Her masalın kaynağı ve lisansı uygulamadaki masal sayfasında yazar. İngilizceden yapay zekâ ile çevrilen masallar her zaman işaretlidir.",
+      "translated": "Yapay zekâ ile çevrildi",
+      "publicDomain": "Kamu malı",
+      "folk": "Halk masalı",
+      "ccby": "CC BY 4.0",
+      "coverAlt": "{{title}} masalının kapak resmi",
+      "age": "{{range}} yaş",
+      "langTr": "Türkçe",
+      "langEn": "İngilizce",
+      "categories": {
+        "BEDTIME": "Uyku masalı",
+        "TURKISH_CLASSICS": "Türk masalı",
+        "WORLD_CLASSICS": "Dünya klasiği"
+      },
+      "warnings": {
+        "SCARY": "Korkutucu sahne",
+        "VIOLENCE": "Şiddet",
+        "DEATH": "Ölüm",
+        "SAD_ENDING": "Üzücü son",
+        "BAD_EXAMPLE": "Kötü davranış örneği",
+        "OLD_LANGUAGE": "Eski dil / ağır anlatım",
+        "LONELINESS": "Yalnızlık / ayrılık"
+      }
+    },
+    "plans": {
+      "title": "Planlar",
+      "lead": "Ücretsiz başla, istersen sonra yükselt. Ücretli planlarda masallar ekran kapalıyken de çalar.",
+      "perMonth": "/ ay",
+      "perYear": "/ yıl",
+      "or": "veya",
+      "free": {
+        "name": "Ücretsiz",
+        "price": "0 TL",
+        "items": [
+          "Hazır anlatıcılarla ayda 20 masal",
+          "Kendi sesinle toplam 1 masal",
+          "1 kendi sesin"
+        ],
+        "limit": "Ekran kapanınca masal durur"
+      },
+      "mini": {
+        "name": "Mini",
+        "price": "49,99 TL",
+        "items": [
+          "Hazır anlatıcılarla sınırsız masal",
+          "Kendi sesinle ayda 5 masal",
+          "1 kendi sesin",
+          "Ekran kapalıyken dinleme",
+          "Premium masallar"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "199,99 TL",
+        "yearly": "1.499,99 TL",
+        "items": [
+          "Hazır anlatıcılarla sınırsız masal",
+          "Kendi sesinle ayda 20 masal",
+          "3 kendi sesin",
+          "Ekran kapalıyken dinleme",
+          "Premium masallar"
+        ]
+      },
+      "notes": {
+        "store": "Abonelikler yalnızca Google Play üzerinden alınır ve Google Play'den iptal edilir (App Store yakında). İptal edene kadar her dönem kendiliğinden yenilenir.",
+        "price": "Uygulamadaki fiyatı mağaza belirler; ülkeye göre farklı olabilir. Aylık haklar her ayın ilk günü yenilenir."
+      }
+    },
+    "faq": {
+      "title": "Sık sorulanlar",
+      "items": {
+        "free": {
+          "q": "Sesly ücretsiz mi?",
+          "a": "Evet. Ücretsiz planla hazır anlatıcılarla ayda 20 masal dinleyebilir, kendi sesinle 1 masal hazırlayabilirsin. Daha fazlası için Mini ya da Premium planı seçebilirsin."
+        },
+        "record": {
+          "q": "Kendi sesimi nasıl eklerim?",
+          "a": "Sesim sekmesinden. Önce açık rıza metnini onaylarsın, sonra ekrandaki kısa metni en az 15 saniye okursun; 30 saniye ideal. Ses hazır olunca uygulama haber verir."
+        },
+        "privacy": {
+          "q": "Ses kaydım ne oluyor?",
+          "a": "Kaydın yalnızca senin sesini oluşturmak ve masallarını seslendirmek için kullanılır; reklam için kullanılmaz, satılmaz. Ses modeli, hizmet sağlayıcımız Cartesia'da saklanır. Sesi ya da hesabını sildiğinde kayıt ve ses modeli silinir.",
+          "link": "Gizlilik Politikası"
+        },
+        "tales": {
+          "q": "Masallar nereden geliyor?",
+          "a": "Kamu malı halk masalları ve klasiklerden, açık lisanslı (CC BY) çocuk kitaplarından. Yapay zekâyla yazılmış masal yok. Bazı İngilizce masallar Türkçeye yapay zekâ ile çevrildi; bu masallarda \"Yapay zekâ ile çevrildi\" yazar. Kaynak ve lisans her masalın sayfasında."
+        },
+        "languages": {
+          "q": "Hangi dillerde?",
+          "a": "Uygulama ve masallar Türkçe ve İngilizce. Hazır anlatıcılar da iki dilde var."
+        },
+        "cancel": {
+          "q": "Aboneliğimi nasıl iptal ederim?",
+          "a": "Google Play'de Abonelikler bölümünden. İptal, dönemin sonunda geçerli olur. Hesabını silmek aboneliği iptal etmez."
+        },
+        "ios": {
+          "q": "iPhone'da var mı?",
+          "a": "Henüz değil. Sesly şimdilik Android'de, Google Play'de. iPhone sürümü yakında."
+        },
+        "delete": {
+          "q": "Hesabımı nasıl silerim?",
+          "a": "Uygulamada profil simgesine dokun, Profil sayfasının en altındaki Hesabı sil seçeneğini kullan. Uygulamaya giremiyorsan veri silme sayfasındaki adımları izle.",
+          "link": "Veri silme sayfası"
+        }
+      }
+    },
+    "cta": {
+      "title": "Bu gece ilk masal senden",
+      "text": "Sesly'yi indir, ilk masalı hazır bir anlatıcıyla ya da kendi sesinle dinlet.",
+      "contact": "Soru, öneri ya da destek için",
+      "iconAlt": "Sesly uygulama simgesi"
+    }
+  },
+  "legal": {
+    "loading": "Yükleniyor...",
+    "error": "İçerik yüklenirken bir sorun oluştu.",
+    "retry": "Tekrar dene",
+    "lastUpdated": "Son güncelleme:",
+    "version": "Sürüm {{version}}",
+    "unknownError": "Bilinmeyen hata",
+    "backHome": "Ana sayfaya dön",
+    "fallbackTitle": {
+      "privacy": "Gizlilik Politikası",
+      "tos": "Kullanım Şartları",
+      "dataDeletion": "Veri Silme"
+    },
+    "turkishOnly": "Bu belge şu an yalnızca Türkçe olarak sunuluyor."
+  },
+  "footer": {
+    "tagline": "Gerçek masallar, hazır anlatıcılar ya da senin sesin. Her gece.",
+    "columns": {
+      "app": "Uygulama",
+      "legal": "Yasal",
+      "contact": "İletişim"
+    },
+    "copyright": "© {{year}} Sesly"
+  },
+  "seo": {
+    "home": {
+      "title": "Sesly - Her gece, senin sesinle",
+      "description": "Yatmadan önce gerçek masallar: hazır anlatıcılarla ya da kendi sesinle. Türkçe ve İngilizce, uyku zamanlayıcılı masal uygulaması."
+    },
+    "privacy": {
+      "title": "Gizlilik Politikası - Sesly",
+      "description": "Sesly kişisel verilerini ve ses kayıtlarını nasıl topluyor, kullanıyor ve koruyor?"
+    },
+    "tos": {
+      "title": "Kullanım Şartları - Sesly",
+      "description": "Sesly'yi kullanırken geçerli olan şartlar, planlar ve abonelik kuralları."
+    },
+    "dataDeletion": {
+      "title": "Veri Silme - Sesly",
+      "description": "Sesly'de bir ses profilini ya da hesabını ve tüm verilerini nasıl silersin?"
+    }
+  }
+}

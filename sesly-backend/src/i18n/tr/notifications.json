@@ -1,0 +1,22 @@
+{
+  "voiceReady": {
+    "title": "Ses profilin hazır",
+    "body": "\"{voiceName}\" sesi artık kullanılabilir."
+  },
+  "voiceFailed": {
+    "title": "Ses hazırlanamadı",
+    "body": "\"{voiceName}\" sesi hazırlanırken bir sorun oluştu. Lütfen tekrar dene."
+  },
+  "narrationReady": {
+    "title": "Masalın hazır",
+    "body": "\"{storyTitle}\" masalını şimdi dinleyebilirsin."
+  },
+  "narrationFailed": {
+    "title": "Masal hazırlanamadı",
+    "body": "\"{storyTitle}\" masalı hazırlanırken bir sorun oluştu. Lütfen tekrar dene."
+  },
+  "translationReady": {
+    "title": "Çeviri hazır",
+    "body": "{storyTitle} artık {language} dinlenebilir."
+  }
+}

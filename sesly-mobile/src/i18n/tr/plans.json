@@ -1,0 +1,72 @@
+{
+  "title": "Planını seç",
+  "free": "Ücretsiz",
+  "currentTag": "Şu anki planın",
+  "period": {
+    "monthly": "Aylık",
+    "yearly": "Yıllık"
+  },
+  "per": {
+    "monthly": "/ ay",
+    "yearly": "/ yıl"
+  },
+  "limits": {
+    "presetMonthly": "Hazır anlatıcılarla ayda {{amount}} masal",
+    "presetMonthlyOne": "Hazır anlatıcılarla ayda 1 masal",
+    "presetUnlimited": "Hazır anlatıcılarla sınırsız masal",
+    "clonedLifetime": "Kendi sesinle toplam {{amount}} masal",
+    "clonedLifetimeOne": "Kendi sesinle toplam 1 masal",
+    "clonedMonthly": "Kendi sesinle ayda {{amount}} masal",
+    "clonedMonthlyOne": "Kendi sesinle ayda 1 masal",
+    "clonedUnlimited": "Kendi sesinle sınırsız masal",
+    "screenOff": "Ekran kapalıyken dinleme",
+    "screenOffStops": "Ekran kapanınca masal durur",
+    "premiumStories": "Premium masallar"
+  },
+  "cta": {
+    "premiumYearly": "Yıllık Premium'a geç",
+    "premiumMonthly": "Aylık Premium'a geç",
+    "mini": "Mini'ye geç"
+  },
+  "restore": "Satın alımları geri yükle",
+  "manage": "Aboneliği yönet",
+  "legal": {
+    "android": "Abonelik, iptal edene kadar her dönem kendiliğinden yenilenir. Google Play'den istediğin zaman iptal edebilirsin.",
+    "ios": "Abonelik, iptal edene kadar her dönem kendiliğinden yenilenir. App Store'dan istediğin zaman iptal edebilirsin.",
+    "terms": "Kullanım Şartları",
+    "privacy": "Gizlilik Politikası"
+  },
+  "reason": {
+    "quota": "Bu planda masal hakkın doldu.",
+    "voices": "Daha fazla ses için bir plan seç.",
+    "premiumStory": "Bu masal ücretli planlarda var.",
+    "background": "Ekran kapalıyken dinlemek ücretli planlarda var."
+  },
+  "a11y": {
+    "plan": "{{name}} planı",
+    "currentPlan": "{{name}} planı, şu anki planın",
+    "periodOption": "{{period}}, {{price}}"
+  },
+  "priceNotLoaded": "fiyat henüz gelmedi",
+  "status": {
+    "pendingTitle": "Ödemen onay bekliyor",
+    "pendingMessage": "Ödeme onaylanınca planın kendiliğinden açılır. Bu ekranı kapatabilirsin.",
+    "deferredTitle": "Satın alımın alındı",
+    "deferredMessage": "Doğrulama şu an yapılamıyor. Bağlantı düzelince kendiliğinden tamamlanacak, yeniden ödeme yapma.",
+    "unavailableTitle": "Satın alma şu an kullanılamıyor",
+    "unavailableAndroid": "Plan satın almak için uygulamanın Google Play'den yüklenmiş ve telefonda bir Google hesabının açık olması gerekir.",
+    "unavailableIos": "Plan satın almak için telefonda App Store'a giriş yapmış olman gerekir.",
+    "productsTitle": "Planlar şu an yüklenemedi",
+    "productsMessage": "Mağazadan fiyatlar gelmedi. Biraz sonra yeniden dene.",
+    "otherStore": "Aboneliğin {{store}} üzerinden alındı. Planını orada değiştirebilirsin.",
+    "downgrade": "Yeni planın, şu anki dönemin bitince başlar. O zamana kadar şu anki planın sürer.",
+    "retry": "Yeniden dene"
+  },
+  "success": {
+    "title": "{{name}} planın açıldı",
+    "message": "Keyifli dinlemeler. Planını ve haklarını profilinde görebilirsin.",
+    "done": "Tamam",
+    "changeTitle": "Plan değişikliğin kaydedildi",
+    "changeMessage": "{{name}} planın, şu anki dönemin bitince başlar. O zamana kadar şu anki planın sürer."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "narrationFailed": "Something went wrong while preparing your story. Please try again.",
+  "narrationAudioRemoved": "The audio of this story was removed. Please create it again.",
+  "storyFallbackTitle": "Story",
+  "voiceFailure": {
+    "generic": "Something went wrong while preparing your voice. Please try again.",
+    "unreadable": "Your recording could not be processed. Please delete the voice and record it again.",
+    "tooShort": "The recording is too short. Please delete the voice and record again, speaking for at least 15 seconds.",
+    "noSpeech": "No speech was detected in the recording. Please record again in a quiet place.",
+    "timeout": "Preparing your voice took longer than expected. Please delete the voice and record it again.",
+    "rejected": "Your recording did not pass our quality check. Please record it again."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Masalın hazırlanıyor",
+  "subtitle": "{{story}}, {{narrator}} anlatacak",
+  "stage": {
+    "starting": "Başlatılıyor",
+    "text": "Metin hazırlanıyor",
+    "voicing": "Seslendiriliyor",
+    "merging": "Parçalar birleştiriliyor",
+    "finishing": "Neredeyse hazır",
+    "done": "Hazır"
+  },
+  "percent": "%{{value}}",
+  "progressA11y": "Masalın hazırlanıyor",
+  "note": "Birkaç dakika sürebilir. Beklemene gerek yok, hazır olunca haber veririz.",
+  "noteNoPush": "Birkaç dakika sürebilir. Beklemene gerek yok, hazır olunca Kütüphane'de bulacaksın.",
+  "slow": "Beklenenden uzun sürüyor. Hazır olunca haber veririz.",
+  "slowNoPush": "Beklenenden uzun sürüyor. Hazır olunca Kütüphane'de bulacaksın.",
+  "alreadyRunning": "Bu masal bu anlatıcıyla zaten hazırlanıyordu. Onu bekliyoruz.",
+  "background": "Arka planda devam et",
+  "listen": "Dinle",
+  "goBack": "Geri dön",
+  "error": {
+    "title": "Masal hazırlanamadı",
+    "message": "Sorun bizde. Biraz sonra tekrar dene.",
+    "offlineMessage": "Masalı hazırlamak için internet bağlantısı gerekiyor.",
+    "startFailed": "Masal hazırlanmaya başlanamadı",
+    "regenerateFailed": "Masal yeniden hazırlanamadı"
+  },
+  "exists": {
+    "title": "Bu masal zaten hazır",
+    "message": "Bu anlatıcı bu masalı daha önce anlattı. Onu dinleyebilir ya da yeniden hazırlatabilirsin.",
+    "listen": "Dinle",
+    "regenerate": "Yeniden hazırla"
+  }
+}

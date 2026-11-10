@@ -1,0 +1,83 @@
+{
+  "title": "Discover",
+  "search": {
+    "placeholder": "Search stories",
+    "label": "Search stories, authors or collectors",
+    "clear": "Clear search",
+    "open": "Open search",
+    "close": "Close search",
+    "ignoresFilters": "Search does not use the type and age picks.",
+    "allLanguages": "Search every language"
+  },
+  "filters": {
+    "language": "Language",
+    "level": "Level",
+    "age": "Age",
+    "allAges": "All",
+    "clear": "Clear filters",
+    "clearAll": "Clear all",
+    "category": "Type",
+    "show": "Show filters",
+    "hide": "Hide filters",
+    "activeOne": "1 filter on",
+    "active": "{{n}} filters on",
+    "remove": "Remove the {{name}} filter",
+    "clearShort": "Clear"
+  },
+  "count": {
+    "tales": "{{total}} stories found",
+    "results": "{{total}} results found"
+  },
+  "sort": {
+    "title": "Sort",
+    "label": "Sort: {{value}}",
+    "recommended": "Recommended",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "byTitle": "By title",
+    "duration": "Shortest",
+    "level": "Easiest"
+  },
+  "save": {
+    "saved": "{{title}} saved",
+    "removed": "{{title}} removed from saved",
+    "show": "Show",
+    "failed": "Could not save. Try again.",
+    "removeFailed": "Could not remove. Try again."
+  },
+  "a11y": {
+    "openStory": "Open {{title}}",
+    "save": "Save {{title}}",
+    "unsave": "Remove {{title}} from saved",
+    "locked": "{{title}}, Premium, locked"
+  },
+  "empty": {
+    "title": "No results",
+    "message": "Change the search or the filters and try again.",
+    "languageMessage": "Nothing found among the {{language}} stories. You can search every language too.",
+    "catalogueTitle": "No stories yet",
+    "catalogueMessage": "New stories will appear here."
+  },
+  "error": {
+    "title": "Could not load stories",
+    "message": "The problem is on our side. Try again in a moment."
+  },
+  "allStories": {
+    "title": "New stories"
+  },
+  "collections": {
+    "title": "Collections",
+    "storyCount": "{{total}} stories",
+    "emptyTitle": "No collections yet",
+    "emptyMessage": "New collections will appear here.",
+    "errorTitle": "Could not load collections"
+  },
+  "collection": {
+    "empty": "There are no stories in this collection yet.",
+    "errorTitle": "Could not load the collection",
+    "notFound": "Collection not found."
+  },
+  "premium": {
+    "badge": "Paid plans"
+  }
+}

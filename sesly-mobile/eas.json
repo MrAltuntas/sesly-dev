@@ -1,0 +1,55 @@
+{
+  "cli": {
+    "version": ">= 12.0.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "//": "Three iOS profiles for different test loops:",
+    "//1": "  - simulator      → .app bundle for the iOS Simulator (requires a Mac to run, but no Apple Developer account needed)",
+    "//2": "  - preview        → ad-hoc IPA you sideload onto a single registered iPhone (Apple Developer account required)",
+    "//3": "  - production-tf  → store-signed build for TestFlight / App Store (Apple Developer account required)",
+    "simulator": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "preview",
+      "ios": {
+        "resourceClass": "m-medium"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "apk-release": {
+      "distribution": "internal",
+      "channel": "production",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production-tf": {
+      "channel": "production",
+      "ios": {
+        "resourceClass": "m-medium",
+        "autoIncrement": "buildNumber"
+      },
+      "android": {
+        "autoIncrement": "versionCode"
+      }
+    }
+  },
+  "submit": {
+    "production-tf": {
+      "ios": {
+        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID",
+        "appleTeamId": "REPLACE_WITH_APPLE_TEAM_ID"
+      }
+    }
+  }
+}

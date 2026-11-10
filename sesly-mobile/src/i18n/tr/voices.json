@@ -1,0 +1,119 @@
+{
+  "title": "Sesim",
+  "subtitle": "Masalları kimin anlatacağını buradan seçersin.",
+  "sections": {
+    "narrators": "Hazır anlatıcılar"
+  },
+  "own": {
+    "loading": "Sesler yükleniyor...",
+    "ready": "Hazır",
+    "preparing": "Hazırlanıyor",
+    "failed": "Hazırlanamadı",
+    "waiting": "Beklemede",
+    "waitingNote": "Kayıt gönderilemedi. Silip yeniden kaydedebilirsin, bu yeni ses hakkı kullanmaz.",
+    "recorded": "{{day}} {{month}} kaydı",
+    "retry": "Tekrar dene",
+    "startOver": "Baştan başla",
+    "default": "Varsayılan"
+  },
+  "months": {
+    "1": "Ocak",
+    "2": "Şubat",
+    "3": "Mart",
+    "4": "Nisan",
+    "5": "Mayıs",
+    "6": "Haziran",
+    "7": "Temmuz",
+    "8": "Ağustos",
+    "9": "Eylül",
+    "10": "Ekim",
+    "11": "Kasım",
+    "12": "Aralık"
+  },
+  "add": {
+    "full": "Şu an yeni bir kendi ses kaydedemezsin."
+  },
+  "narrators": {
+    "hint": "Bir anlatıcıya dokununca listene eklenir.",
+    "pickHint": "Masalı dinlemek için bir anlatıcı ekle. Eklediğinde masala geri dönersin.",
+    "slots": "Listende {{used}}/{{limit}} anlatıcı var.",
+    "slotsFull": "Listen dolu ({{used}}/{{limit}}). Yeni bir anlatıcı için önce birini kaldır.",
+    "loading": "Anlatıcılar yükleniyor...",
+    "empty": "Hazır anlatıcılar şu an yüklenemedi. Aşağı çekip yenile.",
+    "emptyLanguage": "{{language}} hazır anlatıcı henüz yok.",
+    "languageFilter": "Anlatıcı dili",
+    "added": "Eklendi",
+    "allA11y": "Hazır anlatıcılar, tümünü gör"
+  },
+  "a11y": {
+    "delete": "{{name}} sesini sil",
+    "remove": "{{name}} anlatıcısını kaldır",
+    "playSample": "{{name}} örneğini dinle",
+    "stopSample": "{{name}} örneğini durdur",
+    "add": "{{name}} anlatıcısını ekle"
+  },
+  "dialogs": {
+    "seePlans": "Planları gör",
+    "delete": {
+      "title": "{{name}} sesi silinsin mi?",
+      "messagePlain": "Kaydın ve ondan oluşturulan ses kalıcı olarak silinir. Geri alınamaz.",
+      "messageLeft": "Kaydın ve ondan oluşturulan ses kalıcı olarak silinir. Geri alınamaz. Silmek, kullandığın yeni ses hakkını geri vermez. Bu ay {{left}} yeni ses hakkın kaldı.",
+      "messageLeftLifetime": "Kaydın ve ondan oluşturulan ses kalıcı olarak silinir. Geri alınamaz. Silmek, kullandığın yeni ses hakkını geri vermez. {{left}} yeni ses hakkın kaldı ve bu hak yenilenmez.",
+      "messageFinal": "Kaydın ve ondan oluşturulan ses kalıcı olarak silinir. Geri alınamaz. Silmek, kullandığın yeni ses hakkını geri vermez. Hiç yeni ses hakkın kalmadı, silersen yeniden kaydedemezsin.",
+      "messageFinalMonth": "Kaydın ve ondan oluşturulan ses kalıcı olarak silinir. Geri alınamaz. Silmek, kullandığın yeni ses hakkını geri vermez. Bu ayki hakkın bitti, silersen yeni ay başlayana kadar yeniden kaydedemezsin.",
+      "confirm": "Sesi sil",
+      "messageNoRefund": "Kaydın ve ondan oluşturulan ses kalıcı olarak silinir. Geri alınamaz. Silmek, kullandığın yeni ses hakkını geri vermez."
+    },
+    "remove": {
+      "title": "{{name}} kaldırılsın mı?",
+      "message": "Anlatıcı listenden çıkar. İstediğin zaman yeniden ekleyebilirsin.",
+      "confirm": "Kaldır"
+    },
+    "retry": {
+      "title": "Baştan başla",
+      "message": "{{name}} sesi hazırlanamadı. Bu kaydı silip yeniden okuyabilirsin.",
+      "confirm": "Sil ve baştan başla"
+    },
+    "retryPending": {
+      "message": "{{name}} kaydı gönderilemedi. Bu kaydı silip yeniden okuyabilirsin."
+    }
+  },
+  "toasts": {
+    "added": "Anlatıcı eklendi",
+    "addFailed": "Anlatıcı eklenemedi",
+    "sampleMissing": "Ses örneği bulunamadı",
+    "previewFailed": "Örnek oynatılamadı",
+    "deleted": "Ses silindi",
+    "removed": "Anlatıcı kaldırıldı"
+  },
+  "catalogue": {
+    "emptyTitle": "Anlatıcı yok",
+    "errorTitle": "Anlatıcılar yüklenemedi",
+    "errorMessage": "Bağlantını kontrol edip tekrar dene.",
+    "genderFilter": "Ses türü",
+    "gender": {
+      "all": "Hepsi",
+      "female": "Kadın sesleri",
+      "male": "Erkek sesleri"
+    }
+  },
+  "slots": {
+    "title": "Kendi seslerin",
+    "slotsLabel": "Ses yuvası",
+    "creationsMonth": "Bu ay yeni ses hakkı",
+    "creationsLifetime": "Toplam yeni ses hakkı",
+    "unlimited": "Sınırsız",
+    "slotsA11y": "Ses yuvası, {{limit}} yuvadan {{used}} tanesi dolu",
+    "creationsMonthA11y": "Bu ay yeni ses hakkı, {{limit}} haktan {{used}} tanesi kullanıldı",
+    "creationsLifetimeA11y": "Toplam yeni ses hakkı, {{limit}} haktan {{used}} tanesi kullanıldı",
+    "creationsLimitOnly": "{{limit}} hak",
+    "monthNote": "Bir sesi silmek yeni ses hakkını geri vermez.",
+    "lifetimeNote": "Bu hak yenilenmez. Bir sesi silmek yeni ses hakkını geri vermez.",
+    "add": "Ses ekle",
+    "addHint": "Yaklaşık {{seconds}} saniyelik bir kayıt yeterli.",
+    "full": "Ses yuvaların dolu.",
+    "fullDelete": "Ses yuvaların dolu. Yeni bir ses için önce birini sil.",
+    "creationsUsedMonth": "Bu ayki yeni ses hakkın bitti.",
+    "creationsUsedLifetime": "Yeni ses hakkını kullandın, bu hak yenilenmez."
+  }
+}

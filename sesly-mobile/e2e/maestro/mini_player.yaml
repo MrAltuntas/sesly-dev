@@ -1,0 +1,11 @@
+# The mini player on its own: it shows while a story plays and hides after a
+# pause. An existing account with a ready narration:
+#   maestro --device emulator-5556 test e2e/maestro/mini_player.yaml -e EMAIL=... -e PASSWORD=...
+appId: com.sesly
+name: Mini player
+tags:
+  - owner-areas
+---
+- evalScript: ${output.email = EMAIL}
+- runFlow: steps/ensure_signed_in.yaml
+- runFlow: steps/mini_player.yaml

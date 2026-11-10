@@ -1,0 +1,79 @@
+# The mini player shows only while a story plays: a pause from its own button
+# keeps it a few seconds (DOCK_PAUSE_HOLD_MS, 5 s), then it goes; a pause on
+# the player leaves nothing behind; "Kaldığın yerden devam et" resumes.
+# Starts anywhere on the tabs; needs a ready narration in the Library.
+appId: com.sesly
+---
+- tapOn:
+    id: "tab-Library"
+- extendedWaitUntil:
+    visible:
+      id: "library-play-(?!all(-|$)).+"
+    timeout: 20000
+# The row's play button starts in place; the mini player shows it. The
+# selector leaves out "Hepsini çal" (library-play-all and its face), which
+# sits above the rows once two narrations are ready.
+- tapOn:
+    id: "library-play-(?!all(-|$)).+"
+    index: 0
+- extendedWaitUntil:
+    visible:
+      id: "mini-player"
+    timeout: 15000
+- extendedWaitUntil:
+    visible:
+      id: "mini-player-toggle"
+      text: "Duraklat|Pause"
+    timeout: 20000
+# Some seconds of listening, so a position is kept for the continue card.
+- runFlow:
+    file: wait.yaml
+    env:
+      WAIT_MS: "8000"
+- tapOn:
+    id: "mini-player-toggle"
+- assertVisible:
+    id: "mini-player-toggle"
+    text: "Oynat|Play"
+- extendedWaitUntil:
+    notVisible:
+      id: "mini-player"
+    timeout: 12000
+# The Library shows the paused story at the top after a refocus; play resumes
+# it in place and the mini player is back.
+- tapOn:
+    id: "tab-Stories"
+- assertNotVisible:
+    id: "mini-player"
+- tapOn:
+    id: "tab-Library"
+- extendedWaitUntil:
+    visible:
+      id: "library-continue-card"
+    timeout: 10000
+- tapOn:
+    id: "library-continue-play"
+- extendedWaitUntil:
+    visible:
+      id: "mini-player"
+    timeout: 15000
+# The card's body opens the player at once; a pause there hides the dock.
+- tapOn:
+    id: "mini-player-open"
+- extendedWaitUntil:
+    visible:
+      id: "player-screen"
+    timeout: 10000
+- tapOn:
+    id: "player-play"
+- assertVisible:
+    id: "player-play"
+    text: "Oynat|Play"
+- tapOn:
+    id: "player-back"
+- extendedWaitUntil:
+    notVisible:
+      id: "mini-player"
+    timeout: 3000
+- assertVisible:
+    id: "tab-Library"

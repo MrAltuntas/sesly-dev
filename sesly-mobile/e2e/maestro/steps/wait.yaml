@@ -1,0 +1,13 @@
+# A plain pause of WAIT_MS milliseconds (Maestro has no sleep command): waits
+# for an id that never exists, as an optional step.
+#   - runFlow:
+#       file: wait.yaml
+#       env:
+#         WAIT_MS: "3000"
+appId: com.sesly
+---
+- extendedWaitUntil:
+    visible:
+      id: "maestro-wait-never"
+    timeout: ${WAIT_MS}
+    optional: true

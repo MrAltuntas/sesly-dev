@@ -1,0 +1,179 @@
+{
+  "save": "Kaydet",
+  "unsave": "Kaydedilenlerden çıkar",
+  "languageChoice": "Masalın dili",
+  "languageSwitchFailed": "Masal bu dilde açılamadı.",
+  "requestLanguage": "Başka dilde iste",
+  "languages": {
+    "title": "Masalın dilleri"
+  },
+  "more": {
+    "title": "Masal",
+    "a11y": "Diğer seçenekler",
+    "narrator": "Anlatıcıyı değiştir",
+    "regenerate": "Baştan hazırla",
+    "regenerateHint": "Bir masal hakkı kullanır",
+    "regenerateHintUnlimited": "Yenisi eskisinin yerini alır"
+  },
+  "level": "Düzey {{level}}, {{word}}",
+  "levelOnly": "Düzey {{level}}",
+  "levelWord": {
+    "A1": "başlangıç",
+    "A2": "temel",
+    "B1": "orta",
+    "B2": "orta üstü",
+    "C1": "ileri",
+    "C2": "ustalık"
+  },
+  "narrator": {
+    "nativeVoice": "Bu anlatıcı masalı {{language}} sesiyle okur.",
+    "accentedVoice": "Bu anlatıcı {{voiceLanguage}}, masal {{storyLanguage}}. Aksan kaymaları olabilir."
+  },
+  "cards": {
+    "title": "Kimin sesiyle dinlesin?",
+    "all": "Tümü",
+    "own": "Senin sesin",
+    "ready": "Hazır anlatıcı",
+    "addOwn": "Sesini ekle",
+    "addOwnHint": "Senin sesin"
+  },
+  "noNarrator": {
+    "title": "Önce bir anlatıcı seç",
+    "message": "Kendi sesini ekleyebilir ya da hazır bir anlatıcı seçebilirsin.",
+    "catalogueHint": "Bir anlatıcıya dokununca listene eklenir ve seçilir.",
+    "addOwn": "Kendi sesini ekle",
+    "pickReady": "Hazır anlatıcı seç"
+  },
+  "credit": {
+    "label": "Künye",
+    "author": "Yazar",
+    "collector": "Derleyen",
+    "translator": "Çeviren",
+    "adapter": "Uyarlayan",
+    "source": "Kaynak",
+    "anonymousFolk": "Anonim halk masalı"
+  },
+  "source": {
+    "title": "Kaynak ve lisans",
+    "sourceUrl": "Kaynak adresi",
+    "attribution": "Atıf",
+    "license": "Lisans",
+    "licenseUrl": "Lisans adresi",
+    "cover": "Kapak resmi"
+  },
+  "related": {
+    "title": "İlgili masallar",
+    "all": "Tümü",
+    "allA11y": "İlgili masalların tümünü gör",
+    "languages": "Başka dillerde",
+    "parts": "Diğer bölümler",
+    "category": "Aynı türden masallar",
+    "part": "Bölüm {{number}}"
+  },
+  "machineTranslation": {
+    "from": "Bu metin {{language}} aslından yapay zekâ ile çevrildi.",
+    "plain": "Bu metin yapay zekâ ile çevrildi.",
+    "openOriginal": "Orijinalini aç: {{title}} ({{language}})"
+  },
+  "report": {
+    "question": "Metinde hata mı var?",
+    "hint": "E-postayla bize bildir",
+    "subject": "Metin hatası: {{title}} ({{id}})",
+    "noMailTitle": "E-posta uygulaması bulunamadı",
+    "noMailMessage": "Hatayı {{email}} adresine yazabilirsin."
+  },
+  "cta": {
+    "listenOwn": "Senin sesinle dinle",
+    "listenWith": "{{name}} anlatsın",
+    "listen": "Dinle",
+    "inProgress": "Hazırlanıyor",
+    "noNarrator": "Anlatıcı seç"
+  },
+  "inProgressDialog": {
+    "title": "Masalın hazırlanıyor",
+    "message": "{{name}} bu masalı şu anda hazırlıyor. Hazır olunca haber veririz.",
+    "showProgress": "İlerlemeyi gör"
+  },
+  "mismatchDialog": {
+    "title": "Dil uyuşmuyor",
+    "message": "Bu ses {{voiceLanguage}}, masal {{storyLanguage}}. Aksan kaymaları olabilir ama dinlenebilir."
+  },
+  "slotDialog": {
+    "seePlans": "Planları gör"
+  },
+  "loadError": {
+    "title": "Masal açılamadı",
+    "message": "Sorun bizde. Biraz sonra tekrar dene.",
+    "notFound": "Masal bulunamadı"
+  },
+  "narratorSheet": {
+    "title": "Anlatıcı",
+    "own": "Senin sesin",
+    "ready": "Hazır anlatıcılar",
+    "otherLanguages": "Başka dildeki sesler",
+    "recordedOn": "{{day}} {{month}} kaydı",
+    "addOwn": "Kendi sesini ekle",
+    "addNew": "Yeni ses ekle",
+    "addReady": "Hazır anlatıcı ekle",
+    "seeAll": "Tümünü gör",
+    "seeAllHint": "{{total}} hazır anlatıcı",
+    "footnote": "Hazır anlatıcılar bu masalı {{language}} okur.",
+    "preview": "{{name}} örneğini dinle",
+    "stopPreview": "{{name}} örneğini durdur",
+    "previewFailed": "Örnek çalınamadı.",
+    "sampleMissing": "Bu sesin örneği bulunamadı.",
+    "loadingReady": "Anlatıcılar yükleniyor..."
+  },
+  "requestSheet": {
+    "title": "Başka dilde iste",
+    "request": "Çeviri iste",
+    "requested": "İstendi",
+    "requestA11y": "{{language}} çevirisi iste",
+    "withdrawA11y": "{{language}} isteğini geri al",
+    "footnote": "İsteğin kaydedilir. Çeviri yayımlanınca masal o dilde de açılır. Ne zaman olacağını söyleyemiyoruz.",
+    "failed": "İstek kaydedilemedi. Tekrar dene.",
+    "withdrawFailed": "İstek geri alınamadı. Tekrar dene.",
+    "alreadyAvailable": "Bu masalın {{language}} çevirisi yayımlanmış."
+  },
+  "month": {
+    "1": "Ocak",
+    "2": "Şubat",
+    "3": "Mart",
+    "4": "Nisan",
+    "5": "Mayıs",
+    "6": "Haziran",
+    "7": "Temmuz",
+    "8": "Ağustos",
+    "9": "Eylül",
+    "10": "Ekim",
+    "11": "Kasım",
+    "12": "Aralık"
+  },
+  "quota": {
+    "presetLeft": "Bu ay {{left}} masal hakkın kaldı",
+    "presetLeftOne": "Bu ay 1 masal hakkın kaldı",
+    "cloneLeftMonth": "Bu ay kendi sesinle {{left}} masal hakkın kaldı",
+    "cloneLeftMonthOne": "Bu ay kendi sesinle 1 masal hakkın kaldı",
+    "cloneLeftLifetime": "Kendi sesinle {{left}} masal hakkın var, yenilenmez.",
+    "cloneLeftLifetimeOne": "Kendi sesinle 1 masal hakkın var, yenilenmez."
+  },
+  "confirm": {
+    "title": "Bu masal seslendirilsin mi?",
+    "titleRegenerate": "Baştan hazırlansın mı?",
+    "replaces": "Yenisi eskisinin yerini alır.",
+    "part": "Bölüm {{number}} / {{total}}",
+    "about": "yaklaşık {{duration}}",
+    "ownVoice": "Kendi sesin",
+    "readyVoice": "Hazır anlatıcı",
+    "voiceA11y": "Anlatıcı: {{name}}, {{line}}",
+    "confirm": "Seslendir",
+    "cost": {
+      "presetMonth": "Bu seslendirme hazır anlatıcı hakkından 1 kullanır (bu ay {{used}}/{{limit}}).",
+      "presetLifetime": "Bu seslendirme hazır anlatıcı hakkından 1 kullanır (toplam {{used}}/{{limit}}).",
+      "preset": "Bu seslendirme hazır anlatıcı hakkından 1 kullanır.",
+      "cloneMonth": "Kendi sesinle masal hakkından 1 kullanır (bu ay {{used}}/{{limit}}).",
+      "cloneLifetime": "Kendi sesinle masal hakkından 1 kullanır (toplam {{used}}/{{limit}}).",
+      "clone": "Kendi sesinle masal hakkından 1 kullanır."
+    }
+  }
+}

@@ -1,0 +1,57 @@
+# Offline start (SPEC-startup 4): a signed-in user who starts the app in
+# airplane mode lands on the Stories tab with "Çevrimdışısın" above the tab
+# bar within 3 s, never on Login; the banner goes once the network is back.
+# The 3 s budget is for a release or preview build; a dev build gets 60 s
+# (Metro still answers through adb reverse in airplane mode).
+#   maestro --device emulator-5556 test e2e/maestro/offline_start.yaml -e EMAIL=... -e PASSWORD=...
+appId: com.sesly
+name: Offline start
+tags:
+  - startup
+# The network comes back whatever happened.
+onFlowComplete:
+  - setAirplaneMode: disabled
+---
+- evalScript: ${output.email = EMAIL}
+- runFlow: steps/ensure_signed_in.yaml
+- setAirplaneMode: enabled
+- stopApp
+- runFlow:
+    when:
+      true: ${typeof DEV_CLIENT_URL === 'undefined' || DEV_CLIENT_URL.length === 0}
+    commands:
+      - launchApp
+      - extendedWaitUntil:
+          visible:
+            id: "tab-Stories"
+          timeout: 3000
+      - extendedWaitUntil:
+          visible:
+            id: "offline-banner"
+          timeout: 3000
+- runFlow:
+    when:
+      true: ${typeof DEV_CLIENT_URL !== 'undefined' && DEV_CLIENT_URL.length > 0}
+    commands:
+      - runFlow: steps/open_app.yaml
+      - extendedWaitUntil:
+          visible:
+            id: "tab-Stories"
+          timeout: 60000
+      - extendedWaitUntil:
+          visible:
+            id: "offline-banner"
+          timeout: 3000
+- assertNotVisible:
+    id: "login-submit"
+- assertNotVisible:
+    id: "no-internet-screen"
+- assertNotVisible:
+    id: "splash"
+- setAirplaneMode: disabled
+- extendedWaitUntil:
+    notVisible:
+      id: "offline-banner"
+    timeout: 20000
+- assertVisible:
+    id: "tab-Stories"

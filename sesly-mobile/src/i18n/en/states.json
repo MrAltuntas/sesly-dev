@@ -1,0 +1,24 @@
+{
+  "offline": {
+    "title": "You are offline",
+    "message": "You need a connection to open stories.",
+    "stillOfflineMessage": "Check your internet connection and try again."
+  },
+  "server": {
+    "title": "Sesly cannot be reached right now",
+    "message": "The problem is on our side. Try again in a little while."
+  },
+  "maintenance": {
+    "title": "Sesly is under maintenance"
+  },
+  "banner": {
+    "offline": "You are offline"
+  },
+  "forceUpdate": {
+    "title": "Update required",
+    "message": "A new version of Sesly is available. Update the app to continue.",
+    "action": "Update the app",
+    "storeFailed": "Could not open the store. Please update the app from the store.",
+    "appStoreHint": "You can update Sesly from the App Store."
+  }
+}

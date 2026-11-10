@@ -1,0 +1,9 @@
+<resources>
+  <!-- palettes['gece-mavisi'].bg (DEFAULT_PALETTE): the launch splash and every window behind
+       the app. Every palette bg is dark, so the splash fade is dark to dark for all six. -->
+  <color name="splashscreen_background">#121A29</color>
+  <color name="iconBackground">#F6F0EA</color>
+  <color name="colorPrimary">#C88F8F</color>
+  <color name="colorPrimaryDark">#A77373</color>
+  <color name="window_background">#121A29</color>
+</resources>

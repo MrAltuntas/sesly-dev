@@ -1,0 +1,24 @@
+{
+  "skip": "Skip",
+  "language": "App language",
+  "next": "Next",
+  "start": "Get started",
+  "recordVoice": "Record my voice",
+  "recordPill": "30 second recording",
+  "privacy": "Your recording is used only to create your voice.",
+  "pageOf": "Page {{current}} of {{total}}",
+  "pages": {
+    "house": {
+      "title": "A bedtime story,\nin a voice they know.",
+      "body": "Pick a ready-made narrator or add your own voice with a 30 second recording."
+    },
+    "voice": {
+      "title": "Let us tell the stories in your voice.",
+      "body": "Reading aloud for about 30 seconds is enough. On the nights you cannot be there, your child still hears the story in your voice."
+    },
+    "sleep": {
+      "title": "A story every night.",
+      "body": "Keep the stories you love. Set the sleep timer and playback stops by itself when the story ends."
+    }
+  }
+}

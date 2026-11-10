@@ -1,0 +1,10 @@
+# All six palettes on their own, a screenshot each (e2e/artifacts/palette_*.png).
+#   maestro --device emulator-5556 test e2e/maestro/palette_switch.yaml -e EMAIL=... -e PASSWORD=...
+appId: com.sesly
+name: Palette switch
+tags:
+  - owner-areas
+---
+- evalScript: ${output.email = EMAIL}
+- runFlow: steps/ensure_signed_in.yaml
+- runFlow: steps/palette_switch.yaml

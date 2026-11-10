@@ -1,0 +1,253 @@
+{
+  "nav": {
+    "home": "Home",
+    "howItWorks": "How it works",
+    "features": "Features",
+    "plans": "Plans",
+    "faq": "Questions",
+    "download": "Download",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "dataDeletion": "Data Deletion",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "main": "Main menu",
+    "skip": "Skip to content",
+    "logoAlt": "Sesly home"
+  },
+  "language": {
+    "tr": "TR",
+    "en": "EN",
+    "trName": "Türkçe",
+    "enName": "English",
+    "switcherLabel": "Site language"
+  },
+  "store": {
+    "googlePlay": "Get it on Google Play",
+    "iosSoon": "iOS coming soon",
+    "iosSoonLong": "The iPhone version is coming soon to the App Store."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Story time before bed",
+      "titleA": "Every night,",
+      "titleB": "in your voice.",
+      "lead": "Real bedtime tales for your child, every night. A ready-made narrator can read them, or you tell them in your own voice.",
+      "note": "Start on the free plan. The app and the tales are in Turkish and English.",
+      "phoneHome": "The Stories screen of the Sesly app: tonight's story, the category tiles and a shelf of bedtime stories.",
+      "phoneStory": "A story page: the cover, age and length tags, and below them the question Whose voice should read it? with narrator cards."
+    },
+    "how": {
+      "title": "Story time in three steps",
+      "lead": "Pick a tale, pick a narrator, turn off the lights. Sesly does the rest.",
+      "step": "Step {{n}}",
+      "steps": {
+        "pick": {
+          "title": "Pick a tale",
+          "text": "Choose from bedtime stories, Turkish tales, world classics and educational stories, by age and by length."
+        },
+        "voice": {
+          "title": "Choose the narrator",
+          "text": "Let a ready-made narrator read it, or record your voice once and the story is told in your voice."
+        },
+        "listen": {
+          "title": "Listen and drift off",
+          "text": "Set the sleep timer. In the last minute the sound fades out gently and the story ends on its own."
+        }
+      }
+    },
+    "features": {
+      "title": "Made for bedtime",
+      "lead": "Everything in Sesly follows the evening routine: few taps, calm screens, real tales.",
+      "phonePlayer": "The player screen: the story cover, the line Narrated by Mum, the progress bar and the sleep timer with the time left.",
+      "items": {
+        "ownVoice": {
+          "title": "Your own voice",
+          "text": "Read a short text on the screen once, and Sesly tells the stories in your voice.",
+          "privacy": "The recording is taken only with your explicit consent and used only to make your voice; delete the voice or your account and the recording is deleted too."
+        },
+        "narrators": {
+          "title": "Ready-made narrators",
+          "text": "Start right away, no recording needed. Google's natural Chirp 3 HD voices are free on every plan, within the plan limits."
+        },
+        "tales": {
+          "title": "Real tales",
+          "text": "Public domain folk tales and classics, and openly licensed (CC BY) children's books. No AI-written tales; tales translated from English with AI are clearly marked."
+        },
+        "timer": {
+          "title": "Sleep timer",
+          "text": "Pick a length of time or a number of stories. In the last minute the sound fades out and the story ends on its own."
+        },
+        "queue": {
+          "title": "Up next",
+          "text": "Add ready stories to the queue; when one ends the next one starts, and you can put the phone down."
+        },
+        "parents": {
+          "title": "Notes for parents",
+          "text": "Every tale has an age group. Content such as a scary scene, death or a sad ending is pointed out before the story starts."
+        },
+        "languages": {
+          "title": "Turkish and English",
+          "text": "The app and the tales come in both languages. You choose the story language; the ready-made narrators read in both too."
+        }
+      }
+    },
+    "shelf": {
+      "title": "A few tales from the shelf",
+      "lead": "The source and licence of every tale are on its story page in the app. Tales translated from English with AI are always marked.",
+      "translated": "Translated with AI",
+      "publicDomain": "Public domain",
+      "folk": "Folk tale",
+      "ccby": "CC BY 4.0",
+      "coverAlt": "Cover picture of {{title}}",
+      "age": "Ages {{range}}",
+      "langTr": "Turkish",
+      "langEn": "English",
+      "categories": {
+        "BEDTIME": "Bedtime story",
+        "TURKISH_CLASSICS": "Turkish tale",
+        "WORLD_CLASSICS": "World classic"
+      },
+      "warnings": {
+        "SCARY": "Scary scene",
+        "VIOLENCE": "Violence",
+        "DEATH": "Death",
+        "SAD_ENDING": "Sad ending",
+        "BAD_EXAMPLE": "Example of bad behaviour",
+        "OLD_LANGUAGE": "Old or heavy language",
+        "LONELINESS": "Loneliness or separation"
+      }
+    },
+    "plans": {
+      "title": "Plans",
+      "lead": "Start for free and upgrade later if you like. On the paid plans, stories keep playing with the screen off.",
+      "perMonth": "/ month",
+      "perYear": "/ year",
+      "or": "or",
+      "free": {
+        "name": "Free",
+        "price": "0 TL",
+        "items": [
+          "20 stories a month with ready-made narrators",
+          "1 story in your own voice, in total",
+          "1 own voice"
+        ],
+        "limit": "The story stops when the screen turns off"
+      },
+      "mini": {
+        "name": "Mini",
+        "price": "49.99 TL",
+        "items": [
+          "Unlimited stories with ready-made narrators",
+          "5 stories a month in your own voice",
+          "1 own voice",
+          "Listening with the screen off",
+          "Premium stories"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "199.99 TL",
+        "yearly": "1,499.99 TL",
+        "items": [
+          "Unlimited stories with ready-made narrators",
+          "20 stories a month in your own voice",
+          "3 own voices",
+          "Listening with the screen off",
+          "Premium stories"
+        ]
+      },
+      "notes": {
+        "store": "Subscriptions are sold only through Google Play and cancelled in Google Play (App Store coming soon). They renew automatically each period until you cancel.",
+        "price": "The price in the app is set by the store and may differ by country. Monthly allowances renew on the first day of each month."
+      }
+    },
+    "faq": {
+      "title": "Common questions",
+      "items": {
+        "free": {
+          "q": "Is Sesly free?",
+          "a": "Yes. On the free plan you can listen to 20 stories a month with ready-made narrators and make 1 story in your own voice. For more, choose the Mini or Premium plan."
+        },
+        "record": {
+          "q": "How do I add my own voice?",
+          "a": "From the My voice tab. First you agree to the explicit consent text, then you read the short text on the screen for at least 15 seconds; 30 seconds is ideal. The app lets you know when your voice is ready."
+        },
+        "privacy": {
+          "q": "What happens to my recording?",
+          "a": "Your recording is used only to make your voice and narrate your stories; it is not used for advertising and never sold. The voice model is stored with our service provider Cartesia. When you delete the voice or your account, the recording and the voice model are deleted.",
+          "link": "Privacy Policy"
+        },
+        "tales": {
+          "q": "Where do the tales come from?",
+          "a": "From public domain folk tales and classics, and from openly licensed (CC BY) children's books. There are no AI-written tales. Some English tales were translated into Turkish with AI; those tales say \"Translated with AI\". The source and licence are on every story page."
+        },
+        "languages": {
+          "q": "Which languages?",
+          "a": "The app and the tales are in Turkish and English. The ready-made narrators speak both languages too."
+        },
+        "cancel": {
+          "q": "How do I cancel my subscription?",
+          "a": "In Google Play, under Subscriptions. The cancellation takes effect at the end of the period. Deleting your account does not cancel the subscription."
+        },
+        "ios": {
+          "q": "Is it on iPhone?",
+          "a": "Not yet. For now Sesly is on Android, in Google Play. The iPhone version is coming soon."
+        },
+        "delete": {
+          "q": "How do I delete my account?",
+          "a": "In the app, tap your profile icon and use Delete account at the bottom of the Profile page. If you cannot open the app, follow the steps on the data deletion page.",
+          "link": "Data deletion page"
+        }
+      }
+    },
+    "cta": {
+      "title": "Tonight, the first story is yours",
+      "text": "Download Sesly and play the first story with a ready-made narrator or in your own voice.",
+      "contact": "Questions, ideas or support",
+      "iconAlt": "Sesly app icon"
+    }
+  },
+  "legal": {
+    "loading": "Loading...",
+    "error": "Something went wrong while loading the content.",
+    "retry": "Try again",
+    "lastUpdated": "Last updated:",
+    "version": "Version {{version}}",
+    "unknownError": "Unknown error",
+    "backHome": "Back to home",
+    "fallbackTitle": {
+      "privacy": "Privacy Policy",
+      "tos": "Terms of Use",
+      "dataDeletion": "Data Deletion"
+    },
+    "turkishOnly": "This document is currently available in Turkish only."
+  },
+  "footer": {
+    "tagline": "Real tales, ready-made narrators or your own voice. Every night.",
+    "columns": {
+      "app": "App",
+      "legal": "Legal",
+      "contact": "Contact"
+    },
+    "copyright": "© {{year}} Sesly"
+  },
+  "seo": {
+    "home": {
+      "title": "Sesly - Every night, in your voice",
+      "description": "Real bedtime tales, read by ready-made narrators or in your own voice. A Turkish and English story app with a sleep timer."
+    },
+    "privacy": {
+      "title": "Privacy Policy - Sesly",
+      "description": "How Sesly collects, uses and protects your personal data and voice recordings."
+    },
+    "tos": {
+      "title": "Terms of Use - Sesly",
+      "description": "The terms, plans and subscription rules that apply when you use Sesly."
+    },
+    "dataDeletion": {
+      "title": "Data Deletion - Sesly",
+      "description": "How to delete a voice profile, or your Sesly account and all of its data."
+    }
+  }
+}

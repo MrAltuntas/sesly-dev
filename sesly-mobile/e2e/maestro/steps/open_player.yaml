@@ -1,0 +1,21 @@
+# Library (Masallarım): the first ready narration opens the player, loaded
+# and paused. Needs an account with at least one ready narration.
+appId: com.sesly
+---
+- tapOn:
+    id: "tab-Library"
+- extendedWaitUntil:
+    visible:
+      id: "library-play-(?!all(-|$)).+"
+    timeout: 20000
+- tapOn:
+    id: "library-narration-.+"
+    index: 0
+- extendedWaitUntil:
+    visible:
+      id: "player-screen"
+    timeout: 10000
+- extendedWaitUntil:
+    visible:
+      id: "player-play"
+    timeout: 20000

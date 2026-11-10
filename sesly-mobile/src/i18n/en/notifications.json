@@ -1,0 +1,38 @@
+{
+  "title": "Notifications",
+  "markAllRead": "Mark all read",
+  "type": {
+    "story": "Story",
+    "voice": "Voice",
+    "system": "Info"
+  },
+  "a11y": {
+    "unread": "Unread"
+  },
+  "toast": {
+    "listen": "Listen",
+    "show": "Show"
+  },
+  "empty": {
+    "title": "No notifications",
+    "message": "You will see it here when your story or your voice is ready.",
+    "action": "Notification preferences"
+  },
+  "error": {
+    "title": "Could not load notifications",
+    "message": "The problem is on our side. Try again in a moment."
+  },
+  "time": {
+    "now": "now",
+    "minutes": "{{value}} min ago",
+    "hours": "{{value}} hr ago",
+    "day": "1 day ago",
+    "days": "{{value}} days ago",
+    "week": "1 week ago",
+    "weeks": "{{value}} weeks ago",
+    "month": "1 month ago",
+    "months": "{{value}} months ago",
+    "year": "1 year ago",
+    "years": "{{value}} years ago"
+  }
+}

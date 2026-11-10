@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#121314" />
+    <meta name="color-scheme" content="dark" />
+    <!-- Static fallbacks (match the Home page SEO). react-helmet-async overrides
+         these per route once the app boots; they exist for crawlers and no-JS
+         contexts only. App.tsx keeps <html lang> synced to the active locale. -->
+    <title>Sesly - Her gece, senin sesinle</title>
+    <meta name="description" content="Yatmadan önce gerçek masallar: hazır anlatıcılarla ya da kendi sesinle. Türkçe ve İngilizce, uyku zamanlayıcılı masal uygulaması.">
+
+    <link rel="icon" type="image/png" sizes="48x48" href="/image/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/image/sesly-icon-192.png" />
+    <link rel="apple-touch-icon" href="/image/apple-touch-icon.png" />
+
+    <!-- Open Graph / Facebook / WhatsApp / iMessage -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sesly">
+    <meta property="og:url" content="https://sesly.io/">
+    <link rel="canonical" href="https://sesly.io/">
+    <meta property="og:title" content="Sesly - Her gece, senin sesinle">
+    <meta property="og:description" content="Yatmadan önce gerçek masallar: hazır anlatıcılarla ya da kendi sesinle. Türkçe ve İngilizce, uyku zamanlayıcılı masal uygulaması.">
+    <meta property="og:image" content="https://sesly.io/image/og-sesly.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sesly - Her gece, senin sesinle">
+    <meta name="twitter:description" content="Yatmadan önce gerçek masallar: hazır anlatıcılarla ya da kendi sesinle. Türkçe ve İngilizce, uyku zamanlayıcılı masal uygulaması.">
+    <meta name="twitter:image" content="https://sesly.io/image/og-sesly.png">
+
+    <link rel="stylesheet" href="/index.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "title": "Choose your plan",
+  "free": "Free",
+  "currentTag": "Your current plan",
+  "period": {
+    "monthly": "Monthly",
+    "yearly": "Yearly"
+  },
+  "per": {
+    "monthly": "/ mo",
+    "yearly": "/ yr"
+  },
+  "limits": {
+    "presetMonthly": "Ready-made narrators: {{amount}} stories a month",
+    "presetMonthlyOne": "Ready-made narrators: 1 story a month",
+    "presetUnlimited": "Ready-made narrators: unlimited stories",
+    "clonedLifetime": "Own voice: {{amount}} stories in total",
+    "clonedLifetimeOne": "Own voice: 1 story in total",
+    "clonedMonthly": "Own voice: {{amount}} stories a month",
+    "clonedMonthlyOne": "Own voice: 1 story a month",
+    "clonedUnlimited": "Own voice: unlimited stories",
+    "screenOff": "Listening with the screen off",
+    "screenOffStops": "The story stops when the screen turns off",
+    "premiumStories": "Premium stories"
+  },
+  "cta": {
+    "premiumYearly": "Get Premium yearly",
+    "premiumMonthly": "Get Premium monthly",
+    "mini": "Get Mini"
+  },
+  "restore": "Restore purchases",
+  "manage": "Manage subscription",
+  "legal": {
+    "android": "The subscription renews automatically every period until you cancel. You can cancel in Google Play at any time.",
+    "ios": "The subscription renews automatically every period until you cancel. You can cancel in the App Store at any time.",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy"
+  },
+  "reason": {
+    "quota": "You have used up the stories of your plan.",
+    "voices": "Pick a plan to add more voices.",
+    "premiumStory": "This story comes with the paid plans.",
+    "background": "Listening with the screen off comes with the paid plans."
+  },
+  "a11y": {
+    "plan": "{{name}} plan",
+    "currentPlan": "{{name}} plan, your current plan",
+    "periodOption": "{{period}}: {{price}}"
+  },
+  "priceNotLoaded": "price not loaded yet",
+  "status": {
+    "pendingTitle": "Your payment is waiting for approval",
+    "pendingMessage": "Your plan turns on by itself once the payment is approved. You can close this screen.",
+    "deferredTitle": "We received your purchase",
+    "deferredMessage": "It cannot be verified right now. It will finish by itself once the connection is back, so do not pay again.",
+    "unavailableTitle": "Purchases are not available right now",
+    "unavailableAndroid": "To buy a plan, the app has to be installed from Google Play with a Google account signed in on the phone.",
+    "unavailableIos": "To buy a plan, sign in to the App Store on this phone.",
+    "productsTitle": "Plans could not be loaded",
+    "productsMessage": "The store did not send the prices. Try again in a little while.",
+    "otherStore": "Your subscription was bought through {{store}}. You can change your plan there.",
+    "downgrade": "Your new plan starts when the current period ends. Your current plan stays until then.",
+    "retry": "Try again"
+  },
+  "success": {
+    "title": "Your {{name}} plan is on",
+    "message": "Enjoy listening. Your plan and allowances are on your profile.",
+    "done": "Done",
+    "changeTitle": "Your plan change is saved",
+    "changeMessage": "Your {{name}} plan starts when the current period ends. Your current plan stays until then."
+  }
+}

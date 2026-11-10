@@ -1,0 +1,13 @@
+{
+  "narrationFailed": "Masal hazırlanırken bir sorun oluştu. Lütfen tekrar dene.",
+  "narrationAudioRemoved": "Bu masalın ses dosyası kaldırıldı. Lütfen yeniden oluştur.",
+  "storyFallbackTitle": "Masal",
+  "voiceFailure": {
+    "generic": "Ses hazırlanırken bir sorun oluştu. Lütfen tekrar dene.",
+    "unreadable": "Ses kaydı işlenemedi. Lütfen sesi silip yeniden kaydet.",
+    "tooShort": "Kayıt çok kısa. Lütfen sesi silip en az 15 saniye konuşarak yeniden kaydet.",
+    "noSpeech": "Kayıtta konuşma algılanamadı. Lütfen sessiz bir ortamda yeniden kaydet.",
+    "timeout": "Ses hazırlanması beklenenden uzun sürdü. Lütfen sesi silip yeniden kaydet.",
+    "rejected": "Ses kaydı kalite kontrolünden geçemedi. Lütfen yeniden kaydet."
+  }
+}

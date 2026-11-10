@@ -1,0 +1,26 @@
+# Profile holds every setting: the plan with its usage, the palette, the
+# languages, and no theme setting (dark only).
+appId: com.sesly
+---
+- runFlow: open_profile.yaml
+- assertVisible:
+    id: "profile-account"
+- assertVisible:
+    id: "profile-plan"
+- scrollUntilVisible:
+    element:
+      id: "profile-palette"
+    direction: DOWN
+- assertVisible:
+    id: "palette-option-gece-mavisi"
+- assertNotVisible:
+    text: "Koyu tema|Sistem teması|Açık tema|Dark theme|System theme"
+- scrollUntilVisible:
+    element:
+      id: "profile-version"
+    direction: DOWN
+- assertVisible:
+    id: "profile-sign-out"
+- back
+- assertVisible:
+    id: "tab-Stories"

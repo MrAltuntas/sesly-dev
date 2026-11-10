@@ -1,0 +1,1203 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+  APPLE
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  ADMIN
+  MODERATOR
+}
+
+enum VoiceProfileStatus {
+  PENDING
+  PROCESSING
+  READY
+  FAILED
+}
+
+// PRESET = a ready-made provider voice the user picked (no recording).
+// CLONE  = the user's own recorded voice, cloned upstream (Cartesia).
+// Slots, deletion and entitlement rules key off `kind`, never off `provider`.
+enum VoiceProfileKind {
+  PRESET
+  CLONE
+}
+
+enum AgeGroup {
+  ZERO_TO_THREE
+  THREE_TO_SIX
+  SIX_TO_TEN
+  TEN_PLUS
+}
+
+enum StoryCategory {
+  TURKISH_CLASSICS
+  WORLD_CLASSICS
+  EDUCATIONAL
+  BEDTIME
+}
+
+enum StoryStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+// Where the text comes from.
+enum StoryOrigin {
+  PUBLIC_DOMAIN
+  FOLK_ANONYMOUS
+  LICENSED
+  ORIGINAL_HUMAN
+  AI_GENERATED
+}
+
+// How close the stored text is to its source.
+enum StoryTextFidelity {
+  VERBATIM
+  SPELLING_MODERNISED
+  ABRIDGED
+  RETOLD
+  TRANSLATED
+}
+
+// Legal ground the text is published on (internal audit, never sent to mobile).
+enum StoryRightsBasis {
+  AUTHOR_LIFE_PLUS_70
+  ANONYMOUS_PUBLICATION_PLUS_70
+  FOLK_NO_AUTHOR
+  CC0
+  CC_BY
+  LICENCE_GRANTED
+  OWNED
+}
+
+// CEFR level of the story text. Declaration order is the sort order.
+enum LanguageLevel {
+  A1
+  A2
+  B1
+  B2
+  C1
+  C2
+}
+
+enum LanguageLevelSource {
+  AI
+  MANUAL
+}
+
+// Who decided Story.ageGroup. Null on rows older than the column.
+enum AgeGroupSource {
+  AI
+  MANUAL
+}
+
+enum TranslationMethod {
+  HUMAN
+  MACHINE
+}
+
+// Background LLM work on a story (queue "story-llm").
+enum StoryLlmTaskType {
+  TRANSLATE
+  ASSESS_LEVEL
+  ASSESS_AGE_GROUP
+}
+
+// What a parent should know before listening (Story.contentWarnings), shown
+// next to the age group. Declaration order is the display order; the Turkish
+// labels are in src/common/constants/content-warnings.ts.
+enum ContentWarning {
+  SCARY
+  VIOLENCE
+  DEATH
+  SAD_ENDING
+  BAD_EXAMPLE
+  OLD_LANGUAGE
+  LONELINESS
+}
+
+enum StoryLlmTaskStatus {
+  PENDING
+  RUNNING
+  DONE
+  FAILED
+}
+
+enum CollectionTone {
+  ACCENT
+  TRUST
+  NATURE
+  SUN
+}
+
+enum AudioStatus {
+  PENDING
+  GENERATING
+  READY
+  FAILED
+}
+
+enum NarrationStatus {
+  PENDING
+  GENERATING
+  READY
+  FAILED
+}
+
+// PRO is shown to users as "Premium" (the value stays PRO: app builds in the
+// field parse it). MINI is the small paid plan. CREATOR is an admin-grant
+// plan only and is never sold in a store.
+enum SubscriptionPlan {
+  FREE
+  PRO
+  CREATOR
+  MINI
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  PAST_DUE
+}
+
+enum StorePlatform {
+  APPLE
+  GOOGLE
+}
+
+enum StoreBillingPeriod {
+  MONTH
+  YEAR
+}
+
+// State of one store purchase, normalised across both stores.
+//   ACTIVE / CANCELED (auto-renew off, still paid) / GRACE grant access until
+//   expiresAt. Every other state grants nothing.
+enum StorePurchaseState {
+  PENDING
+  ACTIVE
+  CANCELED
+  GRACE
+  ON_HOLD
+  PAUSED
+  EXPIRED
+  REVOKED
+  REPLACED
+}
+
+enum StoreEventStatus {
+  RECEIVED
+  PROCESSED
+  IGNORED
+  FAILED
+}
+
+enum LegalDocumentStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model User {
+  id                     String       @id @default(uuid())
+  email                  String       @unique
+  passwordHash           String?
+  firstName              String?
+  lastName               String?
+  avatarUrl              String? // S3 URL for user avatar
+  provider               AuthProvider @default(EMAIL)
+  providerId             String? // Google/Apple user ID
+  emailVerified          Boolean      @default(false)
+  // Session generation, carried as the `tv` claim in every access/refresh
+  // token. Bumping it (logout, admin deactivation, account deletion) revokes
+  // every token issued before. Tokens without the claim count as version 0.
+  tokenVersion           Int          @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  voiceProfiles       VoiceProfile[]
+  storyProgress       UserStoryProgress[]
+  subscription        Subscription?
+  usageLimits         UsageLimit[]
+  devices             UserDevice[]
+  notifications       Notification[]
+  favoriteStories     FavoriteStory[]
+  preferences         UserPreferences?
+  playlists           Playlist[]
+  translationRequests StoryTranslationRequest[]
+  usageLifetime       UsageLifetime?
+  storePurchases      StorePurchase[]
+  storeEvents         StoreEvent[]
+
+  @@index([providerId])
+  @@map("users")
+}
+
+enum TTSProvider {
+  GOOGLE
+  CARTESIA
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Voice clone deletion audit
+// ────────────────────────────────────────────────────────────────────────────
+//
+// Cartesia (our cloning provider as of Phase 3, 2026-04) exposes a real
+// DELETE /voices/{id} endpoint, so every deletion request a user makes (via
+// `VoiceProfilesService.deleteVoiceProfile` or `UsersService.deleteUser`)
+// fires the upstream call inline and records the result here:
+//   - IN_PROGRESS while the call is in flight
+//   - COMPLETED on 2xx (or 404 — idempotent success)
+//   - FAILED with `notes` capturing the upstream error
+// Google ready-made voices have no upstream artifact, so they get NO_OP.
+//
+// The row is written BEFORE the voice_profile is deleted so:
+//   1. KVKK / GDPR audits can prove we acted on the request
+//   2. Failed rows can be retried by a future cron
+//   3. The audit trail outlives the source voice_profile + user
+//
+// No FK to `User` or `VoiceProfile` — those rows are deleted at exactly the
+// same moment this row is created, and the audit trail must outlive them.
+
+enum VoiceDeletionRequestStatus {
+  PENDING // queued (legacy; Cartesia rows skip straight to IN_PROGRESS)
+  IN_PROGRESS // upstream delete call in flight
+  COMPLETED // upstream confirmed (2xx or 404 idempotent)
+  FAILED // upstream returned error; see `notes`
+  NO_OP // GOOGLE provider — nothing upstream to delete
+}
+
+model VoiceDeletionRequest {
+  id               String                     @id @default(uuid())
+  userId           String // who originally owned the voice
+  voiceProfileId   String // original DB id (now gone)
+  voiceProfileName String // snapshot for support email body
+  provider         TTSProvider
+  providerVoiceId  String // upstream custom_voice_id
+  status           VoiceDeletionRequestStatus @default(PENDING)
+  notes            String?                    @db.Text // free-form: error msg, support ticket id
+  attemptCount     Int                        @default(0)
+  requestedAt      DateTime                   @default(now())
+  lastAttemptedAt  DateTime?
+  completedAt      DateTime?
+
+  @@index([status])
+  @@index([userId])
+  @@index([requestedAt])
+  @@map("voice_deletion_requests")
+}
+
+model VoiceProfile {
+  id              String           @id @default(uuid())
+  userId          String
+  name            String // "Mom's Voice", "Dad's Voice"
+  profileIcon     String? // Icon for the voice profile
+  provider        TTSProvider      @default(GOOGLE)
+  voiceId         String // Provider-specific voice ID
+  voiceCloningKey String?          @db.Text // Google Voice Cloning Key
+  language        String           @default("tr-TR")
+  kind            VoiceProfileKind @default(PRESET)
+
+  // KVKK explicit consent (CLONE only). Set when the reference upload is
+  // accepted; consentVersion is the clone-config consent text version.
+  consentAt      DateTime?
+  consentVersion String?
+
+  // CLONE only: when this clone took one clone creation from the plan
+  // allowance (usage_limits.clonesCreated + usage_lifetime.clonesCreated).
+  // Cleared when a failed training gives the creation back, so a creation is
+  // refunded at most once and against the month it was taken from.
+  creationChargedAt DateTime?
+
+  // Status for training process
+  status          VoiceProfileStatus @default(READY)
+  errorReason     String? // Human-readable error when status is FAILED
+  consentAudioUrl String? // S3 URL for consent audio
+  sampleAudioUrl  String? // S3 URL for reference audio
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user          User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  storyProgress UserStoryProgress[]
+  narrations    StoryNarration[]
+  audioFiles    Audio[]
+  playlistItems PlaylistItem[]
+
+  @@index([userId])
+  @@index([provider])
+  @@index([userId, kind])
+  @@index([status, updatedAt])
+  @@map("voice_profiles")
+}
+
+model Story {
+  id                       String        @id @default(uuid())
+  title                    String
+  content                  String        @db.Text
+  ageGroup                 AgeGroup
+  category                 StoryCategory
+  language                 String        @default("tr")
+  estimatedDuration        Int // in minutes
+  coverImageUrl            String?
+  // Credit of the cover picture (an illustration under CC BY or in the
+  // public domain): { illustrator, licenseName, licenseUrl, source,
+  // attribution }, see src/modules/stories/cover-credit.ts. It belongs to
+  // the picture, so it travels with coverImageUrl (tale-wide cover, shared
+  // cover). Clients get the plain text line `credit.coverCredit`.
+  coverCredit              Json?
+  isPremium                Boolean       @default(false)
+  hasPreGeneratedNarration Boolean       @default(false) // Free tier pre-generated narrations
+
+  // Cartesia Sonic 3 defaults — applied when no per-segment override exists.
+  // `preprocessedSegments` is the admin-edited (or LLM-filled in Phase 2B)
+  // segment array of shape `[{text, emotion?, speed?, volume?}]`. When null,
+  // the audio pipeline falls back to splitIntoChunks + defaults.
+  defaultEmotion              String?
+  defaultSpeed                Float?
+  cartesiaPronunciationDictId String?
+  preprocessedSegments        Json?
+  preprocessedAt              DateTime?
+  preprocessedModel           String? // 'import' | 'manual' | 'fallback-split' | Gemini model id
+
+  // ---- Segmentation (see docs/story-pipeline.md) ----
+  // Bumped on every write of preprocessedSegments (import, lazy first
+  // narration, admin edit). Audio.segmentationVersion records which
+  // version a narration was generated from.
+  segmentationVersion     Int       @default(0)
+  // Claim held while the first narration request segments the story, so
+  // two simultaneous requests never segment (and pay Gemini) twice.
+  segmentationLockedUntil DateTime?
+
+  // ---- Bulk import ----
+  // `<language>|<source url>|<folded title>`: re-importing the same source
+  // is skipped, never duplicated (unique).
+  importKey       String?   @unique
+  importedAt      DateTime?
+  // Label of the import a story came from (the file name the panel sends,
+  // else the import date). The review view filters on it.
+  importBatch     String?
+  // Review before publishing ("İncelendi" in the panel). Workflow only,
+  // never sent to the mobile API.
+  reviewedAt      DateTime?
+  reviewedBy      String?
+  // Free-form labels from the import file (never sent to the mobile API).
+  tags            String[]  @default([])
+  // Shown next to the age group in the app (enum ContentWarning).
+  contentWarnings ContentWarning[] @default([])
+  sourceEdition   String?
+  licenseName     String?
+  attribution     String?   @db.Text
+
+  // ---- Multi-part tales ----
+  // Parts of one tale in one language share partGroupId; partNumber is 1..n.
+  // The public story detail exposes the previous / next published part.
+  partGroupId String?
+  partNumber  Int?
+
+  // ---- Catalogue (multi-language) ----
+  // One row per language. `slug` is unique per language. Lists and search
+  // only ever return PUBLISHED rows; GET /stories/:id also resolves ARCHIVED
+  // (old favourites / narrations point at them) but never DRAFT.
+  slug        String?
+  status      StoryStatus @default(PUBLISHED)
+  publishedAt DateTime?
+  summary     String?     @db.Text
+
+  // ---- Public credit (sent to clients inside `credit`) ----
+  originalTitle       String?
+  originalLanguage    String?
+  authorName          String?
+  authorDeathYear     Int?
+  collectorName       String?
+  collectorDeathYear  Int?
+  translatorName      String?
+  translatorDeathYear Int?
+  adaptedBy           String?
+  firstPublishedYear  Int?
+  editionYear         Int?
+  sourceName          String?
+  sourceUrl           String?
+  origin              StoryOrigin?
+  textFidelity        StoryTextFidelity?
+
+  // ---- Internal rights audit (NEVER serialised to the mobile API) ----
+  sourceRetrievedAt DateTime?
+  rightsBasis       StoryRightsBasis?
+  rightsNote        String?           @db.Text
+  // Public (credit.licenseUrl next to licenseName / attribution, CC BY credit).
+  licenseUrl        String?
+  rightsVerifiedAt  DateTime?
+  rightsVerifiedBy  String?
+
+  // ---- Translations ----
+  // Stories that tell the same tale in different languages share one
+  // translationGroupId (at most one story per language in a group).
+  translationGroupId String?
+  translatedFromId   String?
+  translationMethod  TranslationMethod?
+
+  // ---- Language level (CEFR) ----
+  languageLevel           LanguageLevel?
+  languageLevelSource     LanguageLevelSource?
+  languageLevelNote       String?              @db.Text
+  languageLevelAssessedAt DateTime?
+
+  // ---- Age group assessment ----
+  // `ageGroup` itself is required; these record who chose it. An AI write
+  // never replaces a MANUAL value unless the task is forced.
+  ageGroupSource     AgeGroupSource?
+  ageGroupNote       String?         @db.Text
+  ageGroupAssessedAt DateTime?
+
+  // ---- Search ----
+  // GENERATED ALWAYS AS sesly_search_fold(title || '\n' || content) STORED
+  // (migration 20261020120000_story_search_fold). Postgres maintains it;
+  // @ignore keeps it out of the client so Prisma never reads or writes it.
+  // The dbgenerated() default is the expression exactly as Prisma
+  // introspects it, so `migrate dev` sees no drift; keep the two in step.
+  // Queried through raw SQL in src/common/utils/search-fold.ts.
+  searchText String? @default(dbgenerated("sesly_search_fold(((title || '\n'::text) || content))")) @ignore
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  chunks              StoryChunk[]
+  userProgress        UserStoryProgress[]
+  favoritedBy         FavoriteStory[]
+  narrations          StoryNarration[]
+  collections         StoryOnCollection[]
+  playlistItems       PlaylistItem[]
+  translatedFrom      Story?                    @relation("StoryTranslatedFrom", fields: [translatedFromId], references: [id], onDelete: SetNull)
+  translatedTo        Story[]                   @relation("StoryTranslatedFrom")
+  llmTasks            StoryLlmTask[]            @relation("StoryLlmTaskStory")
+  llmTaskResults      StoryLlmTask[]            @relation("StoryLlmTaskResult")
+  translationRequests StoryTranslationRequest[]
+  sharedAudios        Audio[]                   @relation("StorySharedAudio")
+
+  @@unique([slug, language])
+  @@unique([translationGroupId, language])
+  @@unique([partGroupId, partNumber])
+  @@index([category, ageGroup])
+  @@index([language, status, category, ageGroup])
+  @@index([language, languageLevel])
+  @@index([translatedFromId])
+  @@index([importBatch])
+  @@map("stories")
+}
+
+// One unit of background LLM work on a story: a machine translation into
+// `targetLanguage` (creates a DRAFT story, `resultStoryId`) or a CEFR level
+// assessment (writes Story.languageLevel*). Rows are kept so the admin panel
+// can show progress and failures after a refresh.
+model StoryLlmTask {
+  id               String             @id @default(uuid())
+  storyId          String
+  type             StoryLlmTaskType
+  targetLanguage   String? // TRANSLATE only
+  status           StoryLlmTaskStatus @default(PENDING)
+  // Turkish, readable reason of a failure (or of the last failed attempt
+  // while the task waits for its retry).
+  error            String?            @db.Text
+  resultStoryId    String? // TRANSLATE: the story that was created or replaced
+  // ASSESS_LEVEL: { level, confidence, note }. TRANSLATE: { title, paragraphs, lengthRatio }.
+  result           Json?
+  createdByAdminId String? // null for automatic triggers
+  // ASSESS_LEVEL: overwrite a MANUAL level. TRANSLATE: replace a DRAFT machine translation.
+  force            Boolean            @default(false)
+  attempts         Int                @default(0)
+  model            String? // model that produced the result
+  startedAt        DateTime?
+  finishedAt       DateTime?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  story       Story  @relation("StoryLlmTaskStory", fields: [storyId], references: [id], onDelete: Cascade)
+  resultStory Story? @relation("StoryLlmTaskResult", fields: [resultStoryId], references: [id], onDelete: SetNull)
+
+  @@index([storyId, type, status])
+  @@index([status, updatedAt])
+  @@index([createdAt])
+  @@map("story_llm_tasks")
+}
+
+// A user asking for a story in a language it is not published in yet.
+// The request hangs on the story it was made from; the tale it counts for is
+// that story's translation group, resolved at read time, so merging or
+// unlinking groups never orphans a request. One open request per user, tale
+// and language is enforced in the service; the unique below is the floor.
+// Fulfilled rows are kept for statistics.
+model StoryTranslationRequest {
+  id               String    @id @default(uuid())
+  userId           String
+  storyId          String
+  language         String // requested target language
+  fulfilledAt      DateTime? // set when a version in `language` was published
+  fulfilledStoryId String? // the published version (no FK: kept if that story is deleted)
+  createdAt        DateTime  @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  story Story @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, storyId, language])
+  @@index([storyId, language])
+  @@index([fulfilledAt])
+  @@map("story_translation_requests")
+}
+
+// Curated collections surfaced on the mobile "Koleksiyonlar" screen
+// (e.g. "Uyku Vakti", "Maceralar", "Klasikler", "Sakin Ses").
+model Collection {
+  id            String         @id @default(uuid())
+  slug          String // stable key used by mobile (sleep|adventure|classics|calm|...), unique per language
+  language      String         @default("tr") // content language of the collection
+  title         String // "Uyku Vakti"
+  subtitle      String? // "Sakin, yumuşak masallar"
+  description   String?        @db.Text // long-form body copy
+  tone          CollectionTone // UI hinting: ACCENT | TRUST | NATURE | SUN
+  coverImageUrl String? // optional GCS URL
+  isActive      Boolean        @default(true)
+  sortOrder     Int            @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  stories StoryOnCollection[]
+
+  @@unique([slug, language])
+  @@index([isActive, sortOrder])
+  @@map("collections")
+}
+
+// Join table: Story ↔ Collection with an explicit position for ordering.
+model StoryOnCollection {
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  collectionId String
+  story        Story      @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  storyId      String
+  position     Int        @default(0)
+
+  createdAt DateTime @default(now())
+
+  @@id([collectionId, storyId])
+  @@index([collectionId, position])
+  @@map("story_on_collections")
+}
+
+model StoryChunk {
+  id         String @id @default(uuid())
+  storyId    String
+  chunkIndex Int // 0, 1, 2, 3...
+  content    String @db.Text
+  startTime  Int? // seconds
+  endTime    Int? // seconds
+
+  createdAt DateTime @default(now())
+
+  // Relations
+  story Story @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  @@unique([storyId, chunkIndex])
+  @@index([storyId])
+  @@map("story_chunks")
+}
+
+// Domain-agnostic Audio model - owns the full generated audio
+// One generated narration audio. Owned (`shared` false): one user's audio,
+// made with one of their voice profiles. Shared (`shared` true, ready-made
+// Google voices only): no user and no voice profile; every narration with
+// the same `shareKey` (story + segmentation version + content + synthesis
+// voice + language + Google settings) points at it, so the story is
+// synthesised once for everybody. See docs/story-pipeline.md section 3.
+model Audio {
+  id             String      @id @default(uuid())
+  // Null on a shared audio.
+  userId         String?
+  // Null on a shared audio (the voice is in shareParams).
+  voiceProfileId String?
+  status         AudioStatus @default(PENDING)
+
+  // Metadata
+  title        String?
+  originalText String  @db.Text // Original text (before chunking)
+  duration     Int? // seconds (calculated after merge)
+
+  // Storage
+  audioUrl String? // Final merged audio URL (filled when READY)
+
+  // Progress tracking
+  totalSegments Int     @default(0)
+  readySegments Int     @default(0)
+  errorMessage  String?
+
+  // Cartesia generation snapshot — what global overrides were chosen at
+  // generation time. Per-segment overrides live on AudioSegment.
+  globalEmotion               String?
+  globalSpeed                 Float?
+  globalVolume                Float?
+  cartesiaPronunciationDictId String?
+
+  // Story.segmentationVersion the segments were built from (null: no story
+  // or generated before versions existed).
+  segmentationVersion Int?
+
+  // ---- Shared ready-made voice audio ----
+  shared      Boolean @default(false)
+  // sha256 of the synthesis parameters (shared-audio-key.ts). Unique: two
+  // simultaneous first requests create one row and one synthesis. Null on
+  // owned audio and on a shared audio made from segments that were not
+  // stored (it can not be reused).
+  shareKey    String? @unique
+  // The parameters behind shareKey (voice id, language, rate, ...), for the
+  // admin panel and logs.
+  shareParams Json?
+  // Story of a shared audio (null on owned audio).
+  storyId     String?
+
+  // Timestamps
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+
+  // Relations
+  voiceProfile VoiceProfile?    @relation(fields: [voiceProfileId], references: [id], onDelete: Cascade)
+  story        Story?           @relation("StorySharedAudio", fields: [storyId], references: [id], onDelete: SetNull)
+  segments     AudioSegment[]
+  // One for owned audio; every narration of the key for a shared audio.
+  narrations   StoryNarration[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([voiceProfileId])
+  @@index([storyId])
+  @@map("audio")
+}
+
+// Internal segments for TTS chunking (not exposed externally)
+model AudioSegment {
+  id       String      @id @default(uuid())
+  audioId  String
+  index    Int // 0, 1, 2, 3...
+  content  String      @db.Text // Segment text content
+  audioUrl String? // Temp storage URL (can be deleted after merge)
+  status   AudioStatus @default(PENDING)
+  duration Int? // seconds
+
+  // Cartesia per-segment overrides. Null falls back to Audio.global* and
+  // ultimately to provider env defaults.
+  emotion String?
+  speed   Float?
+  volume  Float?
+
+  createdAt DateTime @default(now())
+
+  // Relations
+  audio Audio @relation(fields: [audioId], references: [id], onDelete: Cascade)
+
+  @@unique([audioId, index])
+  @@index([audioId])
+  @@map("audio_segments")
+}
+
+model UserStoryProgress {
+  id             String    @id @default(uuid())
+  userId         String
+  storyId        String
+  voiceProfileId String
+  lastChunkIndex Int       @default(0)
+  completedAt    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  story        Story        @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  voiceProfile VoiceProfile @relation(fields: [voiceProfileId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, storyId, voiceProfileId])
+  @@index([userId])
+  @@map("user_story_progress")
+}
+
+model Subscription {
+  id              String             @id @default(uuid())
+  userId          String             @unique
+  plan            SubscriptionPlan   @default(FREE)
+  status          SubscriptionStatus @default(ACTIVE)
+  extraVoiceSlots Int                @default(0) // Extra purchased voice profile slots
+
+  // Stripe data (for web payments)
+  stripeCustomerId     String? @unique
+  stripeSubscriptionId String? @unique
+  stripePriceId        String?
+
+  // Apple In-App Purchase data (for iOS)
+  appleTransactionId         String? @unique
+  // One App Store subscription (original transaction) belongs to one account.
+  appleOriginalTransactionId String? @unique
+
+  // Google Play Billing data (for Android)
+  googlePurchaseToken String? @unique
+  googleProductId     String?
+
+  // Billing period
+  currentPeriodStart DateTime?
+  currentPeriodEnd   DateTime?
+  cancelAtPeriodEnd  Boolean   @default(false)
+
+  // Admin grant, kept apart from the store state so a store write can never
+  // shorten it. The effective plan is the better of the grant (while
+  // grantEndsAt has not passed; null = open ended) and the store-backed
+  // columns above (see resolveEffectivePlan). Only admin code writes these.
+  grantPlan   SubscriptionPlan?
+  grantEndsAt DateTime?
+
+  // The store purchase the columns above were last computed from (null for
+  // admin grants and legacy rows).
+  storePurchaseId String?
+  storePurchase   StorePurchase? @relation(fields: [storePurchaseId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([stripeCustomerId])
+  @@index([appleTransactionId])
+  @@index([googlePurchaseToken])
+  @@map("subscriptions")
+}
+
+model UsageLimit {
+  id     String @id @default(uuid())
+  userId String
+  month  Int // 1-12
+  year   Int // 2025
+
+  // Append-only monthly narration counters, incremented when a generation
+  // actually starts (POST /narrations/:id/generate). Deleting or replacing a
+  // narration never decrements them, so quota cannot be refunded.
+  //   storiesGenerated        = all narrations started this month (every plan)
+  //   premiumStoriesGenerated = subset started with a premium voice
+  //   standard                = storiesGenerated - premiumStoriesGenerated
+  storiesGenerated        Int @default(0)
+  premiumStoriesGenerated Int @default(0)
+  textToSpeechCount       Int @default(0)
+  // Append-only: voice clone uploads accepted this month. Deleting a clone
+  // never gives it back (only our own pre-upstream audio rejection does).
+  clonesCreated           Int @default(0)
+
+  resetAt DateTime
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, month, year])
+  @@index([userId])
+  @@map("usage_limits")
+}
+
+// Append-only lifetime counters (never reset, never decremented except the
+// refund of a clone whose training failed). The FREE plan allowances that do
+// not renew (1 cloned-voice narration, 1 clone creation) are checked here.
+model UsageLifetime {
+  userId          String   @id
+  // Narrations started with a cloned voice, on any plan.
+  cloneNarrations Int      @default(0)
+  // Clone creations (uploads accepted), on any plan.
+  clonesCreated   Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("usage_lifetime")
+}
+
+// One store subscription purchase: an App Store original transaction or a
+// Google Play purchase token. It belongs to exactly one Sesly account
+// (unique platform + purchaseKey, 409 RECEIPT_IN_USE for anyone else).
+model StorePurchase {
+  id                  String             @id @default(uuid())
+  userId              String
+  platform            StorePlatform
+  // APPLE: originalTransactionId. GOOGLE: purchaseToken.
+  purchaseKey         String
+  productId           String
+  plan                SubscriptionPlan
+  billingPeriod       StoreBillingPeriod
+  state               StorePurchaseState
+  expiresAt           DateTime?
+  autoRenew           Boolean            @default(true)
+  // APPLE: latest transactionId. GOOGLE: latest successful order id.
+  latestTransactionId String?
+  // GOOGLE: the token this purchase replaced (upgrade, downgrade, resubscribe).
+  linkedPurchaseKey   String?
+  // Production / Sandbox (Apple), production / test (Google).
+  environment         String?
+  acknowledged        Boolean            @default(false)
+  revokedAt           DateTime?
+  // Newest store timestamp applied; an older event never overwrites a newer one.
+  storeUpdatedAt      DateTime?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptions Subscription[]
+
+  @@unique([platform, purchaseKey])
+  @@index([userId])
+  @@map("store_purchases")
+}
+
+// Audit + idempotency log of every store message: server notifications
+// (externalId = Apple notificationUUID / Pub/Sub messageId, unique per
+// platform, so a replay is processed once) and client validations
+// (externalId null).
+model StoreEvent {
+  id          String           @id @default(uuid())
+  platform    StorePlatform
+  // NOTIFICATION | CLIENT
+  source      String
+  externalId  String?
+  type        String
+  subtype     String?
+  purchaseKey String?
+  productId   String?
+  userId      String?
+  status      StoreEventStatus @default(RECEIVED)
+  note        String?
+  // Decoded, non-secret subset of the message (no signed blobs).
+  payload     Json?
+  receivedAt  DateTime         @default(now())
+  processedAt DateTime?
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@unique([platform, externalId])
+  @@index([purchaseKey])
+  @@index([userId])
+  @@map("store_events")
+}
+
+model UserDevice {
+  id          String  @id @default(uuid())
+  userId      String
+  // FCM/APNS token. Globally unique: a token identifies one app install, so it
+  // belongs to exactly one account (registerDevice moves it on account switch).
+  deviceToken String  @unique
+  platform    String // IOS or ANDROID
+  isActive    Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("user_devices")
+}
+
+model Notification {
+  id     String    @id @default(uuid())
+  userId String
+  type   String // e.g. VOICE_READY, VOICE_FAILED, NARRATION_READY
+  title  String
+  body   String    @db.Text
+  data   Json? // Arbitrary payload (voiceProfileId, narrationId, ...)
+  read   Boolean   @default(false)
+  readAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, read])
+  @@index([userId, createdAt])
+  @@map("notifications")
+}
+
+model FavoriteStory {
+  id      String @id @default(uuid())
+  userId  String
+  storyId String
+
+  createdAt DateTime @default(now())
+
+  // Relations
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  story Story @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, storyId])
+  @@index([userId])
+  @@index([storyId])
+  @@map("favorite_stories")
+}
+
+model StoryNarration {
+  id               String          @id @default(uuid())
+  userId           String
+  storyId          String
+  voiceProfileId   String // Required - voice profile is always needed
+  title            String?
+  // FK to Audio. Not unique: narrations of a shared audio share it.
+  audioId          String?
+  status           NarrationStatus @default(PENDING)
+  errorMessage     String?
+  // Set when an admin removed this narration's audio (narration cache
+  // cleared, audio deleted): the next generation does not take a unit of
+  // the user's plan. Carried over when the FAILED row is replaced.
+  freeRegeneration Boolean         @default(false)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+
+  // Relations
+  story         Story          @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  voiceProfile  VoiceProfile   @relation(fields: [voiceProfileId], references: [id], onDelete: Cascade)
+  audio         Audio?         @relation(fields: [audioId], references: [id], onDelete: SetNull)
+  playlistItems PlaylistItem[]
+
+  // Unique on (userId, storyId, voiceProfileId): one narration per user per
+  // story per voice. To regenerate with the same voice (e.g. after tweaking
+  // Story.preprocessedSegments), POST /narrations with `replace: true` —
+  // the service deletes the existing row + audio first, then creates fresh.
+  // This keeps Library tidy and lets the backend authoritatively answer
+  // "does this user already have this story narrated by this voice?" so the
+  // mobile UI doesn't have to load every page of narrations to know.
+  @@unique([userId, storyId, voiceProfileId])
+  @@index([userId])
+  @@index([storyId])
+  @@index([status])
+  @@index([audioId])
+  @@map("story_narrations")
+}
+
+model Admin {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  firstName    String?
+  lastName     String?
+  role         AdminRole @default(ADMIN)
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  // Session generation (`tv` token claim); bumped on logout to revoke tokens.
+  tokenVersion Int       @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@map("admins")
+}
+
+// [NEW] Promo Codes for Marketing
+model PromoCode {
+  id        String    @id @default(uuid())
+  code      String    @unique // e.g. "SUMMER2025"
+  type      String // 'PERCENTAGE', 'FIXED_AMOUNT', 'FREE_TRIAL'
+  value     Int // e.g. 20 (%), 100 (TRY), 7 (Days)
+  maxUses   Int? // null = unlimited
+  usedCount Int       @default(0)
+  expiresAt DateTime?
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+
+  @@index([code])
+  @@map("promo_codes")
+}
+
+// Legal documents (ToS, Privacy, Data Deletion) — editable working copy
+// with a publish-versioning system. Admin panel edits `contentMd` + `title`
+// against the working copy; publishing snapshots the current content into
+// `LegalDocumentVersion`, bumps `currentVersion`, and flips `status` to
+// PUBLISHED. Mobile/web clients read the published snapshot.
+// One row per (slug, language); the public read of a language without a
+// published row falls back to the published Turkish one.
+model LegalDocument {
+  id             String              @id @default(uuid())
+  slug           String // "tos" | "privacy" | "data-deletion"
+  language       String              @default("tr") // "tr" | "en" (LEGAL_DOCUMENT_LANGUAGES)
+  title          String // e.g. "Kullanım Şartları"
+  contentMd      String              @db.Text // current draft/published markdown
+  currentVersion Int                 @default(0) // 0 when never published
+  status         LegalDocumentStatus @default(DRAFT)
+  publishedAt    DateTime?
+  publishedBy    String? // admin email/id
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  versions LegalDocumentVersion[]
+
+  @@unique([slug, language])
+  @@index([status])
+  @@map("legal_documents")
+}
+
+// Immutable publish snapshot — audit trail of every published version.
+// Written once on publish; never updated. `slug` and `language` are
+// denormalized so public read endpoints can look up "the latest published
+// English ToS" without joining.
+model LegalDocumentVersion {
+  id          String        @id @default(uuid())
+  document    LegalDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  documentId  String
+  slug        String // denormalized for lookup without join
+  language    String        @default("tr") // denormalized from the document
+  version     Int // starts at 1
+  title       String // snapshot title
+  contentMd   String        @db.Text // snapshot content
+  publishedAt DateTime      @default(now())
+  publishedBy String?
+
+  @@unique([documentId, version])
+  @@index([slug, language, version])
+  @@map("legal_document_versions")
+}
+
+// Per-user preferences. Explicit columns for hot/known fields that push
+// logic reads on every notification dispatch; `settings` JSON is an
+// extensible bucket for theme/language/playbackSpeed/autoplay/etc. that
+// the service layer validates and caps to a 4KB payload.
+model UserPreferences {
+  userId String @id
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Sleep timer (explicit — frequently accessed by the player)
+  sleepTimerFadeOut         Boolean @default(true)
+  sleepTimerPauseWhenAsleep Boolean @default(false)
+  sleepTimerLastDuration    Int? // minutes (null = never set)
+
+  // Notifications (explicit — used by push/FCM logic)
+  voiceReadyNotifications     Boolean @default(true)
+  narrationReadyNotifications Boolean @default(true)
+  promoNotifications          Boolean @default(false)
+
+  // Content language of the story catalogue ("Masal dili"). Null means
+  // "use the content.defaultLanguage setting". Read by every grouped list.
+  contentLanguage String?
+
+  // UI language of the app ('tr' | 'en') for text the server writes on its
+  // own (push notifications, stored failure messages). Null means 'tr'.
+  // Set by PATCH /users/me/preferences and from Accept-Language at sign in.
+  uiLanguage String?
+
+  // Extensible bucket (theme/language/playbackSpeed/autoplay/etc.)
+  // Service layer validates + caps size (4KB); schema stays open.
+  settings Json @default("{}")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user_preferences")
+}
+
+// Ordered audio queue for autoplay. One user may have many playlists;
+// exactly one should be flagged `isDefault` (enforced at service layer —
+// Prisma has no partial-unique constraint support).
+model Playlist {
+  id        String         @id @default(uuid())
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  name      String // e.g. "Bu gece", "Uyku serisi"
+  isDefault Boolean        @default(false) // one "default" per user (enforced at service layer)
+  items     PlaylistItem[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@index([userId])
+  @@map("playlists")
+}
+
+// Single entry in a playlist. XOR invariant: exactly one of `narrationId`
+// or `storyId` must be set. Prisma can't express XOR, so the service
+// layer is responsible for enforcement + pruning ghost items (entries
+// where the referenced narration/story has been deleted → SetNull).
+model PlaylistItem {
+  id         String   @id @default(uuid())
+  playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+  playlistId String
+
+  // XOR: exactly one of narrationId or storyId must be set. Enforce in service.
+  narration   StoryNarration? @relation(fields: [narrationId], references: [id], onDelete: SetNull)
+  narrationId String?
+  story       Story?          @relation(fields: [storyId], references: [id], onDelete: SetNull)
+  storyId     String?
+
+  // Optional: which voice to use if the item references a raw story
+  // (not a pre-rendered narration). For narration items this is null.
+  voiceProfile   VoiceProfile? @relation(fields: [voiceProfileId], references: [id], onDelete: SetNull)
+  voiceProfileId String?
+
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([playlistId, position])
+  @@map("playlist_items")
+}
+
+// Runtime tuning values the admin panel can change without a redeploy.
+// A row is an OVERRIDE: no row means "use the environment variable, then the
+// code default". Keys and validation live in the typed registry
+// (src/modules/settings/settings.registry.ts). Never holds secrets or URLs.
+model SystemSetting {
+  key              String   @id
+  value            Json
+  updatedAt        DateTime @updatedAt
+  // Admin who last wrote the override. Plain id, no FK: deleting an admin
+  // must not delete or block a setting.
+  updatedByAdminId String?
+
+  @@map("system_settings")
+}
+
+// Service email texts per kind and language, editable in the admin panel.
+// A row is an OVERRIDE of the code default (src/modules/email/templates):
+// no row means the default text. Only the text fields live here; the HTML
+// layout is code, so the panel cannot break it.
+model EmailTemplate {
+  id               String   @id @default(uuid())
+  kind             String // "welcome" | "password_reset" (EMAIL_TEMPLATE_KINDS)
+  language         String // "tr" | "en" (EMAIL_TEMPLATE_LANGUAGES)
+  subject          String
+  preheader        String   @default("")
+  heading          String
+  body             String   @db.Text
+  buttonLabel      String   @default("")
+  note             String   @default("")
+  footer           String   @default("")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  // Admin who last saved the text. Plain id, no FK (like system_settings).
+  updatedByAdminId String?
+
+  @@unique([kind, language])
+  @@map("email_templates")
+}

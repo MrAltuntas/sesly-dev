@@ -1,0 +1,106 @@
+{
+  "auth": {
+    "invalidToken": "Geçersiz veya süresi dolmuş token",
+    "invalidCredentials": "Geçersiz e-posta veya şifre",
+    "emailAlreadyExists": "Bu e-posta adresi zaten kullanılıyor.",
+    "emailInUse": "Bu e-posta başka bir giriş yöntemiyle kayıtlı. Lütfen o yöntemle giriş yap.",
+    "userNotFound": "Kullanıcı bulunamadı.",
+    "passwordMismatch": "Şifreler eşleşmiyor",
+    "sessionExpired": "Oturumunuzun süresi doldu, lütfen tekrar giriş yapın"
+  },
+  "stories": {
+    "notFound": "Masal bulunamadı.",
+    "accessDenied": "Bu masala erişim yetkiniz yok",
+    "premiumRequired": "Bu masal Pro aboneliği gerektiriyor.",
+    "notFavorite": "Bu masal favorilerinde değil."
+  },
+  "voiceProfiles": {
+    "notFound": "Ses profili bulunamadı.",
+    "limitReached": "Abonelik planınız için ses profili limitine ulaştınız",
+    "accessDenied": "Bu ses profiline erişim yetkiniz yok",
+    "notReady": "Ses profili henüz hazır değil.",
+    "notOwned": "Bu ses profili sana ait değil.",
+    "providerCloneOnly": "Bu sağlayıcı yalnızca kendi sesini kaydetmek için kullanılabilir.",
+    "presetNotFound": "Seçilen hazır ses bulunamadı.",
+    "uploadNotAllowed": "Bu ses profili için kayıt yüklenemez.",
+    "consentRequired": "Devam etmek için güncel açık rıza metnini onaylaman gerekiyor.",
+    "uploadFailed": "Kayıt şu anda yüklenemedi. Lütfen biraz sonra tekrar dene.",
+    "processingUnavailable": "Ses şu anda işlenemiyor. Lütfen biraz sonra tekrar dene.",
+    "alreadyUploaded": "Bu ses için kayıt zaten yüklendi. Yeni bir kayıt için yeni bir ses oluştur.",
+    "previewNotAllowed": "Bu ses için önizleme yapılamaz.",
+    "previewFailed": "Ses önizlemesi oluşturulamadı. Lütfen tekrar dene.",
+    "cloneLanguageNotSupported": "Bu dilde ses kaydı henüz desteklenmiyor."
+  },
+  "narrations": {
+    "notFound": "Seslendirme bulunamadı.",
+    "accessDenied": "Bu anlatıma erişim yetkiniz yok",
+    "generationFailed": "Anlatım sesi oluşturulamadı",
+    "notOwned": "Bu seslendirme sana ait değil.",
+    "alreadyExists": "Bu masal bu sesle zaten seslendirilmiş."
+  },
+  "audio": {
+    "notFound": "Ses bulunamadı.",
+    "accessDenied": "Bu sese erişim yetkin yok.",
+    "notReady": "Ses henüz hazır değil.",
+    "deleteDenied": "Bu sesi silme yetkin yok."
+  },
+  "upload": {
+    "noFile": "Dosya yüklenmedi.",
+    "avatarTooLarge": "Dosya çok büyük. En fazla 5 MB yükleyebilirsin.",
+    "avatarType": "Geçersiz dosya türü. Yalnızca JPG, PNG ve WebP yükleyebilirsin."
+  },
+  "cloneUpload": {
+    "audioRequired": "Ses kaydı dosyası gerekli.",
+    "invalidType": "Bu ses biçimi desteklenmiyor. Lütfen m4a ya da wav kaydı yükle.",
+    "tooLarge": "Ses kaydı en fazla 20 MB olabilir."
+  },
+  "voiceSlots": {
+    "totalLimit": "Planın en fazla {totalSlots} ses profiline izin veriyor. Daha fazla ses eklemek için bir sesi sil ya da planını yükselt.",
+    "presetLimit": "Planın en fazla {limit} hazır anlatıcı sese izin veriyor. Yeni bir ses eklemek için bir hazır sesi sil ya da planını yükselt.",
+    "cloneLimit": "Planın en fazla {limit} kendi ses kaydına izin veriyor. Yeni bir kayıt için mevcut bir sesini sil ya da planını yükselt.",
+    "cloneCreationLifetime": "Ücretsiz planda {limit} ses kaydı oluşturabilirsin ve bu hakkı kullandın. Bu hak yenilenmez, sesini silmek de yeni bir hak vermez. Yeni bir ses kaydı için Mini ya da Premium plana geçebilirsin.",
+    "cloneCreationMonthly": "Bu ay en fazla {limit} yeni ses kaydı oluşturabilirsin ve bu hakkı kullandın. Sesini silmek yeni bir hak vermez.{renewal}",
+    "cloneCreationRenews": " Yeni kayıt hakkın {renewDate} tarihinde yenilenir."
+  },
+  "quota": {
+    "cloneLifetime": "Ücretsiz planda kendi sesinle {limit} masal hakkın var ve bu hakkı kullandın. Bu hak yenilenmez. Kendi sesinle daha fazla masal için Mini ya da Premium plana geçebilirsin.",
+    "cloneMonthly": "Bu ay kendi sesinle {limit} masal hakkını kullandın.{renewal}{upsell}",
+    "presetMonthly": "Bu ay hazır anlatıcı seslerle {limit} masal hakkını kullandın.{renewal} Sınırsız masal için Mini ya da Premium plana geçebilirsin.",
+    "renews": " Hakların {renewDate} tarihinde yenilenir.",
+    "upsellPremium": " Daha fazlası için Premium plana geçebilirsin."
+  },
+  "store": {
+    "receiptInUse": "Bu satın alma başka bir Sesly hesabına bağlı. Lütfen satın alımı yaptığın hesapla giriş yap.",
+    "receiptInvalid": "Satın alma doğrulanamadı. Lütfen tekrar dene.",
+    "productUnknown": "Bu ürün tanınmadı. Uygulamayı güncelleyip tekrar dene.",
+    "unavailable": "Mağazaya şu anda ulaşılamıyor. Satın alman güvende, biraz sonra otomatik olarak tekrar denenecek.",
+    "notConfigured": "Satın alma şu anda doğrulanamıyor. Satın alman güvende, biraz sonra tekrar dene."
+  },
+  "subscriptions": {
+    "notFound": "Abonelik bulunamadı",
+    "alreadyActive": "Zaten aktif bir aboneliğiniz var",
+    "paymentFailed": "Ödeme işlemi başarısız oldu"
+  },
+  "preferences": {
+    "contentLanguageNotEnabled": "{language} şu anda masal dili olarak seçilemiyor."
+  },
+  "translationRequests": {
+    "alreadyAvailable": "Bu masal zaten {language} olarak var."
+  },
+  "maintenance": "Sistem bakım altında, birazdan tekrar deneyin.",
+  "rateLimited": "Çok fazla istek gönderdin. Lütfen biraz bekleyip tekrar dene.",
+  "validation": {
+    "required": "Bu alan zorunludur",
+    "invalidFormat": "Geçersiz format",
+    "email": "Geçerli bir e-posta adresi gir.",
+    "tooShort": "Değer çok kısa",
+    "tooLong": "Değer çok uzun",
+    "uiLanguage": "Geçersiz arayüz dili. Geçerli diller: tr, en.",
+    "groupedBoolean": "grouped true ya da false olmalıdır.",
+    "contentLanguage": "Geçersiz içerik dili. Geçerli diller: tr, en, de, fr, es, it, nl, pt, ar, ru.",
+    "languageLevel": "Geçersiz dil seviyesi. Geçerli değerler: A1, A2, B1, B2, C1, C2.",
+    "storySort": "Geçersiz sıralama. Geçerli değerler: newest, oldest, title, duration, level.",
+    "voiceLanguage": "Geçersiz ses dili. Geçerli diller: tr, en.",
+    "presetVoiceLanguage": "Geçersiz ses dili. Geçerli diller: tr, en, de, fr, es, it, nl, pt, ar."
+  }
+}

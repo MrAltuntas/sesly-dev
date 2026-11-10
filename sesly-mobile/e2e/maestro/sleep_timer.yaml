@@ -1,0 +1,14 @@
+# The sleep timer on its own: a one-minute duration counts down and stops
+# the story. An existing account with a ready narration:
+#   maestro --device emulator-5556 test e2e/maestro/sleep_timer.yaml -e EMAIL=... -e PASSWORD=...
+appId: com.sesly
+name: Sleep timer
+tags:
+  - owner-areas
+---
+- evalScript: ${output.email = EMAIL}
+- runFlow: steps/ensure_signed_in.yaml
+- runFlow: steps/open_player.yaml
+- runFlow: steps/sleep_timer.yaml
+- tapOn:
+    id: "player-back"

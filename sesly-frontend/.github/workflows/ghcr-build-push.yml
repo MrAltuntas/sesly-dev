@@ -1,0 +1,56 @@
+name: Build & Push to GHCR
+
+# Every push to master builds the Docker image and publishes it to GHCR. The
+# server runs Watchtower, which pulls the new :latest and restarts the
+# container, so a green run here is a deploy.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+env:
+  IMAGE: ghcr.io/slymn08183/sesly-web
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # No build-time secrets: runtime configuration comes from the
+      # container's environment on the server, never from this image.
+      # The Firebase web config below is public (repository variables, not
+      # secrets); unset variables build an image that reads the key from the
+      # action link instead.
+      - name: Build & push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            VITE_FIREBASE_API_KEY=${{ vars.VITE_FIREBASE_API_KEY }}
+            VITE_FIREBASE_AUTH_DOMAIN=${{ vars.VITE_FIREBASE_AUTH_DOMAIN }}
+            VITE_FIREBASE_PROJECT_ID=${{ vars.VITE_FIREBASE_PROJECT_ID }}
+          tags: |
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

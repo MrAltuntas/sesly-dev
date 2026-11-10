@@ -1,0 +1,179 @@
+{
+  "save": "Save",
+  "unsave": "Remove from saved",
+  "languageChoice": "Story language",
+  "languageSwitchFailed": "The story could not be opened in this language.",
+  "requestLanguage": "Ask for another language",
+  "languages": {
+    "title": "Languages of this story"
+  },
+  "more": {
+    "title": "Story",
+    "a11y": "More options",
+    "narrator": "Change narrator",
+    "regenerate": "Prepare again",
+    "regenerateHint": "Uses one story of your allowance",
+    "regenerateHintUnlimited": "The new one replaces the old one"
+  },
+  "level": "Level {{level}}, {{word}}",
+  "levelOnly": "Level {{level}}",
+  "levelWord": {
+    "A1": "beginner",
+    "A2": "elementary",
+    "B1": "intermediate",
+    "B2": "upper intermediate",
+    "C1": "advanced",
+    "C2": "proficient"
+  },
+  "narrator": {
+    "nativeVoice": "This narrator reads the story with their {{language}} voice.",
+    "accentedVoice": "This narrator is {{voiceLanguage}}, the story is {{storyLanguage}}. There may be some accent drift."
+  },
+  "cards": {
+    "title": "Whose voice should read it?",
+    "all": "All",
+    "own": "Your voice",
+    "ready": "Ready-made",
+    "addOwn": "Add voice",
+    "addOwnHint": "Your own voice"
+  },
+  "noNarrator": {
+    "title": "Choose a narrator first",
+    "message": "You can add your own voice or pick a ready-made narrator.",
+    "catalogueHint": "Tap a narrator to add it to your list and choose it.",
+    "addOwn": "Add your own voice",
+    "pickReady": "Pick a ready-made narrator"
+  },
+  "credit": {
+    "label": "Credits",
+    "author": "Author",
+    "collector": "Collector",
+    "translator": "Translator",
+    "adapter": "Adapter",
+    "source": "Source",
+    "anonymousFolk": "Anonymous folk tale"
+  },
+  "source": {
+    "title": "Source and licence",
+    "sourceUrl": "Source address",
+    "attribution": "Attribution",
+    "license": "Licence",
+    "licenseUrl": "Licence address",
+    "cover": "Cover picture"
+  },
+  "related": {
+    "title": "Related stories",
+    "all": "All",
+    "allA11y": "See all related stories",
+    "languages": "In other languages",
+    "parts": "Other parts",
+    "category": "More of the same kind",
+    "part": "Part {{number}}"
+  },
+  "machineTranslation": {
+    "from": "This text was translated with AI from the {{language}} original.",
+    "plain": "This text was translated with AI.",
+    "openOriginal": "Open the original: {{title}} ({{language}})"
+  },
+  "report": {
+    "question": "Found a mistake in the text?",
+    "hint": "Tell us by e-mail",
+    "subject": "Text mistake: {{title}} ({{id}})",
+    "noMailTitle": "No e-mail app found",
+    "noMailMessage": "You can write to {{email}} about the mistake."
+  },
+  "cta": {
+    "listenOwn": "Listen in your voice",
+    "listenWith": "Listen with {{name}}",
+    "listen": "Listen",
+    "inProgress": "In preparation",
+    "noNarrator": "Pick a narrator"
+  },
+  "inProgressDialog": {
+    "title": "Your story is being prepared",
+    "message": "{{name}} is preparing this story right now. We will let you know when it is ready.",
+    "showProgress": "See progress"
+  },
+  "mismatchDialog": {
+    "title": "Languages do not match",
+    "message": "This voice is {{voiceLanguage}}, the story is {{storyLanguage}}. There may be some accent drift, but you can still listen."
+  },
+  "slotDialog": {
+    "seePlans": "See plans"
+  },
+  "loadError": {
+    "title": "The story could not be opened",
+    "message": "The problem is on our side. Try again in a moment.",
+    "notFound": "Story not found"
+  },
+  "narratorSheet": {
+    "title": "Narrator",
+    "own": "Your voice",
+    "ready": "Ready-made narrators",
+    "otherLanguages": "Voices in another language",
+    "recordedOn": "Recorded on {{day}} {{month}}",
+    "addOwn": "Add your own voice",
+    "addNew": "Add a new voice",
+    "addReady": "Add a ready-made narrator",
+    "seeAll": "See all",
+    "seeAllHint": "{{total}} ready-made narrators",
+    "footnote": "Ready-made narrators read this story in {{language}}.",
+    "preview": "Play a sample of {{name}}",
+    "stopPreview": "Stop the sample of {{name}}",
+    "previewFailed": "The sample could not be played.",
+    "sampleMissing": "No sample was found for this voice.",
+    "loadingReady": "Loading narrators..."
+  },
+  "requestSheet": {
+    "title": "Ask for another language",
+    "request": "Request",
+    "requested": "Requested",
+    "requestA11y": "Ask for a {{language}} translation",
+    "withdrawA11y": "Withdraw the {{language}} request",
+    "footnote": "Your request is recorded. Once the translation is published, the story opens in that language too. We cannot say when that will be.",
+    "failed": "The request could not be saved. Try again.",
+    "withdrawFailed": "The request could not be withdrawn. Try again.",
+    "alreadyAvailable": "The {{language}} translation of this story has been published."
+  },
+  "month": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "quota": {
+    "presetLeft": "{{left}} stories left this month",
+    "presetLeftOne": "1 story left this month",
+    "cloneLeftMonth": "{{left}} own-voice stories left this month",
+    "cloneLeftMonthOne": "1 own-voice story left this month",
+    "cloneLeftLifetime": "You have {{left}} stories in your own voice. They do not renew.",
+    "cloneLeftLifetimeOne": "You have 1 story in your own voice. It does not renew."
+  },
+  "confirm": {
+    "title": "Narrate this story?",
+    "titleRegenerate": "Prepare it again?",
+    "replaces": "The new one replaces the old one.",
+    "part": "Part {{number}} of {{total}}",
+    "about": "about {{duration}}",
+    "ownVoice": "Your own voice",
+    "readyVoice": "Ready-made narrator",
+    "voiceA11y": "Narrator: {{name}}, {{line}}",
+    "confirm": "Narrate",
+    "cost": {
+      "presetMonth": "This narration uses 1 of your ready-made narrator stories (this month {{used}}/{{limit}}).",
+      "presetLifetime": "This narration uses 1 of your ready-made narrator stories (in total {{used}}/{{limit}}).",
+      "preset": "This narration uses 1 of your ready-made narrator stories.",
+      "cloneMonth": "Uses 1 of your own-voice stories (this month {{used}}/{{limit}}).",
+      "cloneLifetime": "Uses 1 of your own-voice stories (in total {{used}}/{{limit}}).",
+      "clone": "Uses 1 of your own-voice stories."
+    }
+  }
+}
